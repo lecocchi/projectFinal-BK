@@ -1,0 +1,80 @@
+package com.davinci.controller;
+
+
+import com.davinci.model.Issue;
+import com.davinci.service.IssueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/issue/")
+public class IssueController {
+
+    private IssueService issueService;
+
+    @Autowired
+    public IssueController(IssueService IssueService) {
+        this.issueService = IssueService;
+    }
+
+    @GetMapping(value = "{id}")
+    public ResponseEntity<Issue> getById(@PathVariable("id") Integer id) {
+        return Optional.ofNullable(this.issueService.getIssueById(id))
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping(value = "sprint/{sprint}")
+    public ResponseEntity<List<Issue>> getAllBySprint(@PathVariable("sprint") Integer sprint) {
+        return Optional.ofNullable(this.issueService.getAllIssueBySprint(sprint))
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping(value = "backlog")
+    public ResponseEntity<List<Issue>> getAllByBacklogIsTrue() {
+        return Optional.ofNullable(this.issueService.getAllIssueByBacklogIsTrue())
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping(value = "enabled")
+    public ResponseEntity<List<Issue>> getAllByEnabledIsTrue() {
+        return Optional.ofNullable(this.issueService.getAllIssueByEnabledIsTrue())
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Issue>> getAll() {
+        return Optional.ofNullable(this.issueService.getAllIssue())
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @PostMapping
+    public ResponseEntity<Issue> create(@RequestBody Issue Issue) {
+        return Optional.ofNullable(this.issueService.createIssue(Issue))
+                .map(a -> new ResponseEntity<>(a, HttpStatus.CREATED))
+                .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
+    }
+
+    @PutMapping(value = "{id}")
+    public ResponseEntity<Issue> update(@PathVariable("id") Integer id, @RequestBody Issue Issue) {
+        return Optional.ofNullable(this.issueService.updateIssue(Issue, id))
+                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_MODIFIED));
+    }
+
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
+        this.issueService.deleteIssue(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+}
