@@ -158,7 +158,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `projectfinal`.`ISSUE` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`ISSUE` (
+CREATE TABLE IF NOT EXISTS `projectfinal`.`issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `TITLE` VARCHAR(255) NOT NULL,
   `ID_PRIORITY` INT NOT NULL,
@@ -202,6 +202,7 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`comment` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `DESCTIPTION` VARCHAR(255) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
+  `ID_USER` INT(11) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `COMMENT-ISSUE_idx` (`ID_ISSUE` ASC))
@@ -225,6 +226,20 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `projectfinal`.`daily-user`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `projectfinal`.`daily_user`;
+
+CREATE TABLE IF NOT EXISTS `projectfinal`.`daily_user` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `DAILY_ID` INT(11) NOT NULL,
+  `USER_ID` INT(11) NOT NULL,
+  `YESTERDAY` VARCHAR(255),
+  `TODAY` VARCHAR(255),
+  PRIMARY KEY (`ID`)
+);
 
 -- -----------------------------------------------------
 -- Table `projectfinal`.`member_day`
@@ -283,6 +298,9 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`watcher-issue` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = utf8;
+
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

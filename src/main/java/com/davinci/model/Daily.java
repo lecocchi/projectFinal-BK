@@ -1,17 +1,22 @@
 package com.davinci.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="DAILY")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Daily implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,35 +24,15 @@ public class Daily implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	
+
+	@NotNull
 	@Column(name="ID_SCRUMMASTER")
 	private int idScrummaster;
-	
+
+	@NotNull
 	@Column(name="CREATED_AT")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date createdAt;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getIdScrummaster() {
-		return idScrummaster;
-	}
-
-	public void setIdScrummaster(int idScrummaster) {
-		this.idScrummaster = idScrummaster;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
 
 }

@@ -15,17 +15,20 @@ import javax.persistence.Table;
 public class Comment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	
+
 	@Column(name="DESCRIPTION")
 	private String description;
-	
+
 	@Column(name="ID_ISSUE")
 	private int idIssue;
-	
+
+	@Column(name = "ID_USER")
+	private int idUser;
+
 	@Column(name="CREATED_AT")
 	private Date createdAt;
 
@@ -40,6 +43,10 @@ public class Comment implements Serializable {
 	public String getDescription() {
 		return description;
 	}
+
+	public int getIdUser() { return idUser; }
+
+	public void setIdUser(int idUser) { this.idUser = idUser; }
 
 	public void setDescription(String description) {
 		this.description = description;
