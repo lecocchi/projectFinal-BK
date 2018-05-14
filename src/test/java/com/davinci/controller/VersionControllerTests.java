@@ -53,8 +53,8 @@ public class VersionControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<Version> versions = Arrays.asList(
-                new Version(ConstantsTests.Version.NAME, new Date()),
-                new Version(ConstantsTests.Version.NAME, new Date()));
+                new Version(ConstantsTests.Version.NAME, null, new Date()),
+                new Version(ConstantsTests.Version.NAME, null, new Date()));
 
         when(service.getAllVersion()).thenReturn(versions);
 
@@ -79,7 +79,7 @@ public class VersionControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        Version version = new Version(ConstantsTests.Version.NAME, new Date());
+        Version version = new Version(ConstantsTests.Version.NAME, null, new Date());
 
         when(service.getVersionById(any(Integer.class))).thenReturn(version);
 
@@ -99,7 +99,7 @@ public class VersionControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        Version version = new Version(ConstantsTests.Version.NAME, new Date());
+        Version version = new Version(ConstantsTests.Version.NAME, null, new Date());
 
         when(service.createVersion(any(Version.class))).thenReturn(version);
 
@@ -120,7 +120,7 @@ public class VersionControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        Version version = new Version(ConstantsTests.Version.NAME, new Date());
+        Version version = new Version(ConstantsTests.Version.NAME, null, new Date());
         version.setId(1);
 
         when(service.updateVersion(any(Version.class), any(Integer.class))).thenReturn(version);

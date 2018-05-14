@@ -11,97 +11,98 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema projectfinal
+-- Schema jym604qy2slbxiy6
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `projectfinal` ;
+DROP SCHEMA IF EXISTS `jym604qy2slbxiy6` ;
 
 -- -----------------------------------------------------
--- Schema projectfinal
+-- Schema jym604qy2slbxiy6
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `projectfinal` DEFAULT CHARACTER SET utf8 ;
-USE `projectfinal` ;
+CREATE SCHEMA IF NOT EXISTS `jym604qy2slbxiy6` DEFAULT CHARACTER SET utf8 ;
+USE `jym604qy2slbxiy6` ;
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`priority`
+-- Table `jym604qy2slbxiy6`.`priority`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`priority` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`priority` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`priority` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`priority` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`label`
+-- Table `jym604qy2slbxiy6`.`label`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`label` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`label` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`label` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`label` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`phase`
+-- Table `jym604qy2slbxiy6`.`phase`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`phase` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`phase` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`phase` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`phase` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`state`
+-- Table `jym604qy2slbxiy6`.`state`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`state` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`state` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`state` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`state` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`version`
+-- Table `jym604qy2slbxiy6`.`version`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`version` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`version` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`version` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`version` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
+  `DESCRIPTION` VARCHAR(255),
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`sprint`
+-- Table `jym604qy2slbxiy6`.`sprint`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`sprint` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`sprint` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`sprint` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`sprint` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DATE_FROM` DATETIME NOT NULL,
@@ -109,32 +110,32 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`sprint` (
   `CREATED_AT` DATETIME NOT NULL,
   `ENABLED` TINYINT(4) NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`rol`
+-- Table `jym604qy2slbxiy6`.`rol`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`rol` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`rol` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`rol` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`rol` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`user`
+-- Table `jym604qy2slbxiy6`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`user` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`user` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`user` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `FIRST_NAME` VARCHAR(255) NOT NULL,
   `LAST_NAME` VARCHAR(255) NOT NULL,
@@ -148,17 +149,17 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`user` (
   `ENABLED` TINYINT(4) NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `USER-ROL_idx` (`ID_ROL` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`ISSUE`
+-- Table `jym604qy2slbxiy6`.`ISSUE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`ISSUE` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`ISSUE` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`issue` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `TITLE` VARCHAR(255) NOT NULL,
   `ID_PRIORITY` INT NOT NULL,
@@ -188,65 +189,50 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`issue` (
   INDEX `ISSUE-SPRINT_idx` (`ID_SPRINT` ASC),
   INDEX `ISSUE-ASSIGNEE_idx` (`ID_ASSIGNEE` ASC),
   INDEX `ISSUE-REPORTER_idx` (`ID_REPORTER` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`comment`
+-- Table `jym604qy2slbxiy6`.`comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`comment` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`comment` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`comment` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `DESCTIPTION` VARCHAR(255) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
-  `ID_USER` INT(11) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `COMMENT-ISSUE_idx` (`ID_ISSUE` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`daily`
+-- Table `jym604qy2slbxiy6`.`daily`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`daily` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`daily` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`daily` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_SCRUMMASTER` INT(11) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `DAILY-SCRUMMASTER_idx` (`ID_SCRUMMASTER` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`daily-user`
+-- Table `jym604qy2slbxiy6`.`member_day`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`member_day` ;
 
-DROP TABLE IF EXISTS `projectfinal`.`daily_user`;
-
-CREATE TABLE IF NOT EXISTS `projectfinal`.`daily_user` (
-  `ID` INT(11) NOT NULL AUTO_INCREMENT,
-  `DAILY_ID` INT(11) NOT NULL,
-  `USER_ID` INT(11) NOT NULL,
-  `YESTERDAY` VARCHAR(255),
-  `TODAY` VARCHAR(255),
-  PRIMARY KEY (`ID`)
-);
-
--- -----------------------------------------------------
--- Table `projectfinal`.`member_day`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`member_day` ;
-
-CREATE TABLE IF NOT EXISTS `projectfinal`.`member_day` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`member_day` (
   `ID` INT(11) NOT NULL,
   `ID_USER` INT(11) NOT NULL,
   `ID_DAILY` INT(11) NOT NULL,
@@ -254,16 +240,16 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`member_day` (
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `DAILY-MEMBER_DAILY_idx` (`ID_DAILY` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`substask`
+-- Table `jym604qy2slbxiy6`.`substask`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`substask` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`substask` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`substask` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`substask` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_ISSUE` INT(11) NOT NULL,
   `ID_PHASE` INT(11) NULL DEFAULT NULL,
@@ -277,17 +263,17 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`substask` (
   INDEX `SUBTASK-ASSIGNEE_idx` (`ID_ASSIGNEE` ASC),
   INDEX `SUBTASK-REPORTER_idx` (`ID_REPORTER` ASC),
   INDEX `SUBTASK-ISSUE_idx` (`ID_ISSUE` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `projectfinal`.`watcher-issue`
+-- Table `jym604qy2slbxiy6`.`watcher-issue`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projectfinal`.`watcher-issue` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`watcher-issue` ;
 
-CREATE TABLE IF NOT EXISTS `projectfinal`.`watcher-issue` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`watcher-issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_WATCHER` INT(11) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
@@ -295,12 +281,9 @@ CREATE TABLE IF NOT EXISTS `projectfinal`.`watcher-issue` (
   PRIMARY KEY (`ID`),
   INDEX `WATCHER-USER_idx` (`ID_WATCHER` ASC),
   INDEX `WATCHER-ISSUE_idx` (`ID_ISSUE` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
-
-
-
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

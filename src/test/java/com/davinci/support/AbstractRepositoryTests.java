@@ -77,7 +77,7 @@ public abstract class AbstractRepositoryTests {
     }
 
     public void persistVersion() {
-        this.version = new Version(ConstantsTests.Version.NAME, new Date());
+        this.version = new Version(ConstantsTests.Version.NAME, null, new Date());
         this.entityManager.persist(this.version);
     }
 
