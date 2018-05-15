@@ -41,7 +41,7 @@ public class VersionService {
     public Version updateVersion(Version version, Integer id) {
         return Optional.ofNullable(this.versionRepository.findOne(id))
                 .map(v -> {
-                    v.setName(version.getName());
+                    v.setDescription(version.getDescription());
                     return this.versionRepository.save(v);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists Version"));
