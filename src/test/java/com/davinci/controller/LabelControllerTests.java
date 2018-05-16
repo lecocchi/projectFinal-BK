@@ -53,8 +53,8 @@ public class LabelControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<Label> labels = Arrays.asList(
-                new Label(ConstantsTests.Label.NAME, new Date()),
-                new Label(ConstantsTests.Label.NAME, new Date()));
+                new Label(ConstantsTests.Label.NAME, null,  new Date()),
+                new Label(ConstantsTests.Label.NAME, null, new Date()));
 
         when(service.getAllLabel()).thenReturn(labels);
 
@@ -79,7 +79,7 @@ public class LabelControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        Label label = new Label(ConstantsTests.Label.NAME, new Date());
+        Label label = new Label(ConstantsTests.Label.NAME, null, new Date());
 
         when(service.getLabelById(any(Integer.class))).thenReturn(label);
 
@@ -99,7 +99,7 @@ public class LabelControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        Label label = new Label(ConstantsTests.Label.NAME, new Date());
+        Label label = new Label(ConstantsTests.Label.NAME, null, new Date());
 
         when(service.createLabel(any(Label.class))).thenReturn(label);
 
@@ -120,7 +120,7 @@ public class LabelControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        Label label = new Label(ConstantsTests.Label.NAME, new Date());
+        Label label = new Label(ConstantsTests.Label.NAME, null, new Date());
         label.setId(1);
 
         when(service.updateLabel(any(Label.class), any(Integer.class))).thenReturn(label);

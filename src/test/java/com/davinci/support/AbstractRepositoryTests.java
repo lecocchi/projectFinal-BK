@@ -52,7 +52,7 @@ public abstract class AbstractRepositoryTests {
     }
 
     public void persistLabel() {
-        this.label = new Label(ConstantsTests.Label.NAME, new Date());
+        this.label = new Label(ConstantsTests.Label.NAME, null,  new Date());
         this.entityManager.persist(this.label);
     }
 

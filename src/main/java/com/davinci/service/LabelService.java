@@ -40,7 +40,7 @@ public class LabelService {
     public Label updateLabel(Label label, Integer id) {
         return Optional.ofNullable(this.labelRepository.findOne(id))
                 .map(l -> {
-                    l.setName(label.getName());
+                    l.setDescription(label.getDescription());
                     return this.labelRepository.save(l);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists Label"));
