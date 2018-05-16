@@ -53,8 +53,8 @@ public class PhaseControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<Phase> phases = Arrays.asList(
-                new Phase(ConstantsTests.Phase.NAME, new Date()),
-                new Phase(ConstantsTests.Phase.NAME, new Date()));
+                new Phase(ConstantsTests.Phase.NAME, null, new Date()),
+                new Phase(ConstantsTests.Phase.NAME, null, new Date()));
 
         when(service.getAllPhase()).thenReturn(phases);
 
@@ -79,7 +79,7 @@ public class PhaseControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        Phase phase = new Phase(ConstantsTests.Phase.NAME, new Date());
+        Phase phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
 
         when(service.getPhaseById(any(Integer.class))).thenReturn(phase);
 
@@ -99,7 +99,7 @@ public class PhaseControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        Phase phase = new Phase(ConstantsTests.Phase.NAME, new Date());
+        Phase phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
 
         when(service.createPhase(any(Phase.class))).thenReturn(phase);
 
@@ -120,7 +120,7 @@ public class PhaseControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        Phase phase = new Phase(ConstantsTests.Phase.NAME, new Date());
+        Phase phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
         phase.setId(1);
 
         when(service.updatePhase(any(Phase.class), any(Integer.class))).thenReturn(phase);

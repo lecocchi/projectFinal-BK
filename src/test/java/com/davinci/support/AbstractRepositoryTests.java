@@ -57,7 +57,7 @@ public abstract class AbstractRepositoryTests {
     }
 
     public void persistPhase() {
-        this.phase = new Phase(ConstantsTests.Phase.NAME, new Date());
+        this.phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
         this.entityManager.persist(this.phase);
     }
 
