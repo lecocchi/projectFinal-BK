@@ -53,8 +53,8 @@ public class StateControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<State> states = Arrays.asList(
-                new State(ConstantsTests.State.NAME, new Date()),
-                new State(ConstantsTests.State.NAME, new Date()));
+                new State(ConstantsTests.State.NAME, null, new Date()),
+                new State(ConstantsTests.State.NAME, null, new Date()));
 
         when(service.getAllState()).thenReturn(states);
 
@@ -79,7 +79,7 @@ public class StateControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        State state = new State(ConstantsTests.State.NAME, new Date());
+        State state = new State(ConstantsTests.State.NAME, null, new Date());
 
         when(service.getStateById(any(Integer.class))).thenReturn(state);
 
@@ -99,7 +99,7 @@ public class StateControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        State state = new State(ConstantsTests.State.NAME, new Date());
+        State state = new State(ConstantsTests.State.NAME, null, new Date());
 
         when(service.createState(any(State.class))).thenReturn(state);
 
@@ -120,7 +120,7 @@ public class StateControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        State state = new State(ConstantsTests.State.NAME, new Date());
+        State state = new State(ConstantsTests.State.NAME, null, new Date());
         state.setId(1);
 
         when(service.updateState(any(State.class), any(Integer.class))).thenReturn(state);

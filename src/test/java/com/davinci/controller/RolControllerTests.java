@@ -54,8 +54,8 @@ public class RolControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<Rol> rols = Arrays.asList(
-                new Rol(ConstantsTests.Rol.NAME, new Date()),
-                new Rol(ConstantsTests.Rol.NAME, new Date()));
+                new Rol(ConstantsTests.Rol.NAME, null, new Date()),
+                new Rol(ConstantsTests.Rol.NAME, null, new Date()));
 
         when(service.getAllRol()).thenReturn(rols);
 
@@ -80,7 +80,7 @@ public class RolControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        Rol rol = new Rol(ConstantsTests.Rol.NAME, new Date());
+        Rol rol = new Rol(ConstantsTests.Rol.NAME, null, new Date());
 
         when(service.getRolById(any(Integer.class))).thenReturn(rol);
 
@@ -100,7 +100,7 @@ public class RolControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        Rol rol = new Rol(ConstantsTests.Rol.NAME, new Date());
+        Rol rol = new Rol(ConstantsTests.Rol.NAME, null, new Date());
 
         when(service.createRol(any(Rol.class))).thenReturn(rol);
 
@@ -121,7 +121,7 @@ public class RolControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        Rol rol = new Rol(ConstantsTests.Rol.NAME, new Date());
+        Rol rol = new Rol(ConstantsTests.Rol.NAME, null, new Date());
         rol.setId(1);
 
         when(service.updateRol(any(Rol.class), any(Integer.class))).thenReturn(rol);

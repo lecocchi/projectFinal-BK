@@ -53,8 +53,8 @@ public class PriorityControllerTests {
     @Test
     public void getAllSuccess() throws Exception {
         List<Priority> priorities = Arrays.asList(
-                new Priority(ConstantsTests.Priority.NAME, new Date()),
-                new Priority(ConstantsTests.Priority.NAME, new Date()));
+                new Priority(ConstantsTests.Priority.NAME, null, new Date()),
+                new Priority(ConstantsTests.Priority.NAME, null, new Date()));
 
         when(service.getAllPriority()).thenReturn(priorities);
 
@@ -79,7 +79,7 @@ public class PriorityControllerTests {
 
     @Test
     public void getByIdSuccess() throws Exception {
-        Priority priority = new Priority(ConstantsTests.Priority.NAME, new Date());
+        Priority priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
 
         when(service.getPriorityById(any(Integer.class))).thenReturn(priority);
 
@@ -99,7 +99,7 @@ public class PriorityControllerTests {
 
     @Test
     public void createSuccess() throws Exception {
-        Priority priority = new Priority(ConstantsTests.Priority.NAME, new Date());
+        Priority priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
 
         when(service.createPriority(any(Priority.class))).thenReturn(priority);
 
@@ -120,7 +120,7 @@ public class PriorityControllerTests {
 
     @Test
     public void updateSuccess() throws Exception {
-        Priority priority = new Priority(ConstantsTests.Priority.NAME, new Date());
+        Priority priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
         priority.setId(1);
 
         when(service.updatePriority(any(Priority.class), any(Integer.class))).thenReturn(priority);

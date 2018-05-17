@@ -29,7 +29,7 @@ public abstract class AbstractRepositoryTests {
     private Issue issue;
 
     public void persistRol() {
-        this.rol = new Rol(ConstantsTests.Rol.NAME, new Date());
+        this.rol = new Rol(ConstantsTests.Rol.NAME, null, new Date());
         this.entityManager.persist(this.rol);
     }
 
@@ -62,7 +62,7 @@ public abstract class AbstractRepositoryTests {
     }
 
     public void persistPriority() {
-        this.priority = new Priority(ConstantsTests.Priority.NAME, new Date());
+        this.priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
         this.entityManager.persist(this.priority);
     }
 
@@ -72,7 +72,7 @@ public abstract class AbstractRepositoryTests {
     }
 
     public void persistState() {
-        this.state = new State(ConstantsTests.State.NAME, new Date());
+        this.state = new State(ConstantsTests.State.NAME, null,  new Date());
         this.entityManager.persist(this.state);
     }
 
