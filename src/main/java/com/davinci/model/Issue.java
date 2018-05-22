@@ -1,5 +1,9 @@
 package com.davinci.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +14,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ISSUE")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Issue implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,36 +26,31 @@ public class Issue implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "ID_LABEL")
-    private Integer label;
-
-    @Column(name = "ID_PHASE")
-    private Integer phase;
-
-    @NotNull
-    @Column(name = "ID_PRIORITY")
-    private Integer priority;
-
-    @Column(name = "ID_SPRINT")
-    private Integer sprint;
-
-    @NotNull
-    @Column(name = "ID_STATE")
-    private Integer state;
-
-    @NotNull
-    @Column(name = "ID_REPORTER")
-    private Integer reporter;
-
-    @Column(name = "ID_ASSIGNEE")
-    private Integer assignee;
-
-    @Column(name = "ID_VERSION")
-    private Integer version;
-
     @NotEmpty
     @Column(name = "TITLE")
     private String title;
+
+    @Column(name = "PRIORITY")
+    private String priority;
+
+    @Column(name = "LABEL")
+    private String label;
+
+    @Column(name = "PHASE")
+    private String phase;
+
+    @Column(name = "STATE")
+    private String state;
+
+    @Column(name = "VERSION")
+    private String version;
+
+    @Column(name = "ASSIGNEE")
+    private String assignee;
+
+    @NotNull
+    @Column(name = "REPORTER")
+    private String reporter;
 
     @Column(name = "ID_WATCHER")
     private Integer watcher;
@@ -85,6 +88,9 @@ public class Issue implements Serializable {
     @Column(name = "REMAINING")
     private Integer remaining;
 
+    @Column(name = "ID_SPRINT")
+    private Integer sprint;
+
     @NotNull
     @Column(name = "BACKLOG")
     private Boolean backlog;
@@ -93,10 +99,7 @@ public class Issue implements Serializable {
     @Column(name = "ENABLED")
     private Boolean enabled;
 
-    public Issue() {
-    }
-
-    public Issue(Integer label, Integer phase, Integer priority, Integer sprint, Integer state, Integer reporter, Integer assignee, Integer version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled) {
+    public Issue(String label, String phase, String priority, Integer sprint, String state, String reporter, String assignee, String version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled) {
         this.label = label;
         this.phase = phase;
         this.priority = priority;
@@ -118,163 +121,4 @@ public class Issue implements Serializable {
         this.enabled = enabled;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getLabel() {
-        return label;
-    }
-
-    public void setLabel(Integer label) {
-        this.label = label;
-    }
-
-    public Integer getPhase() {
-        return phase;
-    }
-
-    public void setPhase(Integer phase) {
-        this.phase = phase;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
-
-    public Integer getSprint() {
-        return sprint;
-    }
-
-    public void setSprint(Integer sprint) {
-        this.sprint = sprint;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Integer getReporter() {
-        return reporter;
-    }
-
-    public void setReporter(Integer reporter) {
-        this.reporter = reporter;
-    }
-
-    public Integer getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(Integer assignee) {
-        this.assignee = assignee;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getWatcher() {
-        return watcher;
-    }
-
-    public void setWatcher(Integer watcher) {
-        this.watcher = watcher;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    public Date getResolved() {
-        return resolved;
-    }
-
-    public void setResolved(Date resolved) {
-        this.resolved = resolved;
-    }
-
-    public Date getPlannedStart() {
-        return plannedStart;
-    }
-
-    public void setPlannedStart(Date plannedStart) {
-        this.plannedStart = plannedStart;
-    }
-
-    public Date getPlannedEnd() {
-        return plannedEnd;
-    }
-
-    public void setPlannedEnd(Date plannedEnd) {
-        this.plannedEnd = plannedEnd;
-    }
-
-    public Integer getEstimated() {
-        return estimated;
-    }
-
-    public void setEstimated(Integer estimated) {
-        this.estimated = estimated;
-    }
-
-    public Integer getRemaining() {
-        return remaining;
-    }
-
-    public void setRemaining(Integer remaining) {
-        this.remaining = remaining;
-    }
-
-    public Boolean getBacklog() {
-        return backlog;
-    }
-
-    public void setBacklog(Boolean backlog) {
-        this.backlog = backlog;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 }

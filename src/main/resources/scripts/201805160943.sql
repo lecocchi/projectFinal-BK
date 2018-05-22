@@ -167,13 +167,13 @@ DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`ISSUE` ;
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `TITLE` VARCHAR(255) NOT NULL,
-  `ID_PRIORITY` INT NOT NULL,
-  `ID_LABEL` INT NULL,
-  `ID_PHASE` INT NULL,
-  `ID_STATE` INT NOT NULL,
-  `ID_VERSION` INT NULL,
-  `ID_ASSIGNEE` INT NULL,
-  `ID_REPORTER` INT NOT NULL,
+  `PRIORITY` varchar(255) NOT NULL,
+  `LABEL` varchar(255) NULL,
+  `PHASE` varchar(255) NULL,
+  `STATE` varchar(255) NOT NULL,
+  `VERSION` varchar(255) NULL,
+  `ASSIGNEE` varchar(255) NULL,
+  `REPORTER` varchar(255) NOT NULL,
   `ID_WATCHER` INT NULL,
   `CREATED` DATETIME NOT NULL,
   `UPDATED` DATETIME NOT NULL,
@@ -186,14 +186,7 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
   `BACKLOG` TINYINT NOT NULL,
   `ENABLED` TINYINT NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `ISSUE-PRIORITY_idx` (`ID_PRIORITY` ASC),
-  INDEX `ISSUE-LABEL_idx` (`ID_LABEL` ASC),
-  INDEX `ISSUE-PHASE_idx` (`ID_PHASE` ASC),
-  INDEX `ISSUE-STATE_idx` (`ID_STATE` ASC),
-  INDEX `ISSUE-VERSION_idx` (`ID_VERSION` ASC),
-  INDEX `ISSUE-SPRINT_idx` (`ID_SPRINT` ASC),
-  INDEX `ISSUE-ASSIGNEE_idx` (`ID_ASSIGNEE` ASC),
-  INDEX `ISSUE-REPORTER_idx` (`ID_REPORTER` ASC))
+  INDEX `ISSUE-SPRINT_idx` (`ID_SPRINT` ASC))
   ENGINE = InnoDB
   AUTO_INCREMENT = 7
   DEFAULT CHARACTER SET = utf8;
@@ -202,9 +195,9 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`comment` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`COMMENT` ;
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`COMMENT` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `DESCTIPTION` VARCHAR(255) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
@@ -219,9 +212,9 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`daily`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`daily` ;
+DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`DAILY` ;
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`DAILY` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_SCRUMMASTER` INT(11) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,

@@ -56,4 +56,5 @@ public class PriorityController {
         this.priorityService.deletePriority(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }
