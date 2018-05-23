@@ -17,7 +17,6 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "STATE")
 public class State implements Serializable {
 
     private static final long serialVersionUID = 1L;

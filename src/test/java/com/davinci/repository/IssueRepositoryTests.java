@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class IssueRepositoryTests extends AbstractRepositoryTests {
 
-    @Resource
+/*    @Resource
     private IssueRepository repository;
 
     @Before
@@ -70,5 +70,5 @@ public class IssueRepositoryTests extends AbstractRepositoryTests {
         assertThat(issue.getEstimated()).isEqualTo(ConstantsTests.Issue.ESTIMATED);
         assertThat(issue.getRemaining()).isEqualTo(ConstantsTests.Issue.REMAINING);
         assertThat(issue.getWatcher()).isEqualTo(ConstantsTests.Issue.WATCHER);
-    }
+    }*/
 }

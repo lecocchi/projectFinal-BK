@@ -41,6 +41,7 @@ public class IssueService {
 
     public Issue createIssue(Issue issue) {
         issue.setCreated(new Date());
+        issue.setUpdated(new Date());
         return this.issueRepository.save(issue);
     }
 

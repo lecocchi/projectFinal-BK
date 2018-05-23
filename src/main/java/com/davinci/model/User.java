@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "USER")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

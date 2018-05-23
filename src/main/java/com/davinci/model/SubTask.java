@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SUBTASK")
 public class SubTask implements Serializable {
 
 	private static final long serialVersionUID = 1L;

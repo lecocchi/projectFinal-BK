@@ -17,7 +17,6 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "PRIORITY")
 public class Priority implements Serializable {
 
     private static final long serialVersionUID = 1L;

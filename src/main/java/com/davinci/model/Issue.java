@@ -13,7 +13,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "ISSUE")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,6 +28,12 @@ public class Issue implements Serializable {
     @NotEmpty
     @Column(name = "TITLE")
     private String title;
+
+    @Column(name = "AVATAR")
+    private String avatar;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
 
     @Column(name = "PRIORITY")
     private String priority;
@@ -99,7 +104,9 @@ public class Issue implements Serializable {
     @Column(name = "ENABLED")
     private Boolean enabled;
 
-    public Issue(String label, String phase, String priority, Integer sprint, String state, String reporter, String assignee, String version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled) {
+    public Issue(String label, String description, String avatar, String phase, String priority, Integer sprint, String state, String reporter, String assignee, String version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled) {
+        this.description = description;
+        this.avatar = avatar;
         this.label = label;
         this.phase = phase;
         this.priority = priority;

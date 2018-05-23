@@ -17,7 +17,6 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "LABEL")
 public class Label implements Serializable {
 
     private static final long serialVersionUID = 1L;

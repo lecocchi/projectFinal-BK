@@ -81,7 +81,7 @@ public abstract class AbstractRepositoryTests {
         this.entityManager.persist(this.version);
     }
 
-    public void persistIssue() {
+    /*public void persistIssue() {
         if (this.issue == null) {
             this.persistUser();
             this.persistLabel();
@@ -92,12 +92,12 @@ public abstract class AbstractRepositoryTests {
             this.persistVersion();
 
             this.issue = new Issue(this.label.getId(),
-                    this.phase.getId(),
-                    this.priority.getId(),
+                    this.phase.getName(),
+                    this.priority.getName(),
                     this.getSprint().getId(),
-                    this.state.getId(),
-                    this.user.getId(),
-                    this.user.getId(),
+                    this.state.getName(),
+                    this.user.getUserName(),
+                    this.user.getN,
                     this.version.getId(),
                     ConstantsTests.Issue.TITLE,
                     ConstantsTests.Issue.WATCHER,
@@ -112,7 +112,7 @@ public abstract class AbstractRepositoryTests {
                     Boolean.TRUE);
             this.entityManager.persist(this.issue);
         }
-    }
+    }*/
 
     public Sprint getSprint() {
         return sprint;

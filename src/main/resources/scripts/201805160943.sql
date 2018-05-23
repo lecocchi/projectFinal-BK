@@ -8,14 +8,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema jym604qy2slbxiy6
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `jym604qy2slbxiy6` ;
-
--- -----------------------------------------------------
 -- Schema jym604qy2slbxiy6
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `jym604qy2slbxiy6` DEFAULT CHARACTER SET utf8 ;
@@ -24,7 +16,6 @@ USE `jym604qy2slbxiy6` ;
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`priority`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`priority` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`priority` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -40,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`priority` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`label`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`label` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`label` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -56,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`label` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`phase`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`phase` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`phase` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -72,7 +61,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`phase` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`state`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`state` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`state` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -88,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`state` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`version`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`version` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`version` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -104,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`version` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`sprint`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`sprint` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`sprint` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -122,7 +108,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`sprint` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`rol`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`rol` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`rol` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -138,7 +123,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`rol` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`user` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -162,11 +146,12 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`user` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`ISSUE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`ISSUE` ;
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `AVATAR` VARCHAR(255) NOT NULL,
   `TITLE` VARCHAR(255) NOT NULL,
+  `DESCRIPTION` varchar(255) NOT NULL,
   `PRIORITY` varchar(255) NOT NULL,
   `LABEL` varchar(255) NULL,
   `PHASE` varchar(255) NULL,
@@ -195,9 +180,8 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`ISSUE` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`COMMENT` ;
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`COMMENT` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `DESCTIPTION` VARCHAR(255) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
@@ -212,9 +196,8 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`COMMENT` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`daily`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`DAILY` ;
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`DAILY` (
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_SCRUMMASTER` INT(11) NOT NULL,
   `CREATED_AT` DATETIME NOT NULL,
@@ -228,7 +211,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`DAILY` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`member_day`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`member_day` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`member_day` (
   `ID` INT(11) NOT NULL,
@@ -245,7 +227,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`member_day` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`substask`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`substask` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`substask` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -269,7 +250,6 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`substask` (
 -- -----------------------------------------------------
 -- Table `jym604qy2slbxiy6`.`watcher-issue`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `jym604qy2slbxiy6`.`watcher-issue` ;
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`watcher-issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,

@@ -19,9 +19,9 @@
 -- Dumping data for table `ISSUE`
 --
 
-LOCK TABLES `ISSUE` WRITE;
-/*!40000 ALTER TABLE `ISSUE` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ISSUE` ENABLE KEYS */;
+LOCK TABLES `issue` WRITE;
+/*!40000 ALTER TABLE `issue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `issue` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -48,7 +48,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `label` WRITE;
 /*!40000 ALTER TABLE `label` DISABLE KEYS */;
-INSERT INTO `label` VALUES (7,'Etiqueta 1','Etiqueta 1','2018-05-17 12:16:35'),(8,'Etiqueta 2','Etiqueta 2','2018-05-17 12:16:45');
+INSERT INTO `label` VALUES (1,'Etiqueta 1','Etiqueta 1','2018-05-17 12:16:35'),(2,'Etiqueta 2','Etiqueta 2','2018-05-17 12:16:45');
 /*!40000 ALTER TABLE `label` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `phase` WRITE;
 /*!40000 ALTER TABLE `phase` DISABLE KEYS */;
-INSERT INTO `phase` VALUES (7,'Fase 1','Fase 1','2018-05-17 12:17:02'),(8,'Fase 2','Fase 2','2018-05-17 12:17:13');
+INSERT INTO `phase` VALUES (1,'Fase 1','Fase 1','2018-05-17 12:17:02'),(2,'Fase 2','Fase 2','2018-05-17 12:17:13');
 /*!40000 ALTER TABLE `phase` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `priority` WRITE;
 /*!40000 ALTER TABLE `priority` DISABLE KEYS */;
-INSERT INTO `priority` VALUES (7,'Prioridad 1','Prioridad 1','2018-05-17 12:17:26'),(8,'Prioridad 2','Prioridad 2','2018-05-17 12:17:39');
+INSERT INTO `priority` VALUES (1,'Prioridad 1','Prioridad 1','2018-05-17 12:17:26'),(2,'Prioridad 2','Prioridad 2','2018-05-17 12:17:39');
 /*!40000 ALTER TABLE `priority` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (7,'Rol 1','Rol 1','2018-05-17 12:18:25'),(8,'Rol 2','Rol 2','2018-05-17 12:18:33');
+INSERT INTO `rol` VALUES (1,'Rol 1','Rol 1','2018-05-17 12:18:25'),(2,'Rol 2','Rol 2','2018-05-17 12:18:33');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +106,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
-INSERT INTO `state` VALUES (7,'Estado 1','Estado 1','2018-05-17 12:18:49'),(8,'Estado 2','Estado 2','2018-05-17 12:18:58');
+INSERT INTO `state` VALUES (1,'Estado 1','Estado 1','2018-05-17 12:18:49'),(2,'Estado 2','Estado 2','2018-05-17 12:18:58');
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES (7,'Version 1','Version 1','2018-05-17 12:15:30'),(8,'Version 2','Version 2','2018-05-17 12:15:48');
+INSERT INTO `version` VALUES (1,'Version 1','Version 1','2018-05-17 12:15:30'),(2,'Version 2','Version 2','2018-05-17 12:15:48');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 

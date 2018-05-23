@@ -13,7 +13,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="DAILY")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
