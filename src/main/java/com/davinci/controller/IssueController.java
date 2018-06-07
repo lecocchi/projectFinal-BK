@@ -77,4 +77,11 @@ public class IssueController {
         this.issueService.deleteIssue(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "active-sprint")
+    public ResponseEntity<List<Issue>> getAllIssueActiveSprint(){
+        return Optional.ofNullable(this.issueService.getAllIssueActiveSprint())
+                .map( a -> new ResponseEntity<>(a, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
 }

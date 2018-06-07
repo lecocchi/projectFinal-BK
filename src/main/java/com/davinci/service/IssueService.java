@@ -39,6 +39,8 @@ public class IssueService {
         return this.issueRepository.findAll();
     }
 
+    public List<Issue> getAllIssueActiveSprint() { return this.issueRepository.findAllByBacklogIsFalse(); }
+
     public Issue createIssue(Issue issue) {
         issue.setCreated(new Date());
         issue.setUpdated(new Date());
