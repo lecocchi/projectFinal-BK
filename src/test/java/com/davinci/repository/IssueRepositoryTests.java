@@ -13,6 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class IssueRepositoryTests extends AbstractRepositoryTests {
 
+    @Test
+    public void test(){
+        assertThat(true);
+    }
+
 /*    @Resource
     private IssueRepository repository;
 

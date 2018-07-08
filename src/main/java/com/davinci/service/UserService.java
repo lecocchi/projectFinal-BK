@@ -29,6 +29,7 @@ public class UserService {
 
     public User createUser(User user) {
         user.setCreated(new Date());
+        user.setUpdated(new Date());
         return this.userRepository.save(user);
     }
 
