@@ -33,23 +33,23 @@ public abstract class AbstractRepositoryTests {
         this.entityManager.persist(this.rol);
     }
 
-    public void persistUser() {
-        if (this.user == null) {
-            this.persistRol();
-
-            this.user = new User(ConstantsTests.User.FIRST_NAME,
-                    ConstantsTests.User.LAST_NAME,
-                    ConstantsTests.User.DNI,
-                    ConstantsTests.User.EMAIL,
-                    ConstantsTests.User.USER_NAME,
-                    this.rol.getId(),
-                    ConstantsTests.User.PASSWORD,
-                    new Date(),
-                    new Date(),
-                    Boolean.TRUE);
-            this.entityManager.persist(this.user);
-        }
-    }
+//    public void persistUser() {
+//        if (this.user == null) {
+//            this.persistRol();
+//
+//            this.user = new User(ConstantsTests.User.FIRST_NAME,
+//                    ConstantsTests.User.LAST_NAME,
+//                    ConstantsTests.User.DNI,
+//                    ConstantsTests.User.EMAIL,
+//                    ConstantsTests.User.USER_NAME,
+//                    this.rol.getId(),
+//                    ConstantsTests.User.PASSWORD,
+//                    new Date(),
+//                    new Date(),
+//                    Boolean.TRUE);
+//            this.entityManager.persist(this.user);
+//        }
+//    }
 
     public void persistLabel() {
         this.label = new Label(ConstantsTests.Label.NAME, null,  new Date());

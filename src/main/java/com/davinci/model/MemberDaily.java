@@ -1,5 +1,10 @@
 package com.davinci.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -10,6 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberDaily implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,39 +33,10 @@ public class MemberDaily implements Serializable {
 	@Column(name="ID_DAILY")
 	private int idDaily;
 	
-	@Column(name="COMMENT")
-	private String comment;
+	@Column(name="YESTERDAY")
+	private String yesterday;
 
-	public int getId() {
-		return id;
-	}
+	@Column(name = "TODAY")
+	private String today;
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-
-	public int getIdDaily() {
-		return idDaily;
-	}
-
-	public void setIdDaily(int idDaily) {
-		this.idDaily = idDaily;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	
 }

@@ -1,5 +1,8 @@
 package com.davinci.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,6 +12,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +49,9 @@ public class User implements Serializable {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "AVATAR")
+    private String avatar;
+
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
@@ -59,10 +68,8 @@ public class User implements Serializable {
     @Column(name = "ENABLED")
     private Boolean enabled;
 
-    public User() {
-    }
 
-    public User(String firstName, String lastName, Integer dni, String email, String userName, Integer rol, String password, Date created, Date updated, Boolean enabled) {
+    public User(String firstName, String lastName, Integer dni, String email, String userName, Integer rol, String password, String avatar, Date created, Date updated, Boolean enabled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
@@ -70,96 +77,9 @@ public class User implements Serializable {
         this.userName = userName;
         this.rol = rol;
         this.password = password;
+        this.avatar = avatar;
         this.created = created;
         this.updated = updated;
-        this.enabled = enabled;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getDni() {
-        return dni;
-    }
-
-    public void setDni(Integer dni) {
-        this.dni = dni;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Integer getRol() {
-        return rol;
-    }
-
-    public void setRol(Integer rol) {
-        this.rol = rol;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 }

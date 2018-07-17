@@ -18,7 +18,7 @@ public class UserRepositoryTests extends AbstractRepositoryTests {
 
     @Before
     public void init() {
-        super.persistUser();
+//        super.persistUser();
     }
 
     @Test
