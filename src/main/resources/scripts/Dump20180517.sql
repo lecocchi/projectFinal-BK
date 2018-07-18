@@ -19,6 +19,8 @@
 -- Dumping data for table `ISSUE`
 --
 
+USE `jym604qy2slbxiy6` ;
+
 LOCK TABLES `issue` WRITE;
 /*!40000 ALTER TABLE `issue` DISABLE KEYS */;
 /*!40000 ALTER TABLE `issue` ENABLE KEYS */;
@@ -56,9 +58,9 @@ UNLOCK TABLES;
 -- Dumping data for table `member_day`
 --
 
-LOCK TABLES `member_day` WRITE;
-/*!40000 ALTER TABLE `member_day` DISABLE KEYS */;
-/*!40000 ALTER TABLE `member_day` ENABLE KEYS */;
+LOCK TABLES `daily_item` WRITE;
+/*!40000 ALTER TABLE `daily_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `daily_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

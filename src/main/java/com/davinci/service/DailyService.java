@@ -1,6 +1,7 @@
 package com.davinci.service;
 
 import com.davinci.dto.DailyDTO;
+import com.davinci.mapper.DailyMapper;
 import com.davinci.model.Daily;
 import com.davinci.repository.DailyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,7 @@ public class DailyService {
 
 
     @Transactional
-    public void createDaily(List<DailyDTO> dailies) {
-
-        for (DailyDTO daily : dailies) {
-            repository.save(new Daily(daily.getIdUser(), daily.getRol(), daily.getYesterday(), daily.getToday()));
-        }
-
+    public void createDaily(Daily daily) {
+        repository.save(daily);
     }
 }

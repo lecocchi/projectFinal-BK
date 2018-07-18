@@ -200,16 +200,29 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
 
 CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
-  `ID_USER` INT(11) NOT NULL,
-  `ROL` VARCHAR(255) NOT NULL,
+  `FIRST_NAME` VARCHAR(255) NOT NULL,
+  `LAST_NAME` VARCHAR(255) NOT NULL,
+  `USER_NAME` VARCHAR(255) NOT NULL,
+  `CREATED_AT` DATETIME NOT NULL,
+  PRIMARY KEY (`ID`));
+
+-- -----------------------------------------------------
+-- Table `jym604qy2slbxiy6`.`daily`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily_item` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `FIRST_NAME` VARCHAR(255) NOT NULL,
+  `LAST_NAME` VARCHAR(255) NOT NULL,
+  `USER_NAME` VARCHAR(255) NOT NULL,
+  `AVATAR` VARCHAR(255),
   `YESTERDAY` TEXT NULL DEFAULT NULL,
   `TODAY` TEXT NULL DEFAULT NULL,
+  `DAILY_ID` INT(11),
   `CREATED_AT` DATETIME NOT NULL,
-  PRIMARY KEY (`ID`),
-  INDEX `DAILY-USER_idx` (`ID_USER` ASC))
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 7
-  DEFAULT CHARACTER SET = utf8;
+  PRIMARY KEY (`ID`));
+
+ALTER TABLE daily_item ADD CONSTRAINT FK_DAILY FOREIGN KEY (DAILY_ID) REFERENCES daily (ID);
 
 
 -- -----------------------------------------------------

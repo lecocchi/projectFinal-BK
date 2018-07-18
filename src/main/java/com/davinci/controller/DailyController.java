@@ -1,6 +1,7 @@
 package com.davinci.controller;
 
 import com.davinci.dto.DailyDTO;
+import com.davinci.mapper.DailyMapper;
 import com.davinci.model.Daily;
 import com.davinci.service.DailyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,12 @@ public class DailyController {
 
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody List<DailyDTO> dailies){
+    public ResponseEntity<Void> create(@RequestBody DailyDTO daily){
 
-        dailyService.createDaily(dailies);
+        dailyService.createDaily(DailyMapper.from(daily));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
 
-//        return Optional.of(dailyService.createDaily(dailies))
-//                .map( d -> new ResponseEntity<>( HttpStatus.CREATED))
-//                .orElse( new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 
 
