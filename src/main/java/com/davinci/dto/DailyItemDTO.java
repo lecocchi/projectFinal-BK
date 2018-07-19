@@ -13,7 +13,7 @@ import lombok.Setter;
 public class DailyItemDTO {
 
     @JsonProperty("first_name")
-    private String firstNAme;
+    private String firstName;
     @JsonProperty("last_name")
     private String lastName;
     @JsonProperty("user_name")

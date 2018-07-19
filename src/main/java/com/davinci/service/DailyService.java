@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class DailyService {
@@ -22,5 +24,14 @@ public class DailyService {
     @Transactional
     public void createDaily(Daily daily) {
         repository.save(daily);
+    }
+
+    public List<DailyDTO> getAllDaily() {
+
+        return repository.findAll().stream()
+                .map( item ->DailyMapper.from(item))
+                .collect(Collectors.toList());
+
+
     }
 }

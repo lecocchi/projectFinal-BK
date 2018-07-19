@@ -26,6 +26,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -48,6 +49,11 @@ public class UserControllerTests {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .build();
+    }
+
+    @Test
+    public void test(){
+        assertTrue(true);
     }
 
 //    @Test
