@@ -22,6 +22,7 @@ public class DailyController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody DailyDTO daily){
 
+        daily.setAvatar("http://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/durchschnittsgesichter/m(01-32)_gr.jpg");
         dailyService.createDaily(DailyMapper.to(daily));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
