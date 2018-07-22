@@ -198,11 +198,13 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
 -- Table `jym604qy2slbxiy6`.`daily`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily` (
+CREATE TABLE IF NOT
+EXISTS `jym604qy2slbxiy6`.`daily` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `FIRST_NAME` VARCHAR(255) NOT NULL,
   `LAST_NAME` VARCHAR(255) NOT NULL,
   `USER_NAME` VARCHAR(255) NOT NULL,
+  `AVATAR` VARCHAR(255),
   `CREATED_AT` DATETIME NOT NULL,
   PRIMARY KEY (`ID`));
 
