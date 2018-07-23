@@ -6,8 +6,8 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,13 +25,13 @@ public class Daily {
 	@NotNull
 	private String userName;
 	private String avatar;
-	@Convert(converter= Jsr310JpaConverters.LocalDateTimeConverter.class)
-	private LocalDateTime createdAt;
+	@Convert(converter= Jsr310JpaConverters.LocalDateConverter.class)
+	private LocalDate createdAt;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "daily_id")
 	List<DailyItem> items;
 
-	public Daily(String firstName, String lastName, String userName, String avatar, LocalDateTime createdAt, List<DailyItem> items) {
+	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;

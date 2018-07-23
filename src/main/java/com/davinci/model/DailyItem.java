@@ -7,8 +7,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -28,10 +27,10 @@ public class DailyItem {
     private String avatar;
     private String yesterday;
     private String today;
-    @Convert(converter= Jsr310JpaConverters.LocalDateTimeConverter.class)
-    private LocalDateTime createdAt;
+    @Convert(converter= Jsr310JpaConverters.LocalDateConverter.class)
+    private LocalDate createdAt;
 
-    public DailyItem(String firstName, String lastName, String userName, String avatar, String yesterday, String today, LocalDateTime createdAt) {
+    public DailyItem(String firstName, String lastName, String userName, String avatar, String yesterday, String today, LocalDate createdAt) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;

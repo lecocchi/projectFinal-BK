@@ -20,13 +20,12 @@ public class DailyController {
 
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody DailyDTO daily){
+    public ResponseEntity<Void> create(@RequestBody DailyDTO dailyDTO){
 
-        daily.setAvatar("http://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/durchschnittsgesichter/m(01-32)_gr.jpg");
-        dailyService.createDaily(DailyMapper.to(daily));
+        dailyDTO.setAvatar("http://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/durchschnittsgesichter/m(01-32)_gr.jpg");
+        dailyService.createDaily(DailyMapper.to(dailyDTO));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
-
     }
 
     @GetMapping
@@ -34,7 +33,9 @@ public class DailyController {
         return ResponseEntity.ok(dailyService.getAllDaily());
     }
 
-
-
+    @GetMapping("/today")
+    public ResponseEntity<Boolean> isThereDailyToday(){
+        return ResponseEntity.ok(dailyService.isThereDailyToday());
+    }
 
 }
