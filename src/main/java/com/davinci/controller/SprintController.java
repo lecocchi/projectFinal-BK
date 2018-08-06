@@ -1,6 +1,8 @@
 package com.davinci.controller;
 
 
+import com.davinci.dto.SprintDTO;
+import com.davinci.mapper.SprintMapper;
 import com.davinci.model.Sprint;
 import com.davinci.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,8 @@ public class SprintController {
     }
 
     @PostMapping
-    public ResponseEntity<Sprint> create(@RequestBody Sprint sprint) {
-        return Optional.ofNullable(this.sprintService.createSprint(sprint))
+    public ResponseEntity<Sprint> create(@RequestBody SprintDTO sprintDTO) {
+        return Optional.ofNullable(this.sprintService.createSprint(SprintMapper.to(sprintDTO)))
                 .map(a -> new ResponseEntity<>(a, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
     }

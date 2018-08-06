@@ -5,6 +5,7 @@ import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +29,6 @@ public class SprintService {
     }
 
     public Sprint createSprint(Sprint sprint) {
-        sprint.setCreated(new Date());
         return this.sprintRepository.save(sprint);
     }
 
@@ -48,4 +48,5 @@ public class SprintService {
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists Sprint"));
     }
+
 }

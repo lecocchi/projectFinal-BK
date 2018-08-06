@@ -50,36 +50,36 @@ public abstract class AbstractRepositoryTests {
 //            this.entityManager.persist(this.user);
 //        }
 //    }
-
-    public void persistLabel() {
-        this.label = new Label(ConstantsTests.Label.NAME, null,  new Date());
-        this.entityManager.persist(this.label);
-    }
-
-    public void persistPhase() {
-        this.phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
-        this.entityManager.persist(this.phase);
-    }
-
-    public void persistPriority() {
-        this.priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
-        this.entityManager.persist(this.priority);
-    }
-
-    public void persistSprint() {
-        this.sprint = new Sprint(ConstantsTests.Sprint.NAME, new Date(), new Date(), new Date(), Boolean.TRUE);
-        this.entityManager.persist(sprint);
-    }
-
-    public void persistState() {
-        this.state = new State(ConstantsTests.State.NAME, null,  new Date());
-        this.entityManager.persist(this.state);
-    }
-
-    public void persistVersion() {
-        this.version = new Version(ConstantsTests.Version.NAME, null, new Date());
-        this.entityManager.persist(this.version);
-    }
+//
+//    public void persistLabel() {
+//        this.label = new Label(ConstantsTests.Label.NAME, null,  new Date());
+//        this.entityManager.persist(this.label);
+//    }
+//
+//    public void persistPhase() {
+//        this.phase = new Phase(ConstantsTests.Phase.NAME, null, new Date());
+//        this.entityManager.persist(this.phase);
+//    }
+//
+//    public void persistPriority() {
+//        this.priority = new Priority(ConstantsTests.Priority.NAME, null, new Date());
+//        this.entityManager.persist(this.priority);
+//    }
+//
+//    public void persistSprint() {
+//        this.sprint = new Sprint(ConstantsTests.Sprint.NAME, new Date(), new Date(), new Date(), Boolean.TRUE);
+//        this.entityManager.persist(sprint);
+//    }
+//
+//    public void persistState() {
+//        this.state = new State(ConstantsTests.State.NAME, null,  new Date());
+//        this.entityManager.persist(this.state);
+//    }
+//
+//    public void persistVersion() {
+//        this.version = new Version(ConstantsTests.Version.NAME, null, new Date());
+//        this.entityManager.persist(this.version);
+//    }
 
     /*public void persistIssue() {
         if (this.issue == null) {
