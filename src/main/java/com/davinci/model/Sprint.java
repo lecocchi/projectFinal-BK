@@ -31,6 +31,9 @@ public class Sprint implements Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "DESCRIPTION")
+    private String description;
+
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
@@ -54,8 +57,9 @@ public class Sprint implements Serializable {
     private Boolean enabled;
 
 
-    public Sprint(String name, Date dateFrom, Date dateTo, Date created, Boolean enabled) {
+    public Sprint(String name, String description, Date dateFrom, Date dateTo, Date created, Boolean enabled) {
         this.name = name;
+        this.description  = description;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.created = created;

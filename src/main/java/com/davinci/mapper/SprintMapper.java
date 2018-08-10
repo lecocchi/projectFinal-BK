@@ -11,10 +11,11 @@ public class SprintMapper {
         Sprint sprint = new Sprint();
 
         sprint.setName(sprintDTO.getName());
+        sprint.setDescription(sprintDTO.getDescription());
         sprint.setDateFrom(new Date(sprintDTO.getDateFrom()));
         sprint.setDateTo(new Date(sprintDTO.getDateTo()));
-        sprint.setCreated(new Date(sprintDTO.getCreated()));
-        sprint.setEnabled(sprintDTO.getEnabled());
+        sprint.setCreated(new Date());
+        sprint.setEnabled(true);
 
         return sprint;
     }
