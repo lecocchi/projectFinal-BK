@@ -20,11 +20,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DailyDTO {
 
-	@JsonProperty("first_name")
+	@JsonProperty("firstName")
 	private String firstName;
-	@JsonProperty("last_name")
+	@JsonProperty("lastName")
 	private String lastName;
-	@JsonProperty("user_name")
+	@JsonProperty("userName")
 	private String userName;
 	private String avatar;
 	@JsonProperty("created_at")

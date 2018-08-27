@@ -12,11 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DailyItemDTO {
 
-    @JsonProperty("first_name")
+    @JsonProperty("firstName")
     private String firstName;
-    @JsonProperty("last_name")
+    @JsonProperty("lastName")
     private String lastName;
-    @JsonProperty("user_name")
+    @JsonProperty("userName")
     private String userName;
     private String avatar;
     private String today;
