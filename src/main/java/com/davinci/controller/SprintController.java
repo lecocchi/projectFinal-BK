@@ -1,6 +1,7 @@
 package com.davinci.controller;
 
 
+import com.davinci.dto.ErrorResponse;
 import com.davinci.dto.SprintDTO;
 import com.davinci.mapper.SprintMapper;
 import com.davinci.model.Sprint;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,10 +42,16 @@ public class SprintController {
     }
 
     @PostMapping
-    public ResponseEntity<Sprint> create(@RequestBody SprintDTO sprintDTO) {
-        return Optional.ofNullable(this.sprintService.createSprint(SprintMapper.to(sprintDTO)))
-                .map(a -> new ResponseEntity<>(a, HttpStatus.CREATED))
-                .orElse(new ResponseEntity<>(HttpStatus.CONFLICT));
+    public ResponseEntity<?> create(@RequestBody SprintDTO sprintDTO) {
+
+        Sprint dateFrom = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateFrom()));
+        Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()));
+
+        if (dateFrom != null || dateTo != null)
+            return new ResponseEntity<>(new ErrorResponse(409, "Error al intentar crear el " + sprintDTO.getName(), "La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint"), HttpStatus.CONFLICT);
+
+        return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO)), HttpStatus.CREATED);
+
     }
 
     @PutMapping(value = "{id}")
@@ -58,4 +66,10 @@ public class SprintController {
         this.sprintService.deleteSprint(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+//    @GetMapping("/validate")
+//    public ResponseEntity<?> isValidDateForCreateSprint(){
+//        return
+//    }
 }

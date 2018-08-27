@@ -8,16 +8,16 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema jym604qy2slbxiy6
+-- Schema tesis
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `jym604qy2slbxiy6` DEFAULT CHARACTER SET utf8 ;
-USE `jym604qy2slbxiy6` ;
+CREATE SCHEMA IF NOT EXISTS `tesis` DEFAULT CHARACTER SET utf8 ;
+USE `tesis` ;
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`priority`
+-- Table `tesis`.`priority`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`priority` (
+CREATE TABLE IF NOT EXISTS `tesis`.`priority` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION`varchar(255),
@@ -29,10 +29,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`priority` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`label`
+-- Table `tesis`.`label`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`label` (
+CREATE TABLE IF NOT EXISTS `tesis`.`label` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION`varchar(255),
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`label` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`phase`
+-- Table `tesis`.`phase`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`phase` (
+CREATE TABLE IF NOT EXISTS `tesis`.`phase` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION`varchar(255),
@@ -59,10 +59,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`phase` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`state`
+-- Table `tesis`.`state`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`state` (
+CREATE TABLE IF NOT EXISTS `tesis`.`state` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION`varchar(255),
@@ -74,10 +74,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`state` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`version`
+-- Table `tesis`.`version`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`version` (
+CREATE TABLE IF NOT EXISTS `tesis`.`version` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION` VARCHAR(255),
@@ -89,10 +89,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`version` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`sprint`
+-- Table `tesis`.`sprint`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`sprint` (
+CREATE TABLE IF NOT EXISTS `tesis`.`sprint` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION` VARCHAR(255),
@@ -107,10 +107,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`sprint` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`rol`
+-- Table `tesis`.`rol`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`rol` (
+CREATE TABLE IF NOT EXISTS `tesis`.`rol` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(255) NOT NULL,
   `DESCRIPTION`varchar(255),
@@ -122,10 +122,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`rol` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`user`
+-- Table `tesis`.`user`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`user` (
+CREATE TABLE IF NOT EXISTS `tesis`.`user` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `FIRST_NAME` VARCHAR(255) NOT NULL,
   `LAST_NAME` VARCHAR(255) NOT NULL,
@@ -146,10 +146,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`user` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`ISSUE`
+-- Table `tesis`.`ISSUE`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`issue` (
+CREATE TABLE IF NOT EXISTS `tesis`.`issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `AVATAR` VARCHAR(255) NOT NULL,
   `TITLE` VARCHAR(255) NOT NULL,
@@ -180,10 +180,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`issue` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`comment`
+-- Table `tesis`.`comment`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
+CREATE TABLE IF NOT EXISTS `tesis`.`comment` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `DESCTIPTION` VARCHAR(255) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
@@ -196,11 +196,11 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`comment` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`daily`
+-- Table `tesis`.`daily`
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT
-EXISTS `jym604qy2slbxiy6`.`daily` (
+EXISTS `tesis`.`daily` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `FIRST_NAME` VARCHAR(255) NOT NULL,
   `LAST_NAME` VARCHAR(255) NOT NULL,
@@ -210,10 +210,10 @@ EXISTS `jym604qy2slbxiy6`.`daily` (
   PRIMARY KEY (`ID`));
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`daily`
+-- Table `tesis`.`daily`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`daily_item` (
+CREATE TABLE IF NOT EXISTS `tesis`.`daily_item` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `FIRST_NAME` VARCHAR(255) NOT NULL,
   `LAST_NAME` VARCHAR(255) NOT NULL,
@@ -229,10 +229,10 @@ ALTER TABLE daily_item ADD CONSTRAINT FK_DAILY FOREIGN KEY (DAILY_ID) REFERENCES
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`substask`
+-- Table `tesis`.`substask`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`substask` (
+CREATE TABLE IF NOT EXISTS `tesis`.`substask` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_ISSUE` INT(11) NOT NULL,
   `ID_PHASE` INT(11) NULL DEFAULT NULL,
@@ -252,10 +252,10 @@ CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`substask` (
 
 
 -- -----------------------------------------------------
--- Table `jym604qy2slbxiy6`.`watcher-issue`
+-- Table `tesis`.`watcher-issue`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `jym604qy2slbxiy6`.`watcher-issue` (
+CREATE TABLE IF NOT EXISTS `tesis`.`watcher-issue` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_WATCHER` INT(11) NOT NULL,
   `ID_ISSUE` INT(11) NOT NULL,
