@@ -53,7 +53,6 @@ public class Issue implements Serializable {
     @Column(name = "ASSIGNEE")
     private String assignee;
 
-    @NotNull
     @Column(name = "REPORTER")
     private String reporter;
 
