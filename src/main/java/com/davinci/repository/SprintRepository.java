@@ -13,4 +13,6 @@ public interface SprintRepository extends JpaRepository<Sprint, Integer> {
 
     @Query(value = "SELECT * FROM sprint WHERE ?1 >= DATE_FROM and ?1 <= DATE_TO", nativeQuery = true)
     Sprint findSprintByDate(Date dateToSearch);
+
+    Sprint findByEnabledIsTrue();
 }

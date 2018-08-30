@@ -1,7 +1,9 @@
 package com.davinci.service;
 
 import com.davinci.model.Issue;
+import com.davinci.model.Sprint;
 import com.davinci.repository.IssueRepository;
+import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,12 @@ import java.util.Optional;
 public class IssueService {
 
     private IssueRepository issueRepository;
+    private SprintRepository sprintRepository;
 
     @Autowired
-    public IssueService(IssueRepository issueRepository) {
+    public IssueService(IssueRepository issueRepository, SprintRepository sprintRepository) {
         this.issueRepository = issueRepository;
+        this.sprintRepository = sprintRepository;
     }
 
     public Issue getIssueById(Integer id) {
@@ -76,5 +80,15 @@ public class IssueService {
                     return this.issueRepository.save(i);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists Issue"));
+    }
+
+    public Issue setIssueInActiveSprint(Integer issueId){
+        Sprint activeSprint = sprintRepository.findByEnabledIsTrue();
+
+        Issue issue = issueRepository.findOne(issueId);
+        issue.setSprint(activeSprint.getId());
+        issue.setBacklog(false);
+
+        return issueRepository.save(issue);
     }
 }

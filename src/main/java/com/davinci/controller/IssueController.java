@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,5 +84,10 @@ public class IssueController {
         return Optional.ofNullable(this.issueService.getAllIssueActiveSprint())
                 .map( a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @PostMapping(value = "/sprint/{issueId}")
+    public ResponseEntity<Issue> setIssueInActiveSprint(@PathVariable("issueId") Integer issueId){
+        return ResponseEntity.ok(issueService.setIssueInActiveSprint(issueId));
     }
 }
