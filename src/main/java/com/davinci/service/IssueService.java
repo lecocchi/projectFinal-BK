@@ -91,4 +91,8 @@ public class IssueService {
 
         return issueRepository.save(issue);
     }
+
+    public List<Issue> getIssuesBySprintId(Integer sprintId){
+        return issueRepository.findBySprint(sprintId);
+    }
 }

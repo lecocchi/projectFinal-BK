@@ -90,4 +90,9 @@ public class IssueController {
     public ResponseEntity<Issue> setIssueInActiveSprint(@PathVariable("issueId") Integer issueId){
         return ResponseEntity.ok(issueService.setIssueInActiveSprint(issueId));
     }
+
+    @GetMapping(value = "/sprint/issues/{sprintId}")
+    public ResponseEntity<List<Issue>> getIssuesBySprintId(@PathVariable("sprintId") Integer sprintId){
+        return ResponseEntity.ok(issueService.getIssuesBySprintId(sprintId));
+    }
 }
