@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(value = "http://ec2-3-86-96-157.compute-1.amazonaws.com:8090")
+@CrossOrigin
 @RequestMapping("/version/")
 public class VersionController {
 

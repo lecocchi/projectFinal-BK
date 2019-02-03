@@ -16,6 +16,7 @@ public class IssueService {
 
     private IssueRepository issueRepository;
     private SprintRepository sprintRepository;
+    private Issue issue;
 
     @Autowired
     public IssueService(IssueRepository issueRepository, SprintRepository sprintRepository) {
@@ -48,6 +49,7 @@ public class IssueService {
     public Issue createIssue(Issue issue) {
         issue.setCreated(new Date());
         issue.setUpdated(new Date());
+        issue.setEnabled(true);
         return this.issueRepository.save(issue);
     }
 
@@ -94,5 +96,11 @@ public class IssueService {
 
     public List<Issue> getIssuesBySprintId(Integer sprintId){
         return issueRepository.findBySprint(sprintId);
+    }
+
+    public Issue addIssueInBacklog(final Issue issue){
+        issue.setBacklog(true);
+        issue.setSprint(null);
+        return issueRepository.save(issue);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(value = "http://ec2-3-86-96-157.compute-1.amazonaws.com:8090")
+@CrossOrigin
 @RequestMapping("/issue/")
 public class IssueController {
 
@@ -94,5 +94,10 @@ public class IssueController {
     @GetMapping(value = "/sprint/issues/{sprintId}")
     public ResponseEntity<List<Issue>> getIssuesBySprintId(@PathVariable("sprintId") Integer sprintId){
         return ResponseEntity.ok(issueService.getIssuesBySprintId(sprintId));
+    }
+
+    @PatchMapping(value = "/sprint/issues/backlog/")
+    public ResponseEntity<Issue> addIssuesInBacklog(@RequestBody Issue issue){
+        return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
     }
 }

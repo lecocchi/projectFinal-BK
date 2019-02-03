@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/date")
-@CrossOrigin(value = "http://ec2-3-86-96-157.compute-1.amazonaws.com:8090")
+@CrossOrigin
 public class DateController {
 
     @GetMapping("/now")

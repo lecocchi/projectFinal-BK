@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(value = "http://ec2-3-86-96-157.compute-1.amazonaws.com:8090")
+@CrossOrigin
 @RequestMapping("/daily/")
 public class DailyController {
 
