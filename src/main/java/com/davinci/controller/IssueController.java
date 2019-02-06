@@ -74,9 +74,8 @@ public class IssueController {
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
-        this.issueService.deleteIssue(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(this.issueService.deleteIssue(id));
     }
 
     @GetMapping(value = "active-sprint")
@@ -86,17 +85,17 @@ public class IssueController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @PostMapping(value = "/sprint/{issueId}")
+    @PostMapping(value = "sprint/{issueId}")
     public ResponseEntity<Issue> setIssueInActiveSprint(@PathVariable("issueId") Integer issueId){
         return ResponseEntity.ok(issueService.setIssueInActiveSprint(issueId));
     }
 
-    @GetMapping(value = "/sprint/issues/{sprintId}")
+    @GetMapping(value = "/issues/{sprintId}")
     public ResponseEntity<List<Issue>> getIssuesBySprintId(@PathVariable("sprintId") Integer sprintId){
         return ResponseEntity.ok(issueService.getIssuesBySprintId(sprintId));
     }
 
-    @PatchMapping(value = "/sprint/issues/backlog/")
+    @PatchMapping(value = "sprint/issues/backlog/")
     public ResponseEntity<Issue> addIssuesInBacklog(@RequestBody Issue issue){
         return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
     }

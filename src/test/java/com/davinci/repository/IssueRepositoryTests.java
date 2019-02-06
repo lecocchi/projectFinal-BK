@@ -50,7 +50,7 @@ public class IssueRepositoryTests extends AbstractRepositoryTests {
 
     @Test
     public void findAllBacklogReturnIssues() {
-        List<Issue> issues = this.repository.findAllByBacklogIsTrue();
+        List<Issue> issues = this.repository.findAllByBacklogIsTrueAndEnabledIsTrue();
 
         assertThat(issues).doesNotContainNull();
 

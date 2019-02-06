@@ -67,9 +67,4 @@ public class SprintController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-//    @GetMapping("/validate")
-//    public ResponseEntity<?> isValidDateForCreateSprint(){
-//        return
-//    }
 }

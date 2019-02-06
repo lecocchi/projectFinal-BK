@@ -13,9 +13,9 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
     List<Issue> findAllByBacklogIsFalse();
 
-    List<Issue> findAllByBacklogIsTrue();
+    List<Issue> findAllByBacklogIsTrueAndEnabledIsTrue();
 
     List<Issue> findAllByEnabledIsTrue();
 
-    List<Issue> findBySprint(Integer sprintId);
+    List<Issue> findBySprintAndEnabledIsTrue(Integer sprintId);
 }

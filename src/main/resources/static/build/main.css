@@ -28381,6 +28381,19 @@ page-detalle {
   margin-top: 56px;
 }
 
+page-detalle .title {
+  margin-bottom: 60px;
+}
+
+page-detalle .area {
+  height: 100px;
+}
+
+page-detalle .required {
+  color: #ec5858;
+  font-size: small;
+}
+
 page-fechas {
   margin-top: 56px;
 }
@@ -28604,6 +28617,11 @@ page-login {
   /*********************************
           Social Button
   **********************************/
+}
+
+page-login .margin {
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 page-login .container {
@@ -28933,18 +28951,30 @@ page-sprint .issue-summary {
   color: #5a5959;
 }
 
-page-sprint .sprint-name {
-  font-weight: bolder;
-  font-size: 1.8rem;
+page-sprint .sprint-range-from-label {
+  color: #ffffff;
+  font-size: 13px;
 }
 
-page-sprint .sprint-range-from {
+page-sprint .sprint-range {
+  margin: 0;
+}
+
+page-sprint .more {
+  background-color: transparent !important;
+  color: black;
+  font-size: 1.6rem;
+  padding-right: 0;
+}
+
+page-sprints .sprint-range-from {
   margin-right: 3rem;
 }
 
-page-sprint .sprint-range-from-label {
+page-sprints .sprint-range-from-label {
   color: #3b5998;
   font-weight: bolder;
+  font-size: 10px;
 }
 
 page-state .name {

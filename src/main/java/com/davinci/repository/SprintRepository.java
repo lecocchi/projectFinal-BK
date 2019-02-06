@@ -15,4 +15,6 @@ public interface SprintRepository extends JpaRepository<Sprint, Integer> {
     Sprint findSprintByDate(Date dateToSearch);
 
     Sprint findByEnabledIsTrue();
+
+    Sprint findByIsActiveIsTrue();
 }

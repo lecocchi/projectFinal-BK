@@ -16,12 +16,13 @@ public class IssueService {
 
     private IssueRepository issueRepository;
     private SprintRepository sprintRepository;
-    private Issue issue;
+    private SprintService sprintService;
 
     @Autowired
-    public IssueService(IssueRepository issueRepository, SprintRepository sprintRepository) {
+    public IssueService(IssueRepository issueRepository, SprintRepository sprintRepository, SprintService sprintService) {
         this.issueRepository = issueRepository;
         this.sprintRepository = sprintRepository;
+        this.sprintService = sprintService;
     }
 
     public Issue getIssueById(Integer id) {
@@ -33,7 +34,7 @@ public class IssueService {
     }
 
     public List<Issue> getAllIssueByBacklogIsTrue() {
-        return this.issueRepository.findAllByBacklogIsTrue();
+        return this.issueRepository.findAllByBacklogIsTrueAndEnabledIsTrue();
     }
 
     public List<Issue> getAllIssueByEnabledIsTrue() {
@@ -50,12 +51,23 @@ public class IssueService {
         issue.setCreated(new Date());
         issue.setUpdated(new Date());
         issue.setEnabled(true);
+        if (!issue.getBacklog()){
+            Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
+            if (activeSprint != null)
+                issue.setSprint(activeSprint.getId());
+        }
         return this.issueRepository.save(issue);
     }
 
-    public void deleteIssue(Integer id) {
-        Optional.ofNullable(this.issueRepository.findOne(id))
-                .ifPresent(i -> this.issueRepository.delete(i));
+    public Issue deleteIssue(Integer id) {
+        Issue issueToDelete = issueRepository.findOne(id);
+        if (issueToDelete != null){
+            issueToDelete.setEnabled(false);
+        }
+
+        return issueRepository.save(issueToDelete);
+//        Optional.ofNullable(this.issueRepository.findOne(id))
+//                .ifPresent(i -> this.issueRepository.delete(i));
     }
 
     public Issue updateIssue(Issue issue, Integer id) {
@@ -79,6 +91,7 @@ public class IssueService {
                     i.setUpdated(new Date());
                     i.setVersion(issue.getVersion());
                     i.setWatcher(issue.getWatcher());
+                    i.setDescription(issue.getDescription());
                     return this.issueRepository.save(i);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists Issue"));
@@ -95,7 +108,7 @@ public class IssueService {
     }
 
     public List<Issue> getIssuesBySprintId(Integer sprintId){
-        return issueRepository.findBySprint(sprintId);
+        return issueRepository.findBySprintAndEnabledIsTrue(sprintId);
     }
 
     public Issue addIssueInBacklog(final Issue issue){

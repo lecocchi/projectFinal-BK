@@ -28,6 +28,15 @@ public class SprintService {
     }
 
     public Sprint createSprint(Sprint sprint) {
+
+        Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
+
+        if (activeSprint != null){
+            activeSprint.setIsActive(false);
+            sprintRepository.save(activeSprint);
+        }
+
+        sprint.setIsActive(true);
         return this.sprintRepository.save(sprint);
     }
 
