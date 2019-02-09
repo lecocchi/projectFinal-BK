@@ -29,15 +29,20 @@ public class SprintService {
 
     public Sprint createSprint(Sprint sprint) {
 
+
         Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
 
-        if (activeSprint != null){
-            activeSprint.setIsActive(false);
-            sprintRepository.save(activeSprint);
+        if (activeSprint == null){ // No existe un sprint activo, podemos crear uno
+            sprint.setEnabled(true);
+            sprint.setIsActive(true);
+            Sprint newSprint = sprintRepository.save(sprint);
+            newSprint.setName("Sprint " + newSprint.getId());
+            return sprintRepository.save(newSprint);
+        }else{
+            //TODO mandar mensaje de que no se puede crear el sprint porque hay uno activo.
         }
 
-        sprint.setIsActive(true);
-        return this.sprintRepository.save(sprint);
+        return null;
     }
 
     public void deleteSprint(Integer id) {

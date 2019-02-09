@@ -42,7 +42,6 @@ var IssuePage = /** @class */ (function () {
         this.tab4 = __WEBPACK_IMPORTED_MODULE_6__comentarios_comentarios__["a" /* ComentariosPage */];
         this.update = this.navParams.get('update');
         this.backlog = this.navParams.get("backlog");
-        this.sprint = this.navParams.get("sprint");
         if (this.update) {
             this.issueProvider.issue = this.navParams.get('issue');
             this.titleNavBar = 'SID-' + this.issueProvider.issue.id;
@@ -600,9 +599,6 @@ var SprintProvider = /** @class */ (function () {
     SprintProvider.prototype.getSprintById = function (id) {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/" + id);
     };
-    SprintProvider.prototype.getIssueBySprintId = function (id) {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/issue/sprint/issues/" + id);
-    };
     SprintProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
@@ -968,7 +964,8 @@ var BacklogPage = /** @class */ (function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__issue_issue__["a" /* IssuePage */], { "issue": issue, "update": true });
     };
     BacklogPage.prototype.createNewIssue = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__issue_issue__["a" /* IssuePage */], { "issue": null, "update": false, "backlog": true, "sprint": false });
+        this.issueProvider.issue.reporter = 'Leandro Sebastian Cocchi';
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__issue_issue__["a" /* IssuePage */], { "issue": null, "update": false, "backlog": true });
     };
     BacklogPage.prototype.presentPopover = function (myEvent, id) {
         var _this = this;
@@ -1218,8 +1215,6 @@ var PersonaPage = /** @class */ (function () {
         }
         else {
             this.issueActive = true;
-            this.reporter = issueProvider.issueToUpdate.reporter;
-            this.issueProvider.issue.reporter = this.reporter;
         }
         this.userProvider.getAllUser()
             .subscribe(function (u) {
@@ -1232,6 +1227,9 @@ var PersonaPage = /** @class */ (function () {
             });
         });
     }
+    PersonaPage.prototype.ionViewDidEnter = function () {
+        this.reporter = this.issueProvider.issue.reporter;
+    };
     PersonaPage.prototype.selectAssignee = function () {
         var _this = this;
         if (this.issueActive) {
@@ -1385,7 +1383,6 @@ var PopoverPage = /** @class */ (function () {
         this.issueProvider = issueProvider;
         this.utils = utils;
     }
-    PopoverPage.prototype.ionViewDidLoad = function () { };
     PopoverPage.prototype.sendToSprint = function () {
         var _this = this;
         this.issueProvider.addIssueInActiveSprint(this.viewCtrl.getNavParams().get("id"))
@@ -1394,12 +1391,17 @@ var PopoverPage = /** @class */ (function () {
         });
         this.viewCtrl.dismiss();
     };
-    PopoverPage.prototype.close = function () {
+    PopoverPage.prototype.delete = function () {
+        var _this = this;
+        this.issueProvider.deleteIssue(this.viewCtrl.getNavParams().get("id"))
+            .subscribe(function (i) {
+            _this.utils.presentToast("Se elimin\u00F3 el issue SID-" + i.id);
+        });
         this.viewCtrl.dismiss();
     };
     PopoverPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-popover',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToSprint()">Enviar a Sprint</button>\n  <button ion-item (click)="close()">Eliminar Issue</button>\n</ion-list>\n\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/,
+            selector: 'page-popover',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToSprint()">Enviar a Sprint</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>\n\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */],
@@ -3048,13 +3050,13 @@ var SprintsPage = /** @class */ (function () {
         });
     };
     SprintsPage.prototype.createSprint = function () {
-        this.navCtrl.push(this.sprintPage);
+        this.navCtrl.push(this.sprintPage, { 'sprint': null, 'readonly': false, 'create': true });
     };
     SprintsPage.prototype.openSprint = function (id) {
         var _this = this;
         this.sprintProvider.getSprintById(id)
             .subscribe(function (s) {
-            _this.navCtrl.push(_this.sprintPage, { 'sprint': s, 'readonly': true });
+            _this.navCtrl.push(_this.sprintPage, { 'sprint': s, 'readonly': true, 'create': false });
         });
     };
     SprintsPage = __decorate([
@@ -3115,10 +3117,15 @@ var SprintPage = /** @class */ (function () {
         this.issues = [];
         this.sprint = this.navParams.get('sprint');
         this.readonly = this.navParams.get('readonly');
-        this.sprintProvider.getIssueBySprintId(this.sprint.id)
-            .subscribe(function (i) {
-            _this.issues = i;
-        });
+        this.create = this.navParams.get('create');
+        if (this.create) {
+        }
+        else {
+            this.issueProvider.getIssueBySprintId(this.sprint.id)
+                .subscribe(function (i) {
+                _this.issues = i;
+            });
+        }
         if (this.readonly) {
             this.name = this.sprint.name;
             this.description = this.sprint.description;
@@ -3126,12 +3133,29 @@ var SprintPage = /** @class */ (function () {
             this.to = new Date(this.sprint.dateTo).toISOString();
         }
     }
+    SprintPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        if (!this.create) {
+            var loading_1 = this.loadingCtrl.create({
+                spinner: 'ios',
+                content: 'Cargando...'
+            });
+            loading_1.present();
+            this.issueProvider.getIssueBySprintId(this.sprint.id)
+                .subscribe(function (data) {
+                _this.issues = data;
+                loading_1.dismiss();
+            });
+        }
+    };
     SprintPage.prototype.createSprint = function () {
         var _this = this;
-        if (this.name == undefined || this.name == null) {
-            this.utilsProvider.presentToast("Falta ingresar el 'NOMBRE' del sprint");
-        }
-        else if (this.from == undefined || this.from == null) {
+        console.log(this.from);
+        console.log(this.to);
+        // if (this.name == undefined || this.name == null) {
+        //   this.utilsProvider.presentToast("Falta ingresar el 'NOMBRE' del sprint")
+        // } else 
+        if (this.from == undefined || this.from == null) {
             this.utilsProvider.presentToast("Falta ingresar la fecha 'DESDE' del sprint");
         }
         else if (this.to == undefined || this.to == null) {
@@ -3210,17 +3234,19 @@ var SprintPage = /** @class */ (function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__issue_issue__["a" /* IssuePage */], { "issue": issue, "update": true });
     };
     SprintPage.prototype.createNewIssue = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__issue_issue__["a" /* IssuePage */], { "issue": null, "update": false, "backlog": false, "sprint": true });
+        this.issueProvider.issue.reporter = 'Leandro Sebastian Cocchi';
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__issue_issue__["a" /* IssuePage */], { "issue": null, "update": false, "backlog": false });
     };
     SprintPage.prototype.presentPopover = function (myEvent, issue) {
         var _this = this;
         var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_6__popover_backlog_popover_backlog__["a" /* PopoverBacklogPage */], { 'issue': issue });
         popover.onDidDismiss(function () {
-            var loading = _this.loadingCtrl.create({ spinner: 'ios',
+            var loading = _this.loadingCtrl.create({
+                spinner: 'ios',
                 content: 'Cargando...'
             });
             loading.present();
-            _this.issueProvider.getAllIssueActiveSprint()
+            _this.issueProvider.getIssueBySprintId(_this.sprint.id)
                 .subscribe(function (data) {
                 _this.issues = data;
                 loading.dismiss();
@@ -3232,18 +3258,12 @@ var SprintPage = /** @class */ (function () {
     };
     SprintPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sprint',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n      <div class="sprint-range">\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let issue of issues, let i = index">\n      <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n      <div (click)="openDetail(issue)">\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n      <button icon-only (click)="presentPopover($event, issue)" item-end class="more">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/,
+            selector: 'page-sprint',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n      <div class="sprint-range" *ngIf=\'!create\'>\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n      <div class="sprint-range" *ngIf=\'create\'>\n        Crear Sprint\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngIf="!create">\n    <ion-list>\n      <ion-item *ngFor="let issue of issues, let i = index">\n        <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n        <div (click)="openDetail(issue)">\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </div>\n        <button icon-only (click)="presentPopover($event, issue)" item-end class="more">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-item>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-fab>\n  </div>\n\n  <div *ngIf="create">\n\n    <ion-item>\n      <ion-label>Desde</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="from"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Hasta</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="to"></ion-datetime>\n    </ion-item>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["a" /* UtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_issue_issue__["a" /* IssueProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["a" /* UtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["a" /* UtilsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* PopoverController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__providers_issue_issue__["a" /* IssueProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_issue_issue__["a" /* IssueProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _h || Object])
     ], SprintPage);
     return SprintPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=sprint.js.map
@@ -3282,18 +3302,25 @@ var PopoverBacklogPage = /** @class */ (function () {
     }
     PopoverBacklogPage.prototype.sendToBacklog = function () {
         var _this = this;
-        this.issueProvider.addIssueInBacklog(this.viewCtrl.getNavParams().get("issue"))
+        this.issue = this.viewCtrl.getNavParams().get("issue");
+        this.issueProvider.addIssueInBacklog(this.issue)
             .subscribe(function (i) {
             _this.utils.presentToast("Se envi\u00F3 el issue SID-" + i.id + " al Backlog");
         });
         this.viewCtrl.dismiss();
     };
-    PopoverBacklogPage.prototype.close = function () {
+    PopoverBacklogPage.prototype.delete = function () {
+        var _this = this;
+        this.issue = this.viewCtrl.getNavParams().get("issue");
+        this.issueProvider.deleteIssue(this.issue.id)
+            .subscribe(function (i) {
+            _this.utils.presentToast("Se elimin\u00F3 el issue SID-" + i.id);
+        });
         this.viewCtrl.dismiss();
     };
     PopoverBacklogPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-popover-backlog',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToBacklog()">Enviar a Backlog</button>\n  <button ion-item (click)="close()">Eliminar Issue</button>\n</ion-list>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/,
+            selector: 'page-popover-backlog',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToBacklog()">Enviar a Backlog</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */],
@@ -3411,12 +3438,8 @@ var AuthService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return URL_BASE; });
-// export const URL_BASE = "https://project-final-davinci.herokuapp.com";
-// export const URL_BASE = "http://leandro.hopto.org:8090";
-// export const URL_BASE = "http://localhost:8080";
-var URL_BASE = "http://34.205.19.38:8090";
-// export const URL_BASE = "http://192.168.0.6:8080"
-// export const URL_BASE = "http://3.86.96.157:8090";
+var URL_BASE = "http://localhost:8090";
+// export const URL_BASE = "http://34.205.19.38:8090";
 //# sourceMappingURL=config.js.map
 
 /***/ }),
@@ -3483,6 +3506,12 @@ var IssueProvider = /** @class */ (function () {
     };
     IssueProvider.prototype.addIssueInBacklog = function (issue) {
         return this.http.patch(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/issue/sprint/issues/backlog/", issue);
+    };
+    IssueProvider.prototype.deleteIssue = function (id) {
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/issue/" + id);
+    };
+    IssueProvider.prototype.getIssueBySprintId = function (id) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/issue/issues/" + id);
     };
     IssueProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),

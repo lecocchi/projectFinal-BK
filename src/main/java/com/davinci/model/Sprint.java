@@ -27,7 +27,6 @@ public class Sprint implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty
     @Column(name = "NAME")
     private String name;
 
