@@ -1,8 +1,11 @@
 package com.davinci.service;
 
+import com.davinci.dto.SprintDTO;
+import com.davinci.exceptions.ErrorException;
 import com.davinci.model.Sprint;
 import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -39,10 +42,9 @@ public class SprintService {
             newSprint.setName("Sprint " + newSprint.getId());
             return sprintRepository.save(newSprint);
         }else{
-            //TODO mandar mensaje de que no se puede crear el sprint porque hay uno activo.
+            throw new ErrorException("No se puede crear un sprint porque ya existe un sprint activo. Por favor finalice el sprint activo.");
         }
 
-        return null;
     }
 
     public void deleteSprint(Integer id) {
@@ -64,6 +66,15 @@ public class SprintService {
 
     public Sprint validateDateWhenCreateSprint(Date date){
         return sprintRepository.findSprintByDate(date);
+    }
+
+    public Sprint finishSprint(Sprint sprint){
+        return Optional.ofNullable(this.sprintRepository.findOne(Integer.valueOf(sprint.getId())))
+                .map(s -> {
+                    s.setIsActive(false);
+                    return this.sprintRepository.save(s);
+                })
+                .orElseThrow(() -> new ErrorException("No existe el Sprint para finalizar"));
     }
 
 }

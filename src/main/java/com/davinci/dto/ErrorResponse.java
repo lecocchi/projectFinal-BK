@@ -1,14 +1,38 @@
 package com.davinci.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorResponse {
-    private int status;
+    @JsonProperty("status")
+    private String status;
+
+    @JsonProperty("title")
     private String title;
+
+    @JsonProperty("message")
     private String  message;
+
+    @JsonCreator
+    public ErrorResponse(@JsonProperty("status") final String status,
+                         @JsonProperty("title") final String title,
+                         @JsonProperty("message") final String message){
+        this.status = status;
+        this.title = title;
+        this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

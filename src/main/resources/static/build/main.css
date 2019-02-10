@@ -28967,14 +28967,33 @@ page-sprint .more {
   padding-right: 0;
 }
 
+page-sprints .sprint-name {
+  color: #3b5998;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 page-sprints .sprint-range-from {
   margin-right: 3rem;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 page-sprints .sprint-range-from-label {
-  color: #3b5998;
+  color: #216856;
   font-weight: bolder;
-  font-size: 10px;
+  font-size: 15px;
+}
+
+page-sprints .more {
+  background-color: transparent !important;
+  color: black;
+  font-size: 1.6rem;
+  padding-right: 0;
+}
+
+page-sprints .item-md [item-left], page-sprints .item-md [item-right], page-sprints .item-md [item-start], page-sprints .item-md [item-end] {
+  margin: 9px 0px 9px 0;
 }
 
 page-state .name {
