@@ -2,7 +2,10 @@ package com.davinci.service;
 
 import com.davinci.dto.SprintDTO;
 import com.davinci.exceptions.ErrorException;
+import com.davinci.model.Location;
 import com.davinci.model.Sprint;
+import com.davinci.repository.IssueRepository;
+import com.davinci.repository.LocationRepository;
 import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,10 +19,16 @@ import java.util.Optional;
 public class SprintService {
 
     private SprintRepository sprintRepository;
+    private IssueRepository issueRepository;
+    private LocationRepository locationRepository;
 
     @Autowired
-    public SprintService(SprintRepository sprintRepository) {
+    public SprintService(SprintRepository sprintRepository,
+                         IssueRepository issueRepository,
+                         LocationRepository locationRepository) {
         this.sprintRepository = sprintRepository;
+        this.issueRepository = issueRepository;
+        this.locationRepository = locationRepository;
     }
 
     public Sprint getSprintById(Integer id) {
@@ -69,12 +78,20 @@ public class SprintService {
     }
 
     public Sprint finishSprint(Sprint sprint){
-        return Optional.ofNullable(this.sprintRepository.findOne(Integer.valueOf(sprint.getId())))
-                .map(s -> {
-                    s.setIsActive(false);
-                    return this.sprintRepository.save(s);
-                })
-                .orElseThrow(() -> new ErrorException("No existe el Sprint para finalizar"));
+
+        sprint.setIsActive(false);
+        Sprint sprintFinish = sprintRepository.save(sprint);
+        issueRepository.findAllBySprint(sprintFinish.getId()).stream().forEach((issue -> {
+            issue.setBacklog(true);
+            issue.setSprint(null);
+            issueRepository.save(issue);
+        }));
+
+        return sprintFinish;
+    }
+
+    public Location saveLocation(Location location){
+        return locationRepository.save(location);
     }
 
 }

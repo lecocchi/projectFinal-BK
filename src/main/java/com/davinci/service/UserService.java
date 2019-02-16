@@ -1,5 +1,6 @@
 package com.davinci.service;
 
+import com.davinci.exceptions.LoginErrorException;
 import com.davinci.model.User;
 import com.davinci.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,14 @@ public class UserService {
                     return this.userRepository.save(u);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists User"));
+    }
+
+    public User getUserByUserAndPass(final String userName, final String password){
+        Optional<User> userOptional = userRepository.findByEmailAndPassword(userName,password);
+
+        if (!userOptional.isPresent())
+            throw new LoginErrorException("Error to try login with user: " + userName + " and password: " + password);
+
+        return userOptional.get();
     }
 }

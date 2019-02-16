@@ -1,6 +1,7 @@
 package com.davinci.controller;
 
 import com.davinci.model.User;
+import com.davinci.model.UserLogin;
 import com.davinci.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,5 +55,10 @@ public class UserController {
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         this.userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "login-mail")
+    public ResponseEntity<?> loginUsername(@RequestBody UserLogin userLogin){
+        return ResponseEntity.ok(userService.getUserByUserAndPass(userLogin.getUserName(),userLogin.getPassword()));
     }
 }

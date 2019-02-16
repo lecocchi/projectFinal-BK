@@ -4,6 +4,7 @@ package com.davinci.controller;
 import com.davinci.dto.SprintDTO;
 import com.davinci.exceptions.ErrorException;
 import com.davinci.mapper.SprintMapper;
+import com.davinci.model.Location;
 import com.davinci.model.Sprint;
 import com.davinci.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class SprintController {
         Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()));
 
         if (dateFrom != null || dateTo != null)
-            throw new ErrorException("Error al intentar crear el " + sprintDTO.getName() + ".La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint");
+            throw new ErrorException("Error al intentar crear el Sprint.La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint");
 
         return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO)), HttpStatus.CREATED);
 
@@ -70,6 +71,11 @@ public class SprintController {
     @PostMapping(value = "finish")
     public ResponseEntity<?> finish(@RequestBody Sprint sprint){
         return ResponseEntity.ok(sprintService.finishSprint(sprint));
+    }
+
+    @PostMapping(value = "location")
+    public ResponseEntity<?> location(@RequestBody Location location){
+        return ResponseEntity.ok(sprintService.saveLocation(location));
     }
 
 }

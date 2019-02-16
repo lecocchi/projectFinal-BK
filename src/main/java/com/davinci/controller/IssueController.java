@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,5 +97,10 @@ public class IssueController {
     @PatchMapping(value = "sprint/issues/backlog/")
     public ResponseEntity<Issue> addIssuesInBacklog(@RequestBody Issue issue){
         return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
+    }
+
+    @GetMapping(value = "open/")
+    public ResponseEntity<?> getIssuesOpenBySprintId(){
+        return ResponseEntity.ok(issueService.getAllIssueOpenInActiveSprint());
     }
 }

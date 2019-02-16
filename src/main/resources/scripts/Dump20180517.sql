@@ -19,7 +19,7 @@
 -- Dumping data for table `ISSUE`
 --
 
-USE `jym604qy2slbxiy6` ;
+USE `tesis` ;
 
 LOCK TABLES `issue` WRITE;
 /*!40000 ALTER TABLE `issue` DISABLE KEYS */;

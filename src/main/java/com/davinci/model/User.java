@@ -15,7 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User implements Serializable {
+public class    User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,7 +45,6 @@ public class User implements Serializable {
     @Column(name = "ID_ROL")
     private Integer rol;
 
-    @NotEmpty
     @Column(name = "PASSWORD")
     private String password;
 
@@ -68,8 +67,12 @@ public class User implements Serializable {
     @Column(name = "ENABLED")
     private Boolean enabled;
 
+    @NotNull
+    @Column(name = "IS_NETWORK")
+    private Boolean isNetwork;
 
-    public User(String firstName, String lastName, Integer dni, String email, String userName, Integer rol, String password, String avatar, Date created, Date updated, Boolean enabled) {
+
+    public User(String firstName, String lastName, Integer dni, String email, String userName, Integer rol, String password, String avatar, Date created, Date updated, Boolean enabled, Boolean isNetwork) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
@@ -81,5 +84,6 @@ public class User implements Serializable {
         this.created = created;
         this.updated = updated;
         this.enabled = enabled;
+        this.isNetwork = isNetwork;
     }
 }

@@ -24,14 +24,14 @@ public class DailyService {
 
 
     @Transactional
-    public void createDaily(Daily daily) {
+    public Daily createDaily(Daily daily) {
 
         Daily dailyNow = repository.findByCreatedAt(LocalDate.now());
 
         if (dailyNow != null)
             repository.delete(dailyNow);
 
-        repository.save(daily);
+        return repository.save(daily);
     }
 
     public List<DailyDTO> getAllDaily() {

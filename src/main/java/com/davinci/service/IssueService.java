@@ -116,4 +116,13 @@ public class IssueService {
         issue.setSprint(null);
         return issueRepository.save(issue);
     }
+
+    public List<Issue> getAllIssueOpenInActiveSprint(){
+        return findAllIssueIsNotFinishByActiveSprint();
+    }
+
+    private List<Issue> findAllIssueIsNotFinishByActiveSprint(){
+        Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
+        return issueRepository.findAllIssuesNotFinishBySprintId(activeSprint.getId());
+    }
 }

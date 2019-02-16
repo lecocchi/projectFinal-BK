@@ -28107,13 +28107,12 @@ avatar .content {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin: 1rem 0;
 }
 
 avatar .avatar {
-  border-radius: 20px;
-  width: 20vw;
-  height: 20vw;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
   background: white;
   color: #324d85;
   font-size: 2.5rem;
@@ -28209,6 +28208,11 @@ page-backlog .custom-popover {
   width: 60%;
 }
 
+page-backlog .item-md,
+page-backlog .item-ios {
+  padding-left: 0 !important;
+}
+
 page-comentarios {
   margin-top: 56px;
 }
@@ -28221,6 +28225,11 @@ page-daily-tab .item-md ion-avatar ion-img, page-daily-tab .item-md ion-avatar i
 
 page-daily-tab .date {
   font-weight: 500;
+}
+
+page-daily-tab .item-md,
+page-daily-tab .item-ios {
+  padding-left: 0 !important;
 }
 
 page-daily-description textarea {
@@ -28280,21 +28289,6 @@ page-daily-item .content {
 page-daily-item .day {
   margin-right: 1rem;
   font-weight: 500;
-}
-
-page-daily-item .items {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-page-daily-item .items-ios, page-daily-item .items-md, page-daily-item .items-wp {
-  padding-left: 0 !important;
 }
 
 page-daily-item .item-ios ion-avatar ion-img, page-daily-item .item-ios ion-avatar img,
@@ -28375,6 +28369,25 @@ page-daily-item .accept {
   color: #4db69d;
   font-weight: bold;
   font-size: 30px !important;
+}
+
+page-daily-item .items {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-daily-item .items-ios, page-daily-item .items-md, page-daily-item .items-wp {
+  padding-left: 0 !important;
+}
+
+page-daily-item .item-md {
+  padding-left: 0px !important;
 }
 
 page-detalle {
