@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface SprintRepository extends JpaRepository<Sprint, Integer> {
@@ -16,5 +17,5 @@ public interface SprintRepository extends JpaRepository<Sprint, Integer> {
 
     Sprint findByEnabledIsTrue();
 
-    Sprint findByIsActiveIsTrue();
+    Optional<Sprint> findByIsActiveIsTrue();
 }

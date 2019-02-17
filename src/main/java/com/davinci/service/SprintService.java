@@ -42,9 +42,9 @@ public class SprintService {
     public Sprint createSprint(Sprint sprint) {
 
 
-        Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
 
-        if (activeSprint == null){ // No existe un sprint activo, podemos crear uno
+        if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
             sprint.setEnabled(true);
             sprint.setIsActive(true);
             Sprint newSprint = sprintRepository.save(sprint);

@@ -28213,8 +28213,62 @@ page-backlog .item-ios {
   padding-left: 0 !important;
 }
 
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-backlog .scroll-content,
+  page-backlog .fixed-content,
+  page-backlog .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-backlog ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-backlog .scroll-content,
+  page-backlog .fixed-content,
+  page-backlog .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-backlog ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-comentarios {
   margin-top: 56px;
+}
+
+@media screen and (min-width: 1000px) {
+  page-config .scroll-content,
+  page-config .fixed-content {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-config .scroll-content,
+  page-config .fixed-content {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
 }
 
 page-daily-tab .item-ios ion-avatar ion-img, page-daily-tab .item-ios ion-avatar img,
@@ -28230,6 +28284,39 @@ page-daily-tab .date {
 page-daily-tab .item-md,
 page-daily-tab .item-ios {
   padding-left: 0 !important;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-daily-tab .scroll-content,
+  page-daily-tab .fixed-content,
+  page-daily-tab .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-tab ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-daily-tab .scroll-content,
+  page-daily-tab .fixed-content,
+  page-daily-tab .fixed-content,
+  page-daily-tab .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-tab ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
 }
 
 page-daily-description textarea {
@@ -28268,6 +28355,38 @@ page-daily-description .accept {
   color: #4db69d;
   font-weight: bold;
   font-size: 30px !important;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-daily-description .scroll-content,
+  page-daily-description .fixed-content,
+  page-daily-description .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-description ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-daily-description .scroll-content,
+  page-daily-description .fixed-content,
+  page-daily-description .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-description ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
 }
 
 page-daily-item .content {
@@ -28388,6 +28507,38 @@ page-daily-item .items-ios, page-daily-item .items-md, page-daily-item .items-wp
 
 page-daily-item .item-md {
   padding-left: 0px !important;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-daily-item .scroll-content,
+  page-daily-item .fixed-content,
+  page-daily-item .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-item ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-daily-item .scroll-content,
+  page-daily-item .fixed-content,
+  page-daily-item .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-daily-item ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
 }
 
 page-detalle {
@@ -28611,6 +28762,53 @@ page-issue .accept {
   font-size: 30px !important;
 }
 
+page-issue .tabs-md .tabbar {
+  background: #274469;
+}
+
+page-issue .tabs-md .tab-button-text {
+  color: white;
+  font-size: 1.5rem;
+}
+
+page-issue .tabs-md .tab-button[aria-selected=true] .tab-button-text {
+  color: #c2c975;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-issue .scroll-content,
+  page-issue .fixed-content,
+  page-issue .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-issue ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-issue .scroll-content,
+  page-issue .fixed-content,
+  page-issue .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-issue ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-label .name {
   color: #274469;
   font-weight: bolder;
@@ -28726,11 +28924,15 @@ page-login .login-net-body {
 page-login .login-net-title, page-login .login-email-title {
   color: #216856;
   font-family: 'PT Sans', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 page-login .login-net-title {
   padding-bottom: 1em;
+}
+
+page-login .login-email-title {
+  margin-top: 9rem;
 }
 
 page-login .login-net-btn {
@@ -28881,6 +29083,134 @@ page-login .btn-login-google {
   height: 45px;
 }
 
+page-login .btn-login-user {
+  width: 80%;
+}
+
+page-login .btn-user {
+  font-size: 1.7rem !important;
+  height: 55px;
+}
+
+@media screen and (min-width: 451px) {
+  page-login .login-email {
+    padding: 0px;
+  }
+}
+
+page-perfil ion-avatar, page-perfil ion-thumbnail {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+page-perfil ion-avatar img, page-perfil ion-thumbnail img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+page-perfil avatar .avatar {
+  width: 110px;
+  height: 110px;
+  font-size: 5rem;
+  border: 2px solid #324d85;
+}
+
+page-perfil .disabled {
+  color: #9b9999;
+}
+
+page-perfil .enabled {
+  color: black;
+}
+
+page-perfil .btn-aceptar, page-perfil .btn-cancelar {
+  margin: 2rem 0;
+  height: 48px;
+  font-size: 1.6rem;
+  border-radius: 20px;
+}
+
+page-perfil .btn-aceptar {
+  margin-top: 5rem;
+}
+
+page-perfil .toggle {
+  margin-bottom: 5px;
+}
+
+page-perfil .item-leave-height {
+  margin-top: 18px;
+}
+
+page-perfil .toggle {
+  padding-top: 15px;
+}
+
+page-perfil .disabledToggle {
+  color: red;
+  font-weight: bold;
+}
+
+page-perfil .enabledToggle {
+  color: green;
+  font-weight: bold;
+}
+
+page-perfil ion-buttons {
+  margin-right: 18px !important;
+}
+
+page-perfil .cancel {
+  color: #b8696e;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+page-perfil .accept {
+  color: #4db69d;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-perfil .scroll-content,
+  page-perfil .fixed-content,
+  page-perfil .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-perfil ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-perfil .scroll-content,
+  page-perfil .fixed-content,
+  page-perfil .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-perfil ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-persona {
   margin-top: 56px;
 }
@@ -28980,6 +29310,38 @@ page-sprint .more {
   padding-right: 0;
 }
 
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-sprint .scroll-content,
+  page-sprint .fixed-content,
+  page-sprint .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-sprint ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-sprint .scroll-content,
+  page-sprint .fixed-content,
+  page-sprint .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-sprint ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-sprints .sprint-name {
   color: #3b5998;
   font-size: 20px;
@@ -29007,6 +29369,38 @@ page-sprints .more {
 
 page-sprints .item-md [item-left], page-sprints .item-md [item-right], page-sprints .item-md [item-start], page-sprints .item-md [item-end] {
   margin: 9px 0px 9px 0;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-sprints .scroll-content,
+  page-sprints .fixed-content,
+  page-sprints .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-sprints ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-sprints .scroll-content,
+  page-sprints .fixed-content,
+  page-sprints .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-sprints ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
 }
 
 page-state .name {
@@ -29041,6 +29435,139 @@ page-user-description ion-avatar img, page-user-description ion-thumbnail img {
   border-radius: 50%;
 }
 
+page-user-description avatar .avatar {
+  width: 110px;
+  height: 110px;
+  font-size: 5rem;
+  border: 2px solid #324d85;
+}
+
+page-user-description .disabled {
+  color: #9b9999;
+}
+
+page-user-description .enabled {
+  color: black;
+}
+
+page-user-description .btn-aceptar, page-user-description .btn-cancelar {
+  margin: 2rem 0;
+  height: 48px;
+  font-size: 1.6rem;
+  border-radius: 20px;
+}
+
+page-user-description .btn-aceptar {
+  margin-top: 5rem;
+}
+
+page-user-description .toggle {
+  margin-bottom: 5px;
+}
+
+page-user-description .item-leave-height {
+  margin-top: 18px;
+}
+
+page-user-description .toggle {
+  padding-top: 15px;
+}
+
+page-user-description .disabledToggle {
+  color: red;
+  font-weight: bold;
+}
+
+page-user-description .enabledToggle {
+  color: green;
+  font-weight: bold;
+}
+
+page-user-description ion-buttons {
+  margin-right: 18px !important;
+}
+
+page-user-description .cancel {
+  color: #b8696e;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+page-user-description .accept {
+  color: #4db69d;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-user-description .scroll-content,
+  page-user-description .fixed-content,
+  page-user-description .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-user-description ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-user-description .scroll-content,
+  page-user-description .fixed-content,
+  page-user-description .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-user-description ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
+page-users .item-md,
+page-users .item-ios {
+  padding-left: 0;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-users .scroll-content,
+  page-users .fixed-content,
+  page-users .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-users ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-users .scroll-content,
+  page-users .fixed-content,
+  page-users .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-users ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-version-description .btn-aceptar, page-version-description .btn-cancelar {
   margin: 2rem 0;
   height: 48px;
@@ -29051,7 +29578,71 @@ page-version-description .btn-aceptar {
   margin-top: 5rem;
 }
 
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-version-description .scroll-content,
+  page-version-description .fixed-content,
+  page-version-description .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-version-description ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-version-description .scroll-content,
+  page-version-description .fixed-content,
+  page-version-description .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-version-description ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-versions .name {
   color: #274469;
   font-weight: bolder;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-versions .scroll-content,
+  page-versions .fixed-content,
+  page-versions .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-versions ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-versions .scroll-content,
+  page-versions .fixed-content,
+  page-versions .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-versions ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
 }

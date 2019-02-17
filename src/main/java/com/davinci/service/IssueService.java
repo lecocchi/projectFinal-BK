@@ -1,5 +1,6 @@
 package com.davinci.service;
 
+import com.davinci.exceptions.ActiveSprintNotFoundException;
 import com.davinci.model.Issue;
 import com.davinci.model.Sprint;
 import com.davinci.repository.IssueRepository;
@@ -52,9 +53,13 @@ public class IssueService {
         issue.setUpdated(new Date());
         issue.setEnabled(true);
         if (!issue.getBacklog()){
-            Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
-            if (activeSprint != null)
-                issue.setSprint(activeSprint.getId());
+
+            Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+
+            if (!activeSprintOptional.isPresent())
+                throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
+
+            issue.setSprint(activeSprintOptional.get().getId());
         }
         return this.issueRepository.save(issue);
     }
@@ -98,7 +103,12 @@ public class IssueService {
     }
 
     public Issue setIssueInActiveSprint(Integer issueId){
-        Sprint activeSprint = sprintRepository.findByEnabledIsTrue();
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+
+        if (!activeSprintOptional.isPresent())
+            throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
+
+        Sprint activeSprint = activeSprintOptional.get();
 
         Issue issue = issueRepository.findOne(issueId);
         issue.setSprint(activeSprint.getId());
@@ -122,7 +132,11 @@ public class IssueService {
     }
 
     private List<Issue> findAllIssueIsNotFinishByActiveSprint(){
-        Sprint activeSprint = sprintRepository.findByIsActiveIsTrue();
-        return issueRepository.findAllIssuesNotFinishBySprintId(activeSprint.getId());
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+
+        if (!activeSprintOptional.isPresent())
+            throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
+
+        return issueRepository.findAllIssuesNotFinishBySprintId(activeSprintOptional.get().getId());
     }
 }
