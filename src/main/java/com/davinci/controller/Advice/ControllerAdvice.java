@@ -1,9 +1,7 @@
 package com.davinci.controller.Advice;
 
 import com.davinci.dto.ErrorResponse;
-import com.davinci.exceptions.ActiveSprintNotFoundException;
-import com.davinci.exceptions.ErrorException;
-import com.davinci.exceptions.LoginErrorException;
+import com.davinci.exceptions.*;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +31,17 @@ public class ControllerAdvice {
     public ResponseEntity activeSprintNotFoundException(ActiveSprintNotFoundException ex){
         LOGGER.error(ex.getMessage());
         return new ResponseEntity(new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Error", ex.getMessage()),HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity userNotFoundException(UserNotFoundException ex){
+        LOGGER.error(ex.getMessage());
+        return new ResponseEntity(new ErrorResponse(HttpStatus.NOT_FOUND.toString(), "Error", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ThereIsUserException.class)
+    public ResponseEntity thereIsUserException(ThereIsUserException ex){
+        LOGGER.error(ex.getMessage());
+        return new ResponseEntity(new ErrorResponse(HttpStatus.CONFLICT.toString(), "Error", ex.getMessage()),HttpStatus.CONFLICT);
     }
 }

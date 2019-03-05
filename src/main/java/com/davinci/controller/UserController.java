@@ -1,5 +1,6 @@
 package com.davinci.controller;
 
+import com.davinci.dto.ChangePassword;
 import com.davinci.model.User;
 import com.davinci.model.UserLogin;
 import com.davinci.service.UserService;
@@ -60,5 +61,10 @@ public class UserController {
     @PostMapping(value = "login-mail")
     public ResponseEntity<?> loginUsername(@RequestBody UserLogin userLogin){
         return ResponseEntity.ok(userService.getUserByUserAndPass(userLogin.getUserName(),userLogin.getPassword()));
+    }
+
+    @PatchMapping("password")
+    public ResponseEntity<?> changePassword(@RequestBody final ChangePassword changePassword){
+        return ResponseEntity.ok(userService.changePassword(changePassword));
     }
 }

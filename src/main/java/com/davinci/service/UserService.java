@@ -1,6 +1,9 @@
 package com.davinci.service;
 
+import com.davinci.dto.ChangePassword;
 import com.davinci.exceptions.LoginErrorException;
+import com.davinci.exceptions.ThereIsUserException;
+import com.davinci.exceptions.UserNotFoundException;
 import com.davinci.model.User;
 import com.davinci.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,17 @@ public class UserService {
     }
 
     public User createUser(User user) {
+
+        userRepository.findByEmail(user.getEmail())
+                .ifPresent((u) -> {
+                    throw new ThereIsUserException("Ya existe un usuario con el email '" + user.getEmail() + "'");
+                });
+
+        userRepository.findByUserName(user.getUserName())
+                .ifPresent((u) -> {
+                    throw new ThereIsUserException("Ya existe un usuario con el nombre de usuario '" + user.getUserName() + "'");
+                });
+
         user.setCreated(new Date());
         user.setUpdated(new Date());
         return this.userRepository.save(user);
@@ -57,11 +71,22 @@ public class UserService {
     }
 
     public User getUserByUserAndPass(final String userName, final String password){
-        Optional<User> userOptional = userRepository.findByEmailAndPassword(userName,password);
+        Optional<User> userOptional = userRepository.findByUserNameAndPassword(userName,password);
 
-        if (!userOptional.isPresent())
-            throw new LoginErrorException("Error to try login with user: " + userName + " and password: " + password);
+        return userOptional
+                .orElseThrow(()-> new LoginErrorException("Error to try login with user: " + userName + " and password: " + password));
+    }
 
-        return userOptional.get();
+
+    public User changePassword(ChangePassword changePassword){
+        Optional<User> userOptional = userRepository.findByEmail(changePassword.getEmail());
+
+        return userRepository.save(userOptional
+                .map( (user -> {
+                    user.setPassword(changePassword.getPassword());
+                    return user;
+                }))
+                .orElseThrow(()-> new UserNotFoundException("No se ha encontrado al usuario para cambiar la contraseña"))
+        );
     }
 }

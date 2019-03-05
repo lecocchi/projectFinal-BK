@@ -76,30 +76,31 @@ public class IssueService {
     }
 
     public Issue updateIssue(Issue issue, Integer id) {
-        return Optional.ofNullable(this.issueRepository.findOne(id))
-                .map(i -> {
-                    i.setAssignee(issue.getAssignee());
-                    i.setBacklog(issue.getBacklog());
-                    i.setEnabled(issue.getEnabled());
-                    i.setEstimated(issue.getEstimated());
-                    i.setLabel(issue.getLabel());
-                    i.setPhase(issue.getPhase());
-                    i.setPlannedEnd(issue.getPlannedEnd());
-                    i.setPlannedStart(issue.getPlannedStart());
-                    i.setPriority(issue.getPriority());
-                    i.setRemaining(issue.getRemaining());
-                    i.setReporter(issue.getReporter());
-                    i.setResolved(issue.getResolved());
-                    i.setSprint(issue.getSprint());
-                    i.setState(issue.getState());
-                    i.setTitle(issue.getTitle());
-                    i.setUpdated(new Date());
-                    i.setVersion(issue.getVersion());
-                    i.setWatcher(issue.getWatcher());
-                    i.setDescription(issue.getDescription());
-                    return this.issueRepository.save(i);
-                })
-                .orElseThrow(() -> new RuntimeException("No Exists Issue"));
+
+        Issue issueToUpdate = this.issueRepository.findOne(id);
+
+        issueToUpdate.setAssignee(issue.getAssignee());
+        issueToUpdate.setBacklog(issue.getBacklog());
+        issueToUpdate.setEnabled(issue.getEnabled());
+        issueToUpdate.setEstimated(issue.getEstimated());
+        issueToUpdate.setLabel(issue.getLabel());
+        issueToUpdate.setPhase(issue.getPhase());
+        issueToUpdate.setPlannedEnd(issue.getPlannedEnd());
+        issueToUpdate.setPlannedStart(issue.getPlannedStart());
+        issueToUpdate.setPriority(issue.getPriority());
+        issueToUpdate.setRemaining(issue.getRemaining());
+        issueToUpdate.setReporter(issue.getReporter());
+        issueToUpdate.setResolved("FINALIZADO".equalsIgnoreCase(issue.getState()) ? new Date() : issue.getResolved());
+        issueToUpdate.setSprint(issue.getSprint());
+        issueToUpdate.setState(issue.getState());
+        issueToUpdate.setTitle(issue.getTitle());
+        issueToUpdate.setUpdated(new Date());
+        issueToUpdate.setVersion(issue.getVersion());
+        issueToUpdate.setWatcher(issue.getWatcher());
+        issueToUpdate.setDescription(issue.getDescription());
+
+        return this.issueRepository.save(issueToUpdate);
+
     }
 
     public Issue setIssueInActiveSprint(Integer issueId){

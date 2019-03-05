@@ -46,15 +46,15 @@ var IssuePage = /** @class */ (function () {
         this.tab4 = __WEBPACK_IMPORTED_MODULE_6__comentarios_comentarios__["a" /* ComentariosPage */];
         this.update = this.navParams.get('update');
         this.backlog = this.navParams.get("backlog");
-        this.cleanIssue();
         if (this.update) {
             this.issueProvider.issue = this.navParams.get('issue');
             this.titleNavBar = 'SID-' + this.issueProvider.issue.id;
-            this.issueActive = (this.issueProvider.issue.state == 'Finalizado') ? false : true;
+            this.issueInactive = (this.issueProvider.issue.state === 'FINALIZADO') ? true : false;
         }
         else {
+            this.cleanIssue();
             this.issueProvider.issue.id = null;
-            this.issueActive = true;
+            this.issueInactive = false;
             this.storage.get('firstName').then(function (f) {
                 _this.firstName = f;
                 _this.storage.get('lastName').then(function (l) {
@@ -116,7 +116,7 @@ var IssuePage = /** @class */ (function () {
     };
     IssuePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-issue',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ titleNavBar }}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="issueActive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-tabs class="tabs">\n  <ion-tab [root]="tab1" tabTitle="Detalles" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab2" tabTitle="Personas" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab3" tabTitle="Fechas" [rootParams]="update"></ion-tab>\n  <!--<ion-tab [root]="tab4" tabTitle="Comentarios"></ion-tab>-->\n</ion-tabs>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/,
+            selector: 'page-issue',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ titleNavBar }}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="!issueInactive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-tabs class="tabs">\n  <ion-tab [root]="tab1" tabTitle="Detalles" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab2" tabTitle="Personas" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab3" tabTitle="Fechas" [rootParams]="update"></ion-tab>\n  <!--<ion-tab [root]="tab4" tabTitle="Comentarios"></ion-tab>-->\n</ion-tabs>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -833,9 +833,7 @@ var LoginPage = /** @class */ (function () {
             _this.storage.set("lastName", u.lastName);
             _this.storage.set("rol", u.rol);
             _this.storage.set("userName", u.userName);
-            _this.platform.ready().then(function (readySource) {
-                _this.navCtrl.push(_this.rootPage, { "rol": u.rol });
-            });
+            _this.navCtrl.push(_this.rootPage, { "rol": u.rol });
         }, function (err) {
             _this.utilProvider.presentPrompt(err.error.title, err.error.message);
         });
@@ -940,7 +938,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color=\'primary\' hideBackButton="true" #content>\n    <ion-title>\n      {{ navTitle}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="background">\n\n  <div class="option-group">\n\n    <div class="content" (click)="goToPage(backlogPage)">\n      <div class="avatar backlog">BK</div>\n      <div class="avatar-text">\n        Backlog\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(SprintsPage)">\n      <div class="avatar active-sprint">SP</div>\n      <div class="avatar-text">\n        Sprints\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(dailyPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar daily">DY</div>\n      <div class="avatar-text">\n        Daily\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(reportsPage)">\n      <div class="avatar report">RE</div>\n      <div class="avatar-text">\n        Reportes\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(perfilPage)">\n      <div class="avatar report">MP</div>\n      <div class="avatar-text">\n        Mi perfil\n      </div>\n    </div>\n\n    <!-- <div class="content" (click)="goToPage(configPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar config">CF</div>\n      <div class="avatar-text">\n        Configuración\n      </div>\n    </div> -->\n\n    <div class="content" (click)="goToPage(versionPage)">\n      <div class="avatar config">VE</div>\n      <div class="avatar-text">\n        Versiones\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(usersPage)" *ngIf="rol == 3">\n      <div class="avatar config">US</div>\n      <div class="avatar-text">\n        Usuarios\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/'<!-- <ion-header>\n  <ion-navbar color=\'primary\' hideBackButton="true" #content>\n    <ion-title>\n      {{ navTitle}}\n    </ion-title>\n  </ion-navbar>\n</ion-header> -->\n\n<ion-content class="background">\n\n  <div class="option-group">\n\n    <div class="content" (click)="goToPage(backlogPage)">\n      <div class="avatar1 backlog">BK</div>\n      <div class="avatar1-text">\n        Backlog\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(SprintsPage)">\n      <div class="avatar1 active-sprint">SP</div>\n      <div class="avatar1-text">\n        Sprints\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(dailyPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 daily">DY</div>\n      <div class="avatar1-text">\n        Daily\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(reportsPage)">\n      <div class="avatar1 report">RE</div>\n      <div class="avatar1-text">\n        Reportes\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(perfilPage)">\n      <div class="avatar1 report">MP</div>\n      <div class="avatar1-text">\n        Mi perfil\n      </div>\n    </div>\n\n    <!-- <div class="content" (click)="goToPage(configPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 config">CF</div>\n      <div class="avatar1-text">\n        Configuración\n      </div>\n    </div> -->\n\n    <div class="content" (click)="goToPage(versionPage)">\n      <div class="avatar1 config">VE</div>\n      <div class="avatar1-text">\n        Versiones\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(usersPage)" *ngIf="rol == 3">\n      <div class="avatar1 config">US</div>\n      <div class="avatar1-text">\n        Usuarios\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1028,7 +1026,7 @@ var BacklogPage = /** @class */ (function () {
     };
     BacklogPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-backlog',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Backlog</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="lean">\n\n  <ion-list>\n    <ion-item  *ngFor="let issue of issues, let i = index">\n      <ion-avatar item-start>\n        <avatar>{{ issue.reporter.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <div (click)="openDetail(issue)">\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n      <button  icon-only (click)="presentPopover($event, issue.id)" item-end class="more">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewIssue()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/,
+            selector: 'page-backlog',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Backlog</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="lean">\n\n  <ion-list>\n    <ion-item  *ngFor="let issue of issues, let i = index">\n      <ion-avatar item-start>\n        <avatar>{{ issue.reporter.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <div (click)="openDetail(issue)">\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n      <button  icon-only (click)="presentPopover($event, issue.id)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewIssue()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_issue_issue__["a" /* IssueProvider */],
@@ -1084,7 +1082,7 @@ var DetallePage = /** @class */ (function () {
         this.title = "";
         this.update = this.navParams.data;
         if (this.update) {
-            this.issueActive = (this.issueProvider.issue.state == 'Finalizado') ? false : true;
+            this.issueInactive = (this.issueProvider.issue.state === 'FINALIZADO') ? true : false;
             this.issueProvider.issueToUpdate = this.issueProvider.issue;
             this.title = this.issueProvider.issue.title;
             this.description = this.issueProvider.issue.description;
@@ -1093,16 +1091,18 @@ var DetallePage = /** @class */ (function () {
             this.version = this.issueProvider.issue.version;
         }
         else {
-            this.issueActive = true;
+            this.issueInactive = false;
+            this.state = 'CREADO';
+            this.issueProvider.issue.state = this.state;
         }
         //STATES
         this.stateProvider.getAllState()
             .subscribe(function (s) {
-            _this.states.push({
-                type: 'radio',
-                label: 'Sin estado',
-                value: ''
-            });
+            // this.states.push({
+            //   type: 'radio',
+            //   label: 'Sin estado',
+            //   value: ''
+            // });
             s.forEach(function (state) {
                 _this.states.push({
                     type: 'radio',
@@ -1147,7 +1147,7 @@ var DetallePage = /** @class */ (function () {
     //STATE
     DetallePage.prototype.selectState = function () {
         var _this = this;
-        if (this.issueActive) {
+        if (!this.issueInactive) {
             this.alertCtrl.create({
                 title: 'Estados',
                 inputs: this.states,
@@ -1157,6 +1157,10 @@ var DetallePage = /** @class */ (function () {
                             _this.state = state;
                             _this.issueProvider.issueToUpdate.state = state;
                         }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'Cancel'
                     }]
             }).present();
         }
@@ -1164,7 +1168,7 @@ var DetallePage = /** @class */ (function () {
     //PRIORITY
     DetallePage.prototype.selectPriority = function () {
         var _this = this;
-        if (this.issueActive) {
+        if (!this.issueInactive) {
             this.alertCtrl.create({
                 title: 'Prioridades',
                 inputs: this.priorities,
@@ -1174,6 +1178,10 @@ var DetallePage = /** @class */ (function () {
                             _this.priority = priority;
                             _this.issueProvider.issueToUpdate.priority = priority;
                         }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'Cancel'
                     }]
             }).present();
         }
@@ -1181,7 +1189,7 @@ var DetallePage = /** @class */ (function () {
     //VERSION
     DetallePage.prototype.selectVersion = function () {
         var _this = this;
-        if (this.issueActive) {
+        if (!this.issueInactive) {
             this.alertCtrl.create({
                 title: 'Versiones',
                 inputs: this.versions,
@@ -1191,6 +1199,10 @@ var DetallePage = /** @class */ (function () {
                             _this.version = version;
                             (_this.update) ? _this.issueProvider.issueToUpdate.version = version : _this.version = version;
                         }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'Cancel'
                     }]
             }).present();
         }
@@ -1203,7 +1215,7 @@ var DetallePage = /** @class */ (function () {
     };
     DetallePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detalle',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/'<ion-content padding>\n\n  <ion-list class="title">\n\n    <ion-item>\n      <ion-label floating>Título <span class="required">(requerido)</span></ion-label>\n      <ion-input type="text" [(ngModel)]= \'title\' (ionChange)="changeTitle($event)"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Descripción</ion-label>\n      <ion-textarea  class="area" [(ngModel)]=\'description\' (ionChange)="changeDescription($event)"></ion-textarea>\n    </ion-item>\n\n  </ion-list>\n\n  <ion-item>\n    <ion-label stacked>Prioridad</ion-label>\n    <ion-input type="text" [(ngModel)]="priority" (click)="selectPriority()" [readonly]="true"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" [(ngModel)]="state" (click)="selectState()" [readonly]="true"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Versión</ion-label>\n    <ion-input type="text" [(ngModel)]="version" (click)="selectVersion()" [readonly]="true"></ion-input>\n  </ion-item>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/,
+            selector: 'page-detalle',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/'<ion-content padding>\n\n  <ion-list class="title">\n\n    <ion-item>\n      <ion-label floating>Título <span class="required">(requerido)</span></ion-label>\n      <ion-input type="text" [(ngModel)]= \'title\' (ionChange)="changeTitle($event)" [disabled]="issueInactive"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Descripción</ion-label>\n      <ion-textarea  class="area" [(ngModel)]=\'description\' (ionChange)="changeDescription($event)" [disabled]="issueInactive"></ion-textarea>\n    </ion-item>\n\n  </ion-list>\n\n  <ion-item>\n    <ion-label stacked>Prioridad</ion-label>\n    <ion-input type="text" [(ngModel)]="priority" (click)="selectPriority()" [disabled]="issueInactive"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" [(ngModel)]="state" (click)="selectState()" [disabled]="issueInactive"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Versión</ion-label>\n    <ion-input type="text" [(ngModel)]="version" (click)="selectVersion()" [disabled]="issueInactive"></ion-input>\n  </ion-item>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_state_state__["a" /* StateProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_priority_priority__["a" /* PrioritiesProvider */],
@@ -1252,10 +1264,10 @@ var PersonaPage = /** @class */ (function () {
         if (this.update) {
             this.reporter = this.issueProvider.issue.reporter;
             this.assignee = this.issueProvider.issue.assignee;
-            this.issueActive = (this.issueProvider.issue.state == 'Finalizado') ? false : true;
+            this.issueInactive = (this.issueProvider.issue.state === 'FINALIZADO') ? true : false;
         }
         else {
-            this.issueActive = true;
+            this.issueInactive = false;
         }
         this.userProvider.getAllUser()
             .subscribe(function (u) {
@@ -1273,7 +1285,7 @@ var PersonaPage = /** @class */ (function () {
     };
     PersonaPage.prototype.selectAssignee = function () {
         var _this = this;
-        if (this.issueActive) {
+        if (!this.issueInactive) {
             this.alertCtrl.create({
                 title: 'Asignar a',
                 inputs: this.assignees,
@@ -1289,7 +1301,7 @@ var PersonaPage = /** @class */ (function () {
     };
     PersonaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-persona',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/'<ion-content padding>\n\n  <ion-item>\n    <ion-label stacked>Creado por</ion-label>\n    <ion-input type="text" [(ngModel)]="reporter" [readonly]="true" ></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Asignado a</ion-label>\n    <ion-input type="text" [(ngModel)]="assignee" [readonly]="true" (click)="selectAssignee()"></ion-input>\n  </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/,
+            selector: 'page-persona',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/'<ion-content padding>\n\n  <ion-item>\n    <ion-label stacked>Creado por</ion-label>\n    <ion-input type="text" [(ngModel)]="reporter" [disabled]="true"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Asignado a</ion-label>\n    <ion-input type="text" [(ngModel)]="assignee" [disabled]="issueInactive" (click)="selectAssignee()"></ion-input>\n  </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1330,16 +1342,16 @@ var FechasPage = /** @class */ (function () {
         this.navParams = navParams;
         this.issueProvider = issueProvider;
         this.update = this.navParams.data;
-        this.createdDate = new Date(this.issueProvider.issue.created).toISOString();
-        this.updatedDate = new Date(this.issueProvider.issue.updated).toISOString();
-        // if(this.update){
-        //   this.createdDate = new Date(this.issueProvider.issue.created).toISOString();
-        //   this.updatedDate = new Date(this.issueProvider.issue.updated).toISOString();
-        //   // this.resolvedDate = new Date(this.issueProvider.issue.resolved).toISOString();
-        // }else{
-        //   this.createdDate = new Date().toISOString();
-        //   this.updatedDate = new Date().toISOString();
-        // }
+        if (this.update) {
+            this.createdDate = new Date(this.issueProvider.issue.created).toISOString();
+            this.updatedDate = new Date(this.issueProvider.issue.updated).toISOString();
+            if (this.issueProvider.issue.resolved != null)
+                this.resolvedDate = new Date(this.issueProvider.issue.resolved).toISOString();
+        }
+        else {
+            this.createdDate = new Date().toISOString();
+            this.updatedDate = new Date().toISOString();
+        }
     }
     FechasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -3288,7 +3300,7 @@ var SprintPage = /** @class */ (function () {
     };
     SprintPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sprint',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n      <div class="sprint-range" *ngIf=\'!create\'>\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n      <div class="sprint-range" *ngIf=\'create\'>\n        Crear Sprint\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngIf="!create">\n    <ion-list>\n      <ion-item *ngFor="let issue of issues, let i = index">\n        <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n        <div (click)="openDetail(issue)">\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </div>\n        <button icon-only (click)="presentPopover($event, issue)" item-end class="more">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-item>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-fab>\n  </div>\n\n  <div *ngIf="create">\n\n    <ion-item>\n      <ion-label>Desde</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="from"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Hasta</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="to"></ion-datetime>\n    </ion-item>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/,
+            selector: 'page-sprint',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n      <div class="sprint-range" *ngIf=\'!create\'>\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n      <div class="sprint-range" *ngIf=\'create\'>\n        Crear Sprint\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngIf="!create">\n    <ion-list>\n      <ion-item *ngFor="let issue of issues, let i = index">\n        <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n        <div (click)="openDetail(issue)">\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </div>\n        <button icon-only (click)="presentPopover($event, issue)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-item>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-fab>\n  </div>\n\n  <div *ngIf="create">\n\n    <ion-item>\n      <ion-label>Desde</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="from"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Hasta</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="to"></ion-datetime>\n    </ion-item>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -3509,9 +3521,12 @@ var PerfilPage = /** @class */ (function () {
         });
     }
     PerfilPage.prototype.ionViewCanEnter = function () { };
+    PerfilPage.prototype.accept = function () {
+        console.log("Cambiar");
+    };
     PerfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-perfil',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mi perfil</ion-title>\n\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only>\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Rol</ion-label>\n    <ion-input type="text" [(ngModel)]="role"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email"></ion-input>\n  </ion-item>\n\n  <ion-item *ngIf="!isNetwork">\n    <ion-label floating>Password</ion-label>\n    <ion-input type="text" [(ngModel)]="password"></ion-input>\n  </ion-item>\n    \n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/,
+            selector: 'page-perfil',template:/*ion-inline-start:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mi perfil</ion-title>\n\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="accept()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Rol</ion-label>\n    <ion-input type="text" [(ngModel)]="role" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item *ngIf="!isNetwork">\n    <ion-label floating>Password</ion-label>\n    <ion-input type="text" [(ngModel)]="password"></ion-input>\n  </ion-item>\n    \n</ion-content>'/*ion-inline-end:"/Users/leandro/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],

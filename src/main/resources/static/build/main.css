@@ -28612,62 +28612,32 @@ page-home .option-group {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-page-home .scroll-content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  padding-top: 3rem;
-}
-
-page-home .backlog {
-  background: red;
-}
-
-page-home .content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin: 1rem 0;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
-page-home .avatar {
+page-home .content {
+  display: inline-block;
+  text-align: center;
+}
+
+page-home .avatar1 {
   border-radius: 20px;
-  width: 20vw;
-  height: 20vw;
+  width: 85px;
+  height: 85px;
   background: white;
   color: #324d85;
   font-size: 2.5rem;
@@ -28688,7 +28658,7 @@ page-home .avatar {
   margin: 1.2rem;
 }
 
-page-home .avatar-text {
+page-home .avatar1-text {
   background: transparent;
   color: #ffffff;
   font-weight: bolder;
@@ -28720,6 +28690,20 @@ page-home .config {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-home .avatar1 {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .avatar1 {
+    width: 100px !important;
+    height: 100px !important;
+  }
 }
 
 page-issue textarea {
