@@ -31,6 +31,6 @@ public class DailyMapper {
             items.add(new DailyItemDTO(item.getFirstName(), item.getLastName(), item.getUserName(), item.getAvatar(), item.getYesterday(), item.getToday()));
         });
 
-        return new DailyDTO(daily.getFirstName(), daily.getLastName(), daily.getUserName(), daily.getAvatar(), new DateDTO(daily.getCreatedAt().getDayOfMonth(), daily.getCreatedAt().getDayOfWeek(), daily.getCreatedAt().getDayOfYear(), daily.getCreatedAt().getMonth(), daily.getCreatedAt().getMonthValue(), daily.getCreatedAt().getYear()), items);
+        return new DailyDTO(daily.getId(),daily.getFirstName(), daily.getLastName(), daily.getUserName(), daily.getAvatar(), new DateDTO(daily.getCreatedAt().getDayOfMonth(), daily.getCreatedAt().getDayOfWeek(), daily.getCreatedAt().getDayOfYear(), daily.getCreatedAt().getMonth(), daily.getCreatedAt().getMonthValue(), daily.getCreatedAt().getYear()), items);
     }
 }

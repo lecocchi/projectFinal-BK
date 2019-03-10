@@ -30,6 +30,9 @@ public class DailyItem {
     @Convert(converter= Jsr310JpaConverters.LocalDateConverter.class)
     private LocalDate createdAt;
 
+    @Column(name = "daily_id")
+    private Long dailyId;
+
     public DailyItem(String firstName, String lastName, String userName, String avatar, String yesterday, String today, LocalDate createdAt) {
         this.firstName = firstName;
         this.lastName = lastName;

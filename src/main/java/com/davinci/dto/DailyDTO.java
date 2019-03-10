@@ -20,6 +20,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DailyDTO {
 
+	@JsonProperty("id")
+	private Long id;
 	@JsonProperty("firstName")
 	private String firstName;
 	@JsonProperty("lastName")

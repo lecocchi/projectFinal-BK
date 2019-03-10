@@ -67,4 +67,5 @@ public class UserController {
     public ResponseEntity<?> changePassword(@RequestBody final ChangePassword changePassword){
         return ResponseEntity.ok(userService.changePassword(changePassword));
     }
+
 }

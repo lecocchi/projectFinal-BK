@@ -65,6 +65,7 @@ public class UserService {
                     u.setRol(user.getRol());
                     u.setUpdated(new Date());
                     u.setUserName(user.getUserName());
+                    u.setIsNetwork(user.getIsNetwork());
                     return this.userRepository.save(u);
                 })
                 .orElseThrow(() -> new RuntimeException("No Exists User"));
