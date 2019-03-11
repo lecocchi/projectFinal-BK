@@ -28,7 +28,7 @@ public class DailyMapper {
         List<DailyItemDTO> items = new ArrayList<>();
 
         daily.getItems().stream().forEach( item ->{
-            items.add(new DailyItemDTO(item.getFirstName(), item.getLastName(), item.getUserName(), item.getAvatar(), item.getYesterday(), item.getToday()));
+            items.add(new DailyItemDTO(item.getFirstName(), item.getLastName(), item.getUserName(), item.getAvatar(),item.getToday(),item.getYesterday()));
         });
 
         return new DailyDTO(daily.getId(),daily.getFirstName(), daily.getLastName(), daily.getUserName(), daily.getAvatar(), new DateDTO(daily.getCreatedAt().getDayOfMonth(), daily.getCreatedAt().getDayOfWeek(), daily.getCreatedAt().getDayOfYear(), daily.getCreatedAt().getMonth(), daily.getCreatedAt().getMonthValue(), daily.getCreatedAt().getYear()), items);
