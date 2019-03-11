@@ -78,7 +78,6 @@ public class UserService {
                 .orElseThrow(()-> new LoginErrorException("Error to try login with user: " + userName + " and password: " + password));
     }
 
-
     public User changePassword(ChangePassword changePassword){
         Optional<User> userOptional = userRepository.findByEmail(changePassword.getEmail());
 
@@ -89,5 +88,14 @@ public class UserService {
                 }))
                 .orElseThrow(()-> new UserNotFoundException("No se ha encontrado al usuario para cambiar la contraseña"))
         );
+    }
+
+    public User loginGooglePlus(final String email){
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        userOptional.orElseThrow(()->new UserNotFoundException("Usuario no registrado"));
+
+        return userOptional.get();
+
     }
 }

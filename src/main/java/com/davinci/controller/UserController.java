@@ -3,6 +3,7 @@ package com.davinci.controller;
 import com.davinci.dto.ChangePassword;
 import com.davinci.model.User;
 import com.davinci.model.UserLogin;
+import com.davinci.model.UserLoginGooglePlus;
 import com.davinci.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,6 +67,11 @@ public class UserController {
     @PatchMapping("password")
     public ResponseEntity<?> changePassword(@RequestBody final ChangePassword changePassword){
         return ResponseEntity.ok(userService.changePassword(changePassword));
+    }
+
+    @PostMapping("google-plus")
+    public ResponseEntity<?> loginGooglePlus(@RequestBody UserLoginGooglePlus userLoginGooglePlus){
+        return ResponseEntity.ok(userService.loginGooglePlus(userLoginGooglePlus.getEmail()));
     }
 
 }
