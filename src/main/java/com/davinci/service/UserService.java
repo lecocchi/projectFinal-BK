@@ -91,7 +91,7 @@ public class UserService {
     }
 
     public User loginGooglePlus(final String email){
-        Optional<User> userOptional = userRepository.findByEmail(email);
+        Optional<User> userOptional = userRepository.findByEmailAndIsNetworkIsTrue(email);
 
         userOptional.orElseThrow(()->new UserNotFoundException("Usuario no registrado"));
 
