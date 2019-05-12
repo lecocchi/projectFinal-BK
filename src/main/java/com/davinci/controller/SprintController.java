@@ -83,4 +83,9 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getVelocityChart());
     }
 
+    @GetMapping("sprint-report")
+    public ResponseEntity<?> getSprintReport(){
+        return ResponseEntity.ok(sprintService.getSprintReport());
+    }
+
 }

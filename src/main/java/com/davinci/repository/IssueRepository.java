@@ -24,5 +24,7 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
     @Query(value = "SELECT * FROM issue  WHERE (STATE != 'Finalizado' or STATE is null) and ID_SPRINT = :sprintId", nativeQuery = true)
     List<Issue> findAllIssuesNotFinishBySprintId(@Param("sprintId") Integer sprintId);
 
+    @Query(value = "SELECT * FROM issue WHERE ID_SPRINT =  ?1", nativeQuery = true)
+    List<Issue> getIssueBySprintId(int id);
 
 }

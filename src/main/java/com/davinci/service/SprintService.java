@@ -1,7 +1,9 @@
 package com.davinci.service;
 
+import com.davinci.dto.SprintReport;
 import com.davinci.dto.Velocity;
 import com.davinci.exceptions.ErrorException;
+import com.davinci.model.Issue;
 import com.davinci.model.Location;
 import com.davinci.model.Sprint;
 import com.davinci.repository.IssueRepository;
@@ -22,6 +24,8 @@ public class SprintService {
     private IssueRepository issueRepository;
     private LocationRepository locationRepository;
     private List<Velocity> velocityChart;
+    private List<SprintReport> sprintReports;
+    private List<Issue> issues;
 
     @Autowired
     public SprintService(SprintRepository sprintRepository,
@@ -104,6 +108,20 @@ public class SprintService {
                     velocityChart.add(new Velocity(sprint.getName(), sprintRepository.getStoryPointBySprint(sprint.getId())));
                 });
         return velocityChart;
+    }
+
+    public List<SprintReport> getSprintReport(){
+
+        sprintReports = new ArrayList<>();
+
+        sprintRepository.findAll().stream()
+                .forEach(sprint -> {
+                    issues = new ArrayList<>();
+                    issueRepository.getIssueBySprintId(sprint.getId()).stream().forEach(issue -> issues.add(issue));
+
+                    sprintReports.add(new SprintReport(sprint.getName(), issues));
+                });
+        return sprintReports;
     }
 
 }
