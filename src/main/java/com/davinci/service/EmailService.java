@@ -68,7 +68,7 @@ public class EmailService {
             mimeMessage.setContent(htmlMsg.toString(), "text/html");
             helper.setTo(to);
             helper.setSubject("Daily correspondiente al día " + dateDaily);
-            helper.setFrom("leju1712@gmail.com");
+            helper.setFrom("leandro.cocchi@hotmail.com");
 
             LOGGER.info("Daily correspondiente al día " + dateDaily);
 
