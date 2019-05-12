@@ -1,6 +1,6 @@
 package com.davinci.service;
 
-import com.davinci.dto.SprintDTO;
+import com.davinci.dto.Velocity;
 import com.davinci.exceptions.ErrorException;
 import com.davinci.model.Location;
 import com.davinci.model.Sprint;
@@ -8,9 +8,9 @@ import com.davinci.repository.IssueRepository;
 import com.davinci.repository.LocationRepository;
 import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +21,7 @@ public class SprintService {
     private SprintRepository sprintRepository;
     private IssueRepository issueRepository;
     private LocationRepository locationRepository;
+    private List<Velocity> velocityChart;
 
     @Autowired
     public SprintService(SprintRepository sprintRepository,
@@ -92,6 +93,17 @@ public class SprintService {
 
     public Location saveLocation(Location location){
         return locationRepository.save(location);
+    }
+
+    public List<Velocity> getVelocityChart(){
+
+        velocityChart = new ArrayList<>();
+
+        sprintRepository.findAll().stream()
+                .forEach(sprint -> {
+                    velocityChart.add(new Velocity(sprint.getName(), sprintRepository.getStoryPointBySprint(sprint.getId())));
+                });
+        return velocityChart;
     }
 
 }

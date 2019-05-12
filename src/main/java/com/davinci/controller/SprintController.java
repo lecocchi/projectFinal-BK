@@ -78,4 +78,9 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.saveLocation(location));
     }
 
+    @GetMapping("velocity")
+    public ResponseEntity<?> getVelocityChart(){
+        return ResponseEntity.ok(sprintService.getVelocityChart());
+    }
+
 }
