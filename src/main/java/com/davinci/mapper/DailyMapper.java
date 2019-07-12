@@ -20,7 +20,7 @@ public class DailyMapper {
             items.add(new DailyItem(item.getFirstName(), item.getLastName(), item.getUserName(), item.getAvatar(), item.getYesterday(), item.getToday(), LocalDate.now()));
         });
 
-        return new Daily(dailyDTO.getFirstName(), dailyDTO.getLastName(), dailyDTO.getUserName(), dailyDTO.getAvatar(), LocalDate.now(), items);
+        return new Daily(dailyDTO.getFirstName(), dailyDTO.getLastName(), dailyDTO.getUserName(), dailyDTO.getAvatar(), LocalDate.now(), items, dailyDTO.getSprint());
     }
 
     public static DailyDTO from(Daily daily){
@@ -31,6 +31,6 @@ public class DailyMapper {
             items.add(new DailyItemDTO(item.getFirstName(), item.getLastName(), item.getUserName(), item.getAvatar(),item.getToday(),item.getYesterday()));
         });
 
-        return new DailyDTO(daily.getId(),daily.getFirstName(), daily.getLastName(), daily.getUserName(), daily.getAvatar(), new DateDTO(daily.getCreatedAt().getDayOfMonth(), daily.getCreatedAt().getDayOfWeek(), daily.getCreatedAt().getDayOfYear(), daily.getCreatedAt().getMonth(), daily.getCreatedAt().getMonthValue(), daily.getCreatedAt().getYear()), items);
+        return new DailyDTO(daily.getId(),daily.getFirstName(), daily.getLastName(), daily.getUserName(), daily.getAvatar(), new DateDTO(daily.getCreatedAt().getDayOfMonth(), daily.getCreatedAt().getDayOfWeek(), daily.getCreatedAt().getDayOfYear(), daily.getCreatedAt().getMonth(), daily.getCreatedAt().getMonthValue(), daily.getCreatedAt().getYear()), items, daily.getSprint());
     }
 }

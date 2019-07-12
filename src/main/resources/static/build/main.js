@@ -13,7 +13,7 @@ webpackJsonp([1],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fechas_fechas__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__comentarios_comentarios__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_utils_utils__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,6 +55,7 @@ var IssuePage = /** @class */ (function () {
             this.cleanIssue();
             this.issueProvider.issue.id = null;
             this.issueInactive = false;
+            this.issueProvider.issue.backlog = this.backlog;
             this.storage.get('firstName').then(function (f) {
                 _this.firstName = f;
                 _this.storage.get('lastName').then(function (l) {
@@ -116,7 +117,7 @@ var IssuePage = /** @class */ (function () {
     };
     IssuePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-issue',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/issue/issue.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ titleNavBar }}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="!issueInactive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-tabs class="tabs">\n  <ion-tab [root]="tab1" tabTitle="Detalles" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab2" tabTitle="Personas" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab3" tabTitle="Fechas" [rootParams]="update"></ion-tab>\n  <!--<ion-tab [root]="tab4" tabTitle="Comentarios"></ion-tab>-->\n</ion-tabs>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/issue/issue.html"*/,
+            selector: 'page-issue',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ titleNavBar }}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="!issueInactive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-tabs class="tabs">\n  <ion-tab [root]="tab1" tabTitle="Detalles" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab2" tabTitle="Personas" [rootParams]="update"></ion-tab>\n  <ion-tab [root]="tab3" tabTitle="Fechas" [rootParams]="update"></ion-tab>\n  <!--<ion-tab [root]="tab4" tabTitle="Comentarios"></ion-tab>-->\n</ion-tabs>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/issue/issue.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -522,7 +523,7 @@ var VersionsPage = /** @class */ (function () {
     };
     VersionsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-versions',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/versions/versions.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Versiones</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let version of versions" (click)="itemSelected(version)">\n      <h2 class="name">{{ version.name }}</h2>\n      <p>{{ version.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(versionDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/versions/versions.html"*/,
+            selector: 'page-versions',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/versions/versions.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Versiones</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let version of versions" (click)="itemSelected(version)">\n      <h2 class="name">{{ version.name }}</h2>\n      <p>{{ version.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(versionDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/versions/versions.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_versions_versions__["a" /* VersionsProvider */]])
     ], VersionsPage);
@@ -719,7 +720,7 @@ var ReportsPage = /** @class */ (function () {
     };
     ReportsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reports',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/reports/reports.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Reportes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div class="container">\n    <button ion-button round (click)="goToPage(velocityPage)" class="velocity">Velocity Chart</button>\n    <button ion-button round (click)="goToPage(sprintReportPage)" class="report">Sprint Report</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/reports/reports.html"*/,
+            selector: 'page-reports',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/reports/reports.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Reportes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div class="container">\n    <button ion-button round (click)="goToPage(velocityPage)" class="velocity">Velocity Chart</button>\n    <button ion-button round (click)="goToPage(sprintReportPage)" class="report">Sprint Report</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/reports/reports.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ReportsPage);
@@ -779,7 +780,7 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VelocityPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(70);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -810,7 +811,7 @@ var VelocityPage = /** @class */ (function () {
     };
     VelocityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-velocity',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/velocity/velocity.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Velocity Chart</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <table>\n        <tr>\n          <th>Sprint</th>\n          <th>Story Points</th>\n        </tr>\n        <tr *ngFor="let velocity of velocities">\n          <td>{{velocity.sprint}}</td>\n          <td>{{velocity.story}}</td>\n        </tr>\n      </table>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/velocity/velocity.html"*/,
+            selector: 'page-velocity',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/velocity/velocity.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Velocity Chart</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <table>\n        <tr>\n          <th>Sprint</th>\n          <th>Story Points</th>\n        </tr>\n        <tr *ngFor="let velocity of velocities">\n          <td>{{velocity.sprint}}</td>\n          <td>{{velocity.story}}</td>\n        </tr>\n      </table>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/velocity/velocity.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */]])
     ], VelocityPage);
@@ -828,7 +829,7 @@ var VelocityPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SprintReportPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__issue_issue__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -862,7 +863,7 @@ var SprintReportPage = /** @class */ (function () {
     };
     SprintReportPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sprint-report',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprint-report/sprint-report.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Sprint Report</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let report of sprintReports">\n    <ion-list-header>\n      {{report.sprint}}\n    </ion-list-header>\n    <ion-item *ngFor="let issue of report.issues">\n      <div>\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n    </ion-item>\n    <br>\n    <br>\n    <br>\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprint-report/sprint-report.html"*/,
+            selector: 'page-sprint-report',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprint-report/sprint-report.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Sprint Report</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let report of sprintReports">\n    <ion-list-header>\n      {{report.sprint}}\n    </ion-list-header>\n    <ion-item *ngFor="let issue of report.issues">\n      <div>\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n    </ion-item>\n    <br>\n    <br>\n    <br>\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprint-report/sprint-report.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */]])
     ], SprintReportPage);
@@ -916,8 +917,6 @@ var DetallePage = /** @class */ (function () {
         this.estimatedList = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
         this.update = this.navParams.data;
         if (this.update) {
-            this.issueInactive = (this.issueProvider.issue.state === 'FINALIZADO') ? true : false;
-            this.disabledState = this.issueInactive || this.issueProvider.issue.backlog;
             this.issueProvider.issueToUpdate = this.issueProvider.issue;
             this.title = this.issueProvider.issue.title;
             this.description = this.issueProvider.issue.description;
@@ -925,18 +924,15 @@ var DetallePage = /** @class */ (function () {
             this.priority = this.issueProvider.issue.priority;
             this.version = this.issueProvider.issue.version;
             this.estimated = this.issueProvider.issue.estimated;
+            this.issueInactive = this.issueProvider.issue.state === 'FINALIZADO' ? true : false;
+            this.disabledState = this.issueInactive || this.issueProvider.issue.backlog;
         }
         else {
             this.issueInactive = false;
             this.state = 'CREADO';
             this.issueProvider.issue.state = this.state;
-            this.disabledState = true;
+            this.disabledState = this.issueProvider.issue.backlog;
         }
-        // var i:number = 0;
-        //
-        // for (i ; i < 50 ; i ++){
-        //   this.estimatedList.push(i);
-        // }
         //STATES
         this.stateProvider.getAllState()
             .subscribe(function (s) {
@@ -991,7 +987,7 @@ var DetallePage = /** @class */ (function () {
     };
     DetallePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detalle',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/detalle/detalle.html"*/'<ion-content padding>\n\n  <ion-list class="title">\n\n    <ion-item>\n      <ion-label floating>Título <span class="required">(requerido)</span></ion-label>\n      <ion-input type="text" [(ngModel)]= \'title\' (ionChange)="changeTitle($event)" [disabled]="issueInactive"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Descripción</ion-label>\n      <ion-textarea  class="area" [(ngModel)]=\'description\' (ionChange)="changeDescription($event)" [disabled]="issueInactive"></ion-textarea>\n    </ion-item>\n\n  </ion-list>\n  <ion-item>\n    <ion-label>Prioridad</ion-label>\n    <ion-select [(ngModel)]="priority" [disabled]="issueInactive" (ionChange)="onChangePriority($event)">\n      <ion-option  *ngFor="let priority of priorities" [value]=priority.value>{{priority.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n\n  <ion-item>\n    <ion-label>Estado</ion-label>\n    <ion-select [(ngModel)]="state" [disabled]="disabledState" (ionChange)="onChangeState($event)">\n      <ion-option  *ngFor="let state of states" [value]=state.value>{{state.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n\n  <ion-item>\n    <ion-label>Versión</ion-label>\n    <ion-select [(ngModel)]="version" [disabled]="issueInactive" (ionChange)="onChangeVersion($event)">\n      <ion-option  *ngFor="let version of versions" [value]=version.value>{{version.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Estimación</ion-label>\n    <ion-select [(ngModel)]="estimated" [disabled]="issueInactive" (ionChange)="onChangeEstimated($event)">\n      <ion-option  *ngFor="let estimated of estimatedList" [value]=estimated>{{estimated}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n</ion-content>estimated\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/detalle/detalle.html"*/,
+            selector: 'page-detalle',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/'<ion-content padding>\n\n  <ion-list class="title">\n\n    <ion-item>\n      <ion-label floating>Título <span class="required">(requerido)</span></ion-label>\n      <ion-input type="text" [(ngModel)]= \'title\' (ionChange)="changeTitle($event)" [disabled]="issueInactive"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Descripción</ion-label>\n      <ion-textarea  class="area" [(ngModel)]=\'description\' (ionChange)="changeDescription($event)" [disabled]="issueInactive"></ion-textarea>\n    </ion-item>\n\n  </ion-list>\n  <ion-item>\n    <ion-label>Prioridad</ion-label>\n    <ion-select [(ngModel)]="priority" [disabled]="issueInactive" (ionChange)="onChangePriority($event)">\n      <ion-option  *ngFor="let priority of priorities" [value]=priority.value>{{priority.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n\n  <ion-item>\n    <ion-label>Estado</ion-label>\n    <ion-select [(ngModel)]="state" [disabled]="disabledState" (ionChange)="onChangeState($event)">\n      <ion-option  *ngFor="let state of states" [value]=state.value>{{state.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n\n  <ion-item>\n    <ion-label>Versión</ion-label>\n    <ion-select [(ngModel)]="version" [disabled]="issueInactive" (ionChange)="onChangeVersion($event)">\n      <ion-option  *ngFor="let version of versions" [value]=version.value>{{version.value}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Estimación</ion-label>\n    <ion-select [(ngModel)]="estimated" [disabled]="issueInactive" (ionChange)="onChangeEstimated($event)">\n      <ion-option  *ngFor="let estimated of estimatedList" [value]=estimated>{{estimated}}</ion-option>\n    </ion-select>\n  </ion-item>\n\n</ion-content>estimated\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/detalle/detalle.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_state_state__["a" /* StateProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_priority_priority__["a" /* PrioritiesProvider */],
@@ -1013,7 +1009,7 @@ var DetallePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1045,7 +1041,7 @@ var PersonaPage = /** @class */ (function () {
         }
         else {
             this.issueInactive = false;
-            this.disabledAssignee = true;
+            this.disabledAssignee = this.issueProvider.issue.backlog;
         }
         this.userProvider.getAllUser()
             .subscribe(function (u) {
@@ -1066,7 +1062,7 @@ var PersonaPage = /** @class */ (function () {
     };
     PersonaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-persona',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/persona/persona.html"*/'<ion-content padding>\n\n  <ion-item>\n    <ion-label stacked>Creado por</ion-label>\n    <ion-input type="text" [(ngModel)]="reporter" [disabled]="true"></ion-input>\n  </ion-item>\n\n  <!-- <ion-item>\n    <ion-label stacked>Asignado a</ion-label>\n    <ion-input type="text" [(ngModel)]="assignee" [disabled]="issueInactive" (click)="selectAssignee()"></ion-input>\n  </ion-item> -->\n\n  <ion-item>\n      <ion-label>Asignado a</ion-label>\n      <ion-select [(ngModel)]="assignee" [disabled]="disabledAssignee" (ionChange)="onChangeAssignee($event)">\n        <ion-option  *ngFor="let assignee of assignees" [value]=assignee.value>{{assignee.value}}</ion-option>\n      </ion-select>\n    </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/persona/persona.html"*/,
+            selector: 'page-persona',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/'<ion-content padding>\n\n  <ion-item>\n    <ion-label stacked>Creado por</ion-label>\n    <ion-input type="text" [(ngModel)]="reporter" [disabled]="true"></ion-input>\n  </ion-item>\n\n  <!-- <ion-item>\n    <ion-label stacked>Asignado a</ion-label>\n    <ion-input type="text" [(ngModel)]="assignee" [disabled]="issueInactive" (click)="selectAssignee()"></ion-input>\n  </ion-item> -->\n\n  <ion-item>\n      <ion-label>Asignado a</ion-label>\n      <ion-select [(ngModel)]="assignee" [disabled]="disabledAssignee" (ionChange)="onChangeAssignee($event)">\n        <ion-option  *ngFor="let assignee of assignees" [value]=assignee.value>{{assignee.value}}</ion-option>\n      </ion-select>\n    </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/persona/persona.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1120,7 +1116,7 @@ var FechasPage = /** @class */ (function () {
     }
     FechasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fechas',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/fechas/fechas.html"*/'<ion-content padding>\n  <ion-item>\n    <ion-label>Creado</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="createdDate" disabled></ion-datetime>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Última Modificación</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="updatedDate" disabled></ion-datetime>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Resuelto</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="resolvedDate" disabled></ion-datetime>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/fechas/fechas.html"*/,
+            selector: 'page-fechas',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/fechas/fechas.html"*/'<ion-content padding>\n  <ion-item>\n    <ion-label>Creado</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="createdDate" disabled></ion-datetime>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Última Modificación</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="updatedDate" disabled></ion-datetime>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Resuelto</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="resolvedDate" disabled></ion-datetime>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/fechas/fechas.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */]])
@@ -1165,7 +1161,7 @@ var ComentariosPage = /** @class */ (function () {
     };
     ComentariosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-comentarios',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/comentarios/comentarios.html"*/'<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/comentarios/comentarios.html"*/,
+            selector: 'page-comentarios',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/comentarios/comentarios.html"*/'<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/comentarios/comentarios.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ComentariosPage);
@@ -1184,9 +1180,9 @@ var ComentariosPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_plus__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(729);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__);
@@ -1228,7 +1224,6 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.loginForUserAndPass = function () {
         var _this = this;
-        console.log("Click under button login with mail");
         var user = {
             "user_name": this.userName,
             "password": this.password
@@ -1251,13 +1246,20 @@ var LoginPage = /** @class */ (function () {
             _this.storage.set("isNetwork", u.isNetwork);
             _this.navCtrl.push(_this.rootPage, { "rol": u.rol });
         }, function (err) {
-            _this.utilProvider.presentPrompt(err.error.title, err.error.message);
+            // statusText: "Unknown Error"
+            console.log();
+            if (err.statusText === "Unknown Error")
+                _this.utilProvider.presentPrompt("ERROR", "Error al conectarse con el servidor");
+            else
+                _this.utilProvider.presentPrompt(err.error.title, err.error.message);
         });
     };
     LoginPage.prototype.loginGP = function () {
         var _this = this;
         if (this.platform.is('cordova')) {
+            console.log("LOGIN ANDROID");
             this.gp.login({}).then(function (res) {
+                console.log("RESPUESTA LOGIN GOOGLE " + res);
                 var userLoginGooglePlus = {
                     "email": res.email
                 };
@@ -1324,14 +1326,13 @@ var LoginPage = /** @class */ (function () {
                 });
             })
                 .catch(function (err) {
-                console.log(err);
                 _this.utilProvider.presentPrompt("ERROR", "Error al intentar conectarse a google");
             });
         });
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/login/login.html"*/'\n<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title">Iniciar Sesión</h1>\n      <div class="login-body">\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n\n        <section class="login-email">\n          <div class="login-email-title">O con una cuenta de Email</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar Sesión</button>\n        </div>\n\n      </div>\n    </header>\n  </div>\n</ion-content>\n  '/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/'\n<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title">Iniciar Sesión</h1>\n      <div class="login-body">\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n\n        <section class="login-email">\n          <div class="login-email-title">O con una cuenta de Email</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar Sesión</button>\n        </div>\n\n      </div>\n    </header>\n  </div>\n</ion-content>\n  '/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1431,7 +1432,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/home/home.html"*/'<!-- <ion-header>\n  <ion-navbar color=\'primary\' hideBackButton="true" #content>\n    <ion-title>\n      {{ navTitle}}\n    </ion-title>\n  </ion-navbar>\n</ion-header> -->\n\n<ion-content class="background">\n\n  <div class="option-group">\n\n    <div class="content" (click)="goToPage(backlogPage)">\n      <div class="avatar1 backlog">BK</div>\n      <div class="avatar1-text">\n        Backlog\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(SprintsPage)">\n      <div class="avatar1 active-sprint">SP</div>\n      <div class="avatar1-text">\n        Sprints\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(dailyPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 daily">DY</div>\n      <div class="avatar1-text">\n        Daily\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(reportsPage)">\n      <div class="avatar1 report">RE</div>\n      <div class="avatar1-text">\n        Reportes\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(perfilPage)">\n      <div class="avatar1 report">MP</div>\n      <div class="avatar1-text">\n        Mi perfil\n      </div>\n    </div>\n\n    <!-- <div class="content" (click)="goToPage(configPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 config">CF</div>\n      <div class="avatar1-text">\n        Configuración\n      </div>\n    </div> -->\n\n    <div class="content" (click)="goToPage(versionPage)">\n      <div class="avatar1 config">VE</div>\n      <div class="avatar1-text">\n        Versiones\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(usersPage)" *ngIf="rol == 3">\n      <div class="avatar1 config">US</div>\n      <div class="avatar1-text">\n        Usuarios\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/'<!-- <ion-header>\n  <ion-navbar color=\'primary\' hideBackButton="true" #content>\n    <ion-title>\n      {{ navTitle}}\n    </ion-title>\n  </ion-navbar>\n</ion-header> -->\n\n<ion-content class="background">\n\n  <div class="option-group">\n\n    <div class="content" (click)="goToPage(backlogPage)">\n      <div class="avatar1 backlog">BK</div>\n      <div class="avatar1-text">\n        Backlog\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(SprintsPage)">\n      <div class="avatar1 active-sprint">SP</div>\n      <div class="avatar1-text">\n        Sprints\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(dailyPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 daily">DY</div>\n      <div class="avatar1-text">\n        Daily\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(reportsPage)">\n      <div class="avatar1 report">RE</div>\n      <div class="avatar1-text">\n        Reportes\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(perfilPage)">\n      <div class="avatar1 report">MP</div>\n      <div class="avatar1-text">\n        Mi perfil\n      </div>\n    </div>\n\n    <!-- <div class="content" (click)="goToPage(configPage)" *ngIf="rol == 2 || rol == 3">\n      <div class="avatar1 config">CF</div>\n      <div class="avatar1-text">\n        Configuración\n      </div>\n    </div> -->\n\n    <div class="content" (click)="goToPage(versionPage)">\n      <div class="avatar1 config">VE</div>\n      <div class="avatar1-text">\n        Versiones\n      </div>\n    </div>\n\n    <div class="content" (click)="goToPage(usersPage)" *ngIf="rol == 3">\n      <div class="avatar1 config">US</div>\n      <div class="avatar1-text">\n        Usuarios\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1519,7 +1520,7 @@ var BacklogPage = /** @class */ (function () {
     };
     BacklogPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-backlog',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/backlog/backlog.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Backlog</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="lean">\n\n  <ion-list>\n    <ion-item  *ngFor="let issue of issues, let i = index">\n      <ion-avatar item-start>\n        <avatar>{{ issue.reporter.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <div (click)="openDetail(issue)">\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n      <button  icon-only (click)="presentPopover($event, issue.id)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewIssue()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/backlog/backlog.html"*/,
+            selector: 'page-backlog',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Backlog</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="lean">\n\n  <ion-list>\n    <ion-item  *ngFor="let issue of issues, let i = index">\n      <ion-avatar item-start>\n        <avatar>{{ issue.reporter.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <div (click)="openDetail(issue)">\n        <div class="issue-code">SID-{{ issue.id }}</div>\n        <div class="issue-summary">\n          {{ issue.title }}\n        </div>\n      </div>\n      <button  icon-only (click)="presentPopover($event, issue.id)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewIssue()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/backlog/backlog.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_issue_issue__["a" /* IssueProvider */],
@@ -1583,7 +1584,7 @@ var PopoverPage = /** @class */ (function () {
     };
     PopoverPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-popover',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover/popover.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToSprint()">Enviar a Sprint</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>\n\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover/popover.html"*/,
+            selector: 'page-popover',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToSprint()">Enviar a Sprint</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>\n\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover/popover.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */],
@@ -1651,7 +1652,7 @@ var ActiveSprintPage = /** @class */ (function () {
     };
     ActiveSprintPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-active-sprint-tab',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/active-sprint/active-sprint.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Active Sprint</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-spinner name="ios" *ngIf="loading"></ion-spinner>\n\n  <div *ngIf="!loading">\n    <ion-list>\n      <ion-item-sliding *ngFor="let issue of issues, let i = index">\n        <ion-item (click)="openDetail(issue)">\n          <ion-avatar item-start>\n            <img [src]="issue.avatar">\n          </ion-avatar>\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </ion-item>\n        <ion-item-options side="rigth">\n          <button ion-button color="primary">\n            <ion-icon name="text"></ion-icon>\n            Item1\n          </button>\n          <button ion-button color="secondary">\n            <ion-icon name="call"></ion-icon>\n            Item2\n          </button>\n          <button ion-button color="secondary">\n            <ion-icon name="call"></ion-icon>\n            Item3\n          </button>\n        </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/active-sprint/active-sprint.html"*/,
+            selector: 'page-active-sprint-tab',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/active-sprint/active-sprint.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Active Sprint</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-spinner name="ios" *ngIf="loading"></ion-spinner>\n\n  <div *ngIf="!loading">\n    <ion-list>\n      <ion-item-sliding *ngFor="let issue of issues, let i = index">\n        <ion-item (click)="openDetail(issue)">\n          <ion-avatar item-start>\n            <img [src]="issue.avatar">\n          </ion-avatar>\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </ion-item>\n        <ion-item-options side="rigth">\n          <button ion-button color="primary">\n            <ion-icon name="text"></ion-icon>\n            Item1\n          </button>\n          <button ion-button color="secondary">\n            <ion-icon name="call"></ion-icon>\n            Item2\n          </button>\n          <button ion-button color="secondary">\n            <ion-icon name="call"></ion-icon>\n            Item3\n          </button>\n        </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/active-sprint/active-sprint.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */]])
     ], ActiveSprintPage);
@@ -1672,6 +1673,8 @@ var ActiveSprintPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__daily_item_daily_item__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_sprint_sprint__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1686,17 +1689,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DailyPage = /** @class */ (function () {
-    function DailyPage(navCtrl, navParams, dailyProvider, utils, loadingCtrl) {
+    function DailyPage(navCtrl, navParams, dailyProvider, utils, loadingCtrl, sprintProvider, storage) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.dailyProvider = dailyProvider;
         this.utils = utils;
         this.loadingCtrl = loadingCtrl;
+        this.sprintProvider = sprintProvider;
+        this.storage = storage;
         this.dailyItemPage = __WEBPACK_IMPORTED_MODULE_2__daily_item_daily_item__["a" /* DailyItemPage */];
         this.dailies = [];
     }
-    DailyPage.prototype.ionViewCanEnter = function () {
+    DailyPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         var loading = this.loadingCtrl.create({
             spinner: 'ios',
@@ -1714,21 +1721,38 @@ var DailyPage = /** @class */ (function () {
     };
     DailyPage.prototype.createNewDaily = function () {
         var _this = this;
-        this.dailyProvider.isThereDailyToday()
-            .subscribe(function (isThereDaily) {
-            if (isThereDaily) {
-                _this.utils.presentToast("Ya existe una daily activa para el día de hoy");
-            }
-            else {
-                var daily = {
-                    "firstName": "Leandro",
-                    "lastName": "Cocchi",
-                    "userName": "lecocchi",
-                    "daily_items": []
-                };
-                _this.dailyProvider.daily = daily;
-                _this.navCtrl.push(_this.dailyItemPage);
-            }
+        this.sprintProvider.sprintActive()
+            .subscribe(function (s) {
+            _this.activeSprint = s.id;
+            _this.dailyProvider.isThereDailyToday()
+                .subscribe(function (isThereDaily) {
+                if (isThereDaily) {
+                    _this.utils.presentToast("Ya existe una daily activa para el día de hoy");
+                }
+                else {
+                    _this.storage.get("firstName").then(function (f) {
+                        _this.firstName = f;
+                        _this.storage.get("lastName").then(function (l) {
+                            _this.lastName = l;
+                            _this.storage.get("userName").then(function (u) {
+                                _this.userName = u;
+                                var daily = {
+                                    "firstName": _this.firstName,
+                                    "lastName": _this.lastName,
+                                    "userName": _this.userName,
+                                    "daily_items": [],
+                                    "sprint": s.id
+                                };
+                                _this.dailyProvider.daily = daily;
+                                _this.navCtrl.push(_this.dailyItemPage);
+                            });
+                        });
+                    });
+                }
+            });
+        }, function (err) {
+            _this.utils.presentPrompt("ERROR", "Para crear una daily tiene que existir un Sprint Activo");
+            // this.utils.presentPrompt(err.error.title, err.error.message);
         });
     };
     DailyPage.prototype.openDetail = function (daily) {
@@ -1747,11 +1771,13 @@ var DailyPage = /** @class */ (function () {
     };
     DailyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-daily-tab',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily/daily.html"*/'<ion-header>\n  <ion-navbar color=\'primary\'>\n    <ion-title>Dailies</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let daily of dailies">\n      <ion-avatar item-start>\n        <avatar>{{ daily.created_at.dayOfWeek.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <h2 class="date" (click)="openDetail(daily)">{{daily.created_at | formatDate}}</h2>\n\n      <button  icon-only (click)="sendMail(daily.id)" item-end class="send">\n          <ion-icon name="send" *ngIf="false"></ion-icon>\n        </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewDaily()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily/daily.html"*/
+            selector: 'page-daily-tab',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/'<ion-header>\n  <ion-navbar color=\'primary\'>\n    <ion-title>Dailies</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let daily of dailies" (click)="openDetail(daily)">\n      <ion-avatar item-start>\n        <avatar *ngIf="daily.created_at != undefined">{{ daily.created_at.dayOfWeek.substring(0,1) | uppercase }}</avatar>\n      </ion-avatar>\n      <h2 class="date">{{daily.created_at | formatDate}}</h2>\n      <h3 class="sprint">Sprint {{ daily.sprint }}</h3>\n\n      <button  icon-only (click)="sendMail(daily.id)" item-end class="send">\n          <ion-icon name="send" *ngIf="false"></ion-icon>\n        </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewDaily()">\n    <button ion-fab><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__["a" /* DailyProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__["a" /* UtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_sprint_sprint__["a" /* SprintProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]])
     ], DailyPage);
     return DailyPage;
 }());
@@ -1798,6 +1824,7 @@ var DailyItemPage = /** @class */ (function () {
         this.utils = utils;
         this.members = [];
         this.members = this.dailyProvider.daily.daily_items;
+        this.sprint = this.dailyProvider.daily.sprint;
         if (this.dailyProvider.daily.created_at == undefined) {
             this.dateProvider.now()
                 .subscribe(function (date) {
@@ -1840,7 +1867,7 @@ var DailyItemPage = /** @class */ (function () {
     };
     DailyItemPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-daily-item',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily-item/daily-item.html"*/'<ion-header>\n\n    <ion-navbar color=\'primary\'>\n      <ion-title>Daily</ion-title>\n      <div class="daily-date">{{dailyCreated | formatDate}}</div>\n      <ion-buttons end>\n        <button ion-button icon-only (click)="createDaily()" *ngIf="dailyActive">\n          <ion-icon name="checkmark" class="accept"></ion-icon>\n        </button>\n      </ion-buttons>\n\n      <ion-buttons end>\n        <button ion-button icon-only (click)="cancel()">\n          <ion-icon name="close" class="cancel"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let member of members, let i = index" (click)=\'push(member)\' class="items">\n\n            <ion-avatar item-start >\n              <avatar>{{member.firstName.substring(0,1) | uppercase }}</avatar>\n            </ion-avatar>\n\n            <div class="name">{{member.firstName}} {{member.lastName}}  </div>\n\n            <div class="content">\n                <div class="day">\n                    <span class="active" *ngIf="member.yesterday.length > 0">Ayer</span>\n                    <span class="inactive" *ngIf="member.yesterday.length == 0">Ayer</span>\n                </div>\n                <div class="day">\n                    <span class="active" *ngIf="member.today.length > 0">Hoy</span>\n                    <span class="inactive" *ngIf="member.today.length == 0">Hoy</span>\n                </div>\n            </div>\n        </ion-item>\n    </ion-list>\n\n\n    <ion-fab bottom right (click)="pushFilter()" *ngIf="dailyActive">\n      <button ion-fab><ion-icon name="add"></ion-icon></button>\n    </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily-item/daily-item.html"*/,
+            selector: 'page-daily-item',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily-item/daily-item.html"*/'<ion-header>\n\n    <ion-navbar color=\'primary\'>\n      <ion-title>Daily    \n        <span class="sprint">(Sprint {{sprint}})</span>\n      </ion-title>\n      <div class="daily-date">{{dailyCreated | formatDate}}</div>\n      <ion-buttons end>\n        <button ion-button icon-only (click)="createDaily()" *ngIf="dailyActive">\n          <ion-icon name="checkmark" class="accept"></ion-icon>\n        </button>\n      </ion-buttons>\n\n      <ion-buttons end>\n        <button ion-button icon-only (click)="cancel()">\n          <ion-icon name="close" class="cancel"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let member of members, let i = index" (click)=\'push(member)\' class="items">\n\n            <ion-avatar item-start >\n              <avatar>{{member.firstName.substring(0,1) | uppercase }}</avatar>\n            </ion-avatar>\n\n            <div class="name">{{member.firstName}} {{member.lastName}}  </div>\n\n            <div class="content">\n                <div class="day">\n                    <span class="active" *ngIf="member.yesterday.length > 0">Ayer</span>\n                    <span class="inactive" *ngIf="member.yesterday.length == 0">Ayer</span>\n                </div>\n                <div class="day">\n                    <span class="active" *ngIf="member.today.length > 0">Hoy</span>\n                    <span class="inactive" *ngIf="member.today.length == 0">Hoy</span>\n                </div>\n            </div>\n        </ion-item>\n    </ion-list>\n\n\n    <ion-fab bottom right (click)="pushFilter()" *ngIf="dailyActive">\n      <button ion-fab><ion-icon name="person-add"></ion-icon></button>\n    </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily-item/daily-item.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__["a" /* DailyProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_date_date__["a" /* DateProvider */],
@@ -1916,7 +1943,7 @@ var DailyDescriptionPage = /** @class */ (function () {
     };
     DailyDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-daily-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily-description/daily-description.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Descripción</ion-title>\n    <div class="member">{{member.firstName}} {{member.lastName}}</div>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="dailyActive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label color="primary" stacked>Ayer</ion-label>\n    <ion-textarea type="text" placeholder="¿Qué hiciste ayer?" [(ngModel)]="yesterday" [readonly]="!dailyActive"></ion-textarea>\n  </ion-item>\n  <ion-item>\n    <ion-label color="primary" stacked>Hoy</ion-label>\n    <ion-textarea type="text" placeholder="¿Qué vas a hacer hoy?" [(ngModel)]="today" [readonly]="!dailyActive"></ion-textarea>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/daily-description/daily-description.html"*/,
+            selector: 'page-daily-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily-description/daily-description.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Descripción</ion-title>\n    <div class="member">{{member.firstName}} {{member.lastName}}</div>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()" *ngIf="dailyActive">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label color="primary" stacked>Ayer</ion-label>\n    <ion-textarea type="text" placeholder="¿Qué hiciste ayer?" [(ngModel)]="yesterday" [readonly]="!dailyActive"></ion-textarea>\n  </ion-item>\n  <ion-item>\n    <ion-label color="primary" stacked>Hoy</ion-label>\n    <ion-textarea type="text" placeholder="¿Qué vas a hacer hoy?" [(ngModel)]="today" [readonly]="!dailyActive"></ion-textarea>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily-description/daily-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_daily_daily__["a" /* DailyProvider */],
             __WEBPACK_IMPORTED_MODULE_3__providers_date_date__["a" /* DateProvider */]])
@@ -1935,7 +1962,7 @@ var DailyDescriptionPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterPersonPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__ = __webpack_require__(107);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2023,7 +2050,7 @@ var FilterPersonPage = /** @class */ (function () {
     };
     FilterPersonPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-filter-person',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/filter-person/filter-person.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Buscar personas\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar [(ngModel)]="personToSearch" (ionInput)="filterItems()"></ion-searchbar>\n  <ion-list>\n    <ion-item *ngFor="let person of personsToShow" (click)="changeStatusChecked(person)">\n      <ion-avatar item-start>\n        <avatar>{{person.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ person.firstName }} {{ person.lastName}}\n      </div>\n      <p class="user-name">{{ person.userName}}</p>\n      <ion-icon *ngIf="person.checked" name="checkmark-circle" item-end class="checked"></ion-icon>\n    </ion-item>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/filter-person/filter-person.html"*/,
+            selector: 'page-filter-person',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/filter-person/filter-person.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Buscar personas\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="accept()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar [(ngModel)]="personToSearch" (ionInput)="filterItems()"></ion-searchbar>\n  <ion-list>\n    <ion-item *ngFor="let person of personsToShow" (click)="changeStatusChecked(person)">\n      <ion-avatar item-start>\n        <avatar>{{person.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ person.firstName }} {{ person.lastName}}\n      </div>\n      <p class="user-name">{{ person.userName}}</p>\n      <ion-icon *ngIf="person.checked" name="checkmark-circle" item-end class="checked"></ion-icon>\n    </ion-item>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/filter-person/filter-person.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__["a" /* DailyProvider */]])
     ], FilterPersonPage);
@@ -2042,7 +2069,7 @@ var FilterPersonPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_description_user_description__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2092,7 +2119,7 @@ var UsersPage = /** @class */ (function () {
     };
     UsersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-users',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/users/users.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Administración de Usuarios</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let user of users" (click)="openDetail(user)">\n      <ion-avatar item-start>\n        <avatar>{{user.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ user.firstName }} {{ user.lastName}}\n      </div>\n      <p class="user-name">{{ user.userName}}</p>\n      <ion-icon *ngIf="user.checked" name="checkmark-circle" item-end class="checked"></ion-icon>\n    </ion-item>\n\n  </ion-list>\n\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="createUser()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/users/users.html"*/,
+            selector: 'page-users',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/users/users.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Administración de Usuarios</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let user of users" (click)="openDetail(user)">\n      <ion-avatar item-start>\n        <avatar>{{user.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ user.firstName }} {{ user.lastName}}\n      </div>\n      <p class="user-name">{{ user.userName}}</p>\n      <ion-icon *ngIf="user.checked" name="checkmark-circle" item-end class="checked"></ion-icon>\n    </ion-item>\n\n  </ion-list>\n\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="createUser()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/users/users.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -2112,7 +2139,7 @@ var UsersPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDescriptionPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__ = __webpack_require__(20);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2172,7 +2199,6 @@ var UserDescriptionPage = /** @class */ (function () {
         this.password = '';
     };
     UserDescriptionPage.prototype.accept = function () {
-        console.log("Crear usuario");
     };
     UserDescriptionPage.prototype.changeEnabled = function () {
         if (this.isEnabled) {
@@ -2219,7 +2245,7 @@ var UserDescriptionPage = /** @class */ (function () {
     };
     UserDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-user-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/user-description/user-description.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>{{ fullName }}</ion-title>\n\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createUser()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <ion-avatar class="avatar">\n    <avatar>{{ firstName. substring(0,1) | uppercase}}</avatar>\n  </ion-avatar> -->\n    <ion-item class="toggle">\n      <ion-label class="{{class}}">Login por redes sociales</ion-label>\n      <ion-toggle [(ngModel)]="isNetwork" (ionChange)="change()"></ion-toggle>\n    </ion-item>\n\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName"></ion-input>\n  </ion-item>\n\n  <ion-item class="item-leave-height">\n    <ion-label>Rol</ion-label>\n    <ion-select [(ngModel)]="role">\n        <ion-option value="1">Desarrollador</ion-option>\n        <ion-option value="2">Scrum Master</ion-option>\n        <ion-option value="3">Admin</ion-option>\n    </ion-select>\n</ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email"></ion-input>\n  </ion-item>\n\n  <ion-item *ngIf="!isNetwork">\n    <ion-label floating>Password</ion-label>\n    <ion-input type="text" [(ngModel)]="password"></ion-input>\n  </ion-item>\n\n  <ion-item class="toggle">\n    <ion-label class="{{classEnabled}}">{{enabledText}}</ion-label>\n    <ion-toggle [(ngModel)]="isEnabled" (ionChange)="changeEnabled()"></ion-toggle>\n  </ion-item>\n\n</ion-content>'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/user-description/user-description.html"*/,
+            selector: 'page-user-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/user-description/user-description.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>{{ fullName }}</ion-title>\n\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createUser()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <ion-avatar class="avatar">\n    <avatar>{{ firstName. substring(0,1) | uppercase}}</avatar>\n  </ion-avatar> -->\n    <ion-item class="toggle">\n      <ion-label class="{{class}}">Login por redes sociales</ion-label>\n      <ion-toggle [(ngModel)]="isNetwork" (ionChange)="change()"></ion-toggle>\n    </ion-item>\n\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName"></ion-input>\n  </ion-item>\n\n  <ion-item class="item-leave-height">\n    <ion-label>Rol</ion-label>\n    <ion-select [(ngModel)]="role">\n        <ion-option value="1">Desarrollador</ion-option>\n        <ion-option value="2">Scrum Master</ion-option>\n        <ion-option value="3">Admin</ion-option>\n    </ion-select>\n</ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email"></ion-input>\n  </ion-item>\n\n  <ion-item *ngIf="!isNetwork">\n    <ion-label floating>Password</ion-label>\n    <ion-input type="text" [(ngModel)]="password"></ion-input>\n  </ion-item>\n\n  <ion-item class="toggle">\n    <ion-label class="{{classEnabled}}">{{enabledText}}</ion-label>\n    <ion-toggle [(ngModel)]="isEnabled" (ionChange)="changeEnabled()"></ion-toggle>\n  </ion-item>\n\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/user-description/user-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -2276,7 +2302,7 @@ var ConfigPage = /** @class */ (function () {
     }
     ConfigPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-config',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/config/config.html"*/'<!--\n  Generated template for the ConfigPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Panel de configuración</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <button ion-button block large [navPush]="versionsPage">Versiones</button>\n  <!-- <button ion-button block large [navPush]="labelPage">Etiquetas</button>\n  <button ion-button block large [navPush]="phasePage">Fases</button>\n  <button ion-button block large [navPush]="priorityPage">Prioridades</button>\n  <button ion-button block large [navPush]="rolPage">Roles</button>\n  <button ion-button block large [navPush]="statePage">Estados</button> -->\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/config/config.html"*/,
+            selector: 'page-config',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/config/config.html"*/'<!--\n  Generated template for the ConfigPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Panel de configuración</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <button ion-button block large [navPush]="versionsPage">Versiones</button>\n  <!-- <button ion-button block large [navPush]="labelPage">Etiquetas</button>\n  <button ion-button block large [navPush]="phasePage">Fases</button>\n  <button ion-button block large [navPush]="priorityPage">Prioridades</button>\n  <button ion-button block large [navPush]="rolPage">Roles</button>\n  <button ion-button block large [navPush]="statePage">Estados</button> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/config/config.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ConfigPage);
@@ -2354,7 +2380,7 @@ var VersionDescriptionPage = /** @class */ (function () {
     };
     VersionDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-version-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/version-description/version-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/version-description/version-description.html"*/,
+            selector: 'page-version-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/version-description/version-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/version-description/version-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_versions_versions__["a" /* VersionsProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["a" /* UtilsProvider */]])
     ], VersionDescriptionPage);
@@ -2423,7 +2449,7 @@ var LabelPage = /** @class */ (function () {
     };
     LabelPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-label',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/label/label.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Etiquetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let label of labels" (click)="itemSelected(label)">\n      <h2 class="name">{{ label.name }}</h2>\n      <p>{{ label.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(labelDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/label/label.html"*/,
+            selector: 'page-label',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/label/label.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Etiquetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let label of labels" (click)="itemSelected(label)">\n      <h2 class="name">{{ label.name }}</h2>\n      <p>{{ label.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(labelDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/label/label.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_label_label__["a" /* LabelProvider */]])
     ], LabelPage);
@@ -2515,7 +2541,7 @@ var LabelDescriptionPage = /** @class */ (function () {
     };
     LabelDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-label-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/label-description/label-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/label-description/label-description.html"*/,
+            selector: 'page-label-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/label-description/label-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/label-description/label-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_label_label__["a" /* LabelProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* UtilsProvider */]])
@@ -2585,7 +2611,7 @@ var PhasePage = /** @class */ (function () {
     };
     PhasePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-phase',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/phase/phase.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Fases</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let phase of phases" (click)="itemSelected(phase)">\n      <h2 class="name">{{ phase.name }}</h2>\n      <p>{{ phase.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(phaseDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/phase/phase.html"*/,
+            selector: 'page-phase',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/phase/phase.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Fases</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let phase of phases" (click)="itemSelected(phase)">\n      <h2 class="name">{{ phase.name }}</h2>\n      <p>{{ phase.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(phaseDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/phase/phase.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_phase_phase__["a" /* PhaseProvider */]])
     ], PhasePage);
@@ -2677,7 +2703,7 @@ var PhaseDescriptionPage = /** @class */ (function () {
     };
     PhaseDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-phase-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/phase-description/phase-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/phase-description/phase-description.html"*/,
+            selector: 'page-phase-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/phase-description/phase-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/phase-description/phase-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_phase_phase__["a" /* PhaseProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* UtilsProvider */]])
@@ -2741,7 +2767,7 @@ var PriorityPage = /** @class */ (function () {
     };
     PriorityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-priority',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/priority/priority.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Etiquetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let priority of priorities" (click)="itemSelected(priority)">\n      <h2 class="name">{{ priority.name }}</h2>\n      <p>{{ priority.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(priorityDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/priority/priority.html"*/,
+            selector: 'page-priority',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/priority/priority.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Etiquetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let priority of priorities" (click)="itemSelected(priority)">\n      <h2 class="name">{{ priority.name }}</h2>\n      <p>{{ priority.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(priorityDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/priority/priority.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_priority_priority__["a" /* PrioritiesProvider */]])
     ], PriorityPage);
@@ -2827,7 +2853,7 @@ var PriorityDescriptionPage = /** @class */ (function () {
     };
     PriorityDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-priority-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/priority-description/priority-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/priority-description/priority-description.html"*/,
+            selector: 'page-priority-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/priority-description/priority-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/priority-description/priority-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_priority_priority__["a" /* PrioritiesProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* UtilsProvider */]])
@@ -2891,7 +2917,7 @@ var RolPage = /** @class */ (function () {
     };
     RolPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-rol',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/rol/rol.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Roles</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let rol of roles" (click)="itemSelected(rol)">\n      <h2 class="name">{{ rol.name }}</h2>\n      <p>{{ rol.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(rolDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/rol/rol.html"*/,
+            selector: 'page-rol',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/rol/rol.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Roles</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let rol of roles" (click)="itemSelected(rol)">\n      <h2 class="name">{{ rol.name }}</h2>\n      <p>{{ rol.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(rolDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/rol/rol.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_rol_rol__["a" /* RolProvider */]])
     ], RolPage);
@@ -2983,7 +3009,7 @@ var RolDescriptionPage = /** @class */ (function () {
     };
     RolDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-rol-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/rol-description/rol-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/rol-description/rol-description.html"*/,
+            selector: 'page-rol-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/rol-description/rol-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/rol-description/rol-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_rol_rol__["a" /* RolProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* UtilsProvider */]])
@@ -3047,7 +3073,7 @@ var StatePage = /** @class */ (function () {
     };
     StatePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-state',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/state/state.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Estados</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let state of states" (click)="itemSelected(state)">\n      <h2 class="name">{{ state.name }}</h2>\n      <p>{{ state.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(stateDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/state/state.html"*/,
+            selector: 'page-state',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/state/state.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Estados</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let state of states" (click)="itemSelected(state)">\n      <h2 class="name">{{ state.name }}</h2>\n      <p>{{ state.description }}</p>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right>\n    <button ion-fab (click)="goToPage(stateDescriptionPage)"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/state/state.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_state_state__["a" /* StateProvider */]])
     ], StatePage);
@@ -3139,7 +3165,7 @@ var StateDescriptionPage = /** @class */ (function () {
     };
     StateDescriptionPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-state-description',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/state-description/state-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/state-description/state-description.html"*/,
+            selector: 'page-state-description',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/state-description/state-description.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title> {{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Nombre <span *ngIf="readonly">(solo lectura)</span></ion-label>\n    <ion-input type="text" [(ngModel)]="name" [readonly]="readonly"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n  <button ion-button color="secondary" block class="btn-aceptar" (click)="accept()">Aceptar</button>\n  <button ion-button color="danger" block class="btn-cancelar" navPop>Cancelar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/state-description/state-description.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_state_state__["a" /* StateProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* UtilsProvider */]])
@@ -3158,10 +3184,10 @@ var StateDescriptionPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SprintsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sprint_sprint__ = __webpack_require__(420);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__popover_sprint_popover_sprint__ = __webpack_require__(422);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3239,7 +3265,7 @@ var SprintsPage = /** @class */ (function () {
     };
     SprintsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sprints',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprints/sprints.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Sprints</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list ion-item *ngFor="let sprint of sprints">\n    <div  (click)="openSprint(sprint.id)">\n      <h3 class="sprint-name">{{ sprint.name }}</h3>\n      <div>\n        <span class="sprint-range-from">Desde: <span\n            class="sprint-range-from-label">{{ sprint.dateFrom | formatDateMillisecond}}</span></span>\n        <span class="sprint-range-from">Hasta: <span\n            class="sprint-range-from-label">{{ sprint.dateTo | formatDateMillisecond}}</span></span>\n      </div>\n    </div>\n    <button icon-only  (click)="presentPopover($event, sprint)"item-end class="more" *ngIf="sprint.isActive">\n      <ion-icon name="more"></ion-icon>\n    </button>\n  </ion-list>\n\n  <ion-fab bottom right (click)="createSprint()" *ngIf="role == 2 || role == 3">\n    <button ion-fab>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprints/sprints.html"*/,
+            selector: 'page-sprints',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprints/sprints.html"*/'<ion-header>\n\n  <ion-navbar color=\'primary\'>\n    <ion-title>Sprints</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list ion-item *ngFor="let sprint of sprints">\n    <div  (click)="openSprint(sprint.id)">\n      <h3 class="sprint-name">{{ sprint.name }} \n        <span *ngIf="sprint.isActive" class="activo">(Activo)</span>\n        <span *ngIf="!sprint.isActive" class="inactivo">(Finalizado)</span>\n      </h3>\n      <div>\n        <span class="sprint-range-from">Desde: <span\n            class="sprint-range-from-label">{{ sprint.dateFrom | formatDateMillisecond}}</span></span>\n        <span class="sprint-range-from">Hasta: <span\n            class="sprint-range-from-label">{{ sprint.dateTo | formatDateMillisecond}}</span></span>\n      </div>\n    </div>\n    <button icon-only  (click)="presentPopover($event, sprint)"item-end class="more" *ngIf="sprint.isActive">\n      <ion-icon name="more"></ion-icon>\n    </button>\n  </ion-list>\n\n  <ion-fab bottom right (click)="createSprint()" *ngIf="role == 2 || role == 3">\n    <button ion-fab>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprints/sprints.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__["a" /* SprintProvider */],
@@ -3261,7 +3287,7 @@ var SprintsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SprintPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sprint_sprint__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__issue_issue__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_issue_issue__ = __webpack_require__(44);
@@ -3438,7 +3464,7 @@ var SprintPage = /** @class */ (function () {
     };
     SprintPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sprint',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n      <div class="sprint-range" *ngIf=\'!create\'>\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n      <div class="sprint-range" *ngIf=\'create\'>\n        Crear Sprint\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngIf="!create">\n    <ion-list>\n      <ion-item *ngFor="let issue of issues, let i = index">\n        <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n        <div (click)="openDetail(issue)">\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </div>\n        <button icon-only (click)="presentPopover($event, issue)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-item>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-fab>\n  </div>\n\n  <div *ngIf="create">\n\n    <ion-item>\n      <ion-label>Desde</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="from"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Hasta</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="to"></ion-datetime>\n    </ion-item>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/sprint/sprint.html"*/,
+            selector: 'page-sprint',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      {{name}}\n\n      <span *ngIf="sprint != null && sprint.isActive" class="activo">(Activo)</span>\n      <span *ngIf="sprint != null && !sprint.isActive" class="inactivo">(Finalizado)</span>\n      \n      <div class="sprint-range" *ngIf=\'!create\'>\n        <span class="sprint-range-from-label">Del: {{ sprint.dateFrom | formatDateMillisecond}}</span>\n        <span class="sprint-range-from-label">Al: {{ sprint.dateTo | formatDateMillisecond}}</span>\n      </div>\n      <div class="sprint-range" *ngIf=\'create\'>\n        Crear Sprint\n      </div>\n    </ion-title>\n    <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="createSprint()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="cancel()">\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngIf="!create">\n    <ion-list>\n      <ion-item *ngFor="let issue of issues, let i = index">\n        <!-- <ion-avatar item-start>\n        <img [src]="issue.avatar">\n      </ion-avatar> -->\n        <div (click)="openDetail(issue)">\n          <div class="issue-code">SID-{{ issue.id }}</div>\n          <div class="issue-summary">\n            {{ issue.title }}\n          </div>\n        </div>\n        <button icon-only (click)="presentPopover($event, issue)" item-end class="more" *ngIf="issue.state != \'FINALIZADO\'">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-item>\n    </ion-list>\n\n    <!-- this fab is placed at top right -->\n    <ion-fab bottom right (click)="createNewIssue()">\n      <button ion-fab>\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-fab>\n  </div>\n\n  <div *ngIf="create">\n\n    <ion-item>\n      <ion-label>Desde</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="from"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Hasta</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="" [(ngModel)]="to"></ion-datetime>\n    </ion-item>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/sprint/sprint.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -3506,7 +3532,7 @@ var PopoverBacklogPage = /** @class */ (function () {
     };
     PopoverBacklogPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-popover-backlog',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToBacklog()">Enviar a Backlog</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/,
+            selector: 'page-popover-backlog',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="sendToBacklog()">Enviar a Backlog</button>\n  <button ion-item (click)="delete()">Eliminar Issue</button>\n</ion-list>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover-backlog/popover-backlog.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_issue_issue__["a" /* IssueProvider */],
@@ -3528,7 +3554,7 @@ var PopoverBacklogPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_sprint_sprint__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_issue_issue__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3604,7 +3630,7 @@ var PopoverSprintPage = /** @class */ (function () {
     };
     PopoverSprintPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-popover-sprint',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover-sprint/popover-sprint.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="finish()">Finalizar Sprint</button>\n</ion-list>\n\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/popover-sprint/popover-sprint.html"*/,
+            selector: 'page-popover-sprint',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover-sprint/popover-sprint.html"*/'<ion-list>\n  <ion-list-header>Menu</ion-list-header>\n  <button ion-item (click)="finish()">Finalizar Sprint</button>\n</ion-list>\n\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/popover-sprint/popover-sprint.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__providers_sprint_sprint__["a" /* SprintProvider */],
@@ -3627,9 +3653,9 @@ var PopoverSprintPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3732,7 +3758,7 @@ var PerfilPage = /** @class */ (function () {
     };
     PerfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-perfil',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mi perfil</ion-title>\n\n    <!-- <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="accept()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Rol</ion-label>\n    <ion-input type="text" [(ngModel)]="role" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email" [disabled]=true></ion-input>\n  </ion-item>\n\n  <button ion-button class="changePassword" (click)="changePassword()" *ngIf="!isNetwork">\n    Cambiar contraseña\n  </button>\n    \n</ion-content>'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/perfil/perfil.html"*/,
+            selector: 'page-perfil',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mi perfil</ion-title>\n\n    <!-- <ion-buttons end *ngIf="!readonly">\n      <button ion-button icon-only (click)="accept()">\n        <ion-icon name="checkmark" class="accept"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-buttons end>\n      <button ion-button icon-only navPop>\n        <ion-icon name="close" class="cancel"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="firstName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Apellido</ion-label>\n    <ion-input type="text" [(ngModel)]="lastName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Usuario</ion-label>\n    <ion-input type="text" [(ngModel)]="userName" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Rol</ion-label>\n    <ion-input type="text" [(ngModel)]="role" [disabled]=true></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n    <ion-input type="text" [(ngModel)]="email" [disabled]=true></ion-input>\n  </ion-item>\n\n  <button ion-button class="changePassword" (click)="changePassword()" *ngIf="!isNetwork">\n    Cambiar contraseña\n  </button>\n    \n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/perfil/perfil.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -3753,8 +3779,8 @@ var PerfilPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return URL_BASE; });
-// export const URL_BASE = "http://localhost:8090";
-var URL_BASE = "http://scrumapp.hopto.org:8090";
+var URL_BASE = "http://localhost:8090";
+// export const URL_BASE = "http://scrumapp.hopto.org:8090";
 // export const URL_BASE = "http:192.168.0.6:8090";
 //# sourceMappingURL=config.js.map
 
@@ -3848,7 +3874,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(393);
@@ -3889,12 +3915,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__providers_issue_issue__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_daily_item_daily_item__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_daily_daily__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_user_user__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_user_user__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_filter_person_filter_person__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pipes_format_date_format_date__ = __webpack_require__(736);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_date_date__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_sprints_sprints__ = __webpack_require__(419);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_sprint_sprint__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_sprint_sprint__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_format_date_millisecond_format_date_millisecond__ = __webpack_require__(737);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_sprint_sprint__ = __webpack_require__(420);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_popover_popover__ = __webpack_require__(399);
@@ -3903,7 +3929,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pages_fechas_fechas__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pages_persona_persona__ = __webpack_require__(332);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pages_comentarios_comentarios__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__angular_fire__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__angular_fire__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__angular_fire_firestore__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__angular_fire_storage__ = __webpack_require__(739);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__config_firebase_config__ = __webpack_require__(743);
@@ -3912,7 +3938,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__ionic_native_image_picker__ = __webpack_require__(745);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__providers_load_file_load_file__ = __webpack_require__(746);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__services_auth_service__ = __webpack_require__(754);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__ionic_storage__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__ionic_native_google_plus__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__pages_popover_backlog_popover_backlog__ = __webpack_require__(421);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__pages_popover_sprint_popover_sprint__ = __webpack_require__(422);
@@ -4143,6 +4169,69 @@ var AppModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SprintProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_config_config__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(621);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(623);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var SprintProvider = /** @class */ (function () {
+    function SprintProvider(http) {
+        this.http = http;
+        this.sprints = [];
+    }
+    SprintProvider.prototype.getAllSprints = function () {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/");
+    };
+    SprintProvider.prototype.createSprint = function (sprint) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/", sprint);
+    };
+    SprintProvider.prototype.getSprintById = function (id) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/" + id);
+    };
+    SprintProvider.prototype.finishSprint = function (sprint) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/finish", sprint);
+    };
+    SprintProvider.prototype.velocityChart = function () {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/velocity");
+    };
+    SprintProvider.prototype.sprintReports = function () {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/sprint-report");
+    };
+    SprintProvider.prototype.sprintActive = function () {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/active");
+    };
+    SprintProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], SprintProvider);
+    return SprintProvider;
+}());
+
+//# sourceMappingURL=sprint.js.map
+
+/***/ }),
+
+/***/ 71:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
@@ -4186,7 +4275,6 @@ var UserProvider = /** @class */ (function () {
         return this.http.put(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/user/" + user.id, user);
     };
     UserProvider.prototype.loginForUserAndPass = function (userLogin) {
-        console.log("LOGIN WITH MAIL ==>> " + __WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/user/login-mail");
         return this.http.post(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/user/login-mail", userLogin);
     };
     UserProvider.prototype.changePassword = function (changePassword) {
@@ -4253,7 +4341,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/app/app.html"*/'<!--<div *ngIf="showSplash" class="splash">\n  <div class="sk-folding-cube">\n    <div class="sk-cube1 sk-cube"></div>\n    <div class="sk-cube2 sk-cube"></div>\n    <div class="sk-cube4 sk-cube"></div>\n    <div class="sk-cube3 sk-cube"></div>\n  </div>\n</div>-->\n\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/app/app.html"*/'<!--<div *ngIf="showSplash" class="splash">\n  <div class="sk-folding-cube">\n    <div class="sk-cube1 sk-cube"></div>\n    <div class="sk-cube2 sk-cube"></div>\n    <div class="sk-cube4 sk-cube"></div>\n    <div class="sk-cube3 sk-cube"></div>\n  </div>\n</div>-->\n\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -4289,7 +4377,7 @@ var AvatarComponent = /** @class */ (function () {
     ], AvatarComponent.prototype, "avatarText", void 0);
     AvatarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'avatar',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/components/avatar/avatar.html"*/'<!-- Generated template for the AvatarComponent component -->\n\n<div class="content">\n  <div class="avatar">\n    <ng-content></ng-content>\n  </div>\n  <div class="avatar-text">\n    {{ avatarText }}\n  </div>\n</div>\n\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/components/avatar/avatar.html"*/
+            selector: 'avatar',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/components/avatar/avatar.html"*/'<!-- Generated template for the AvatarComponent component -->\n\n<div class="content">\n  <div class="avatar">\n    <ng-content></ng-content>\n  </div>\n  <div class="avatar-text">\n    {{ avatarText }}\n  </div>\n</div>\n\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/components/avatar/avatar.html"*/
         })
     ], AvatarComponent);
     return AvatarComponent;
@@ -4414,7 +4502,7 @@ var ModalPage = /** @class */ (function () {
     };
     ModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal',template:/*ion-inline-start:"/home/leandro/WebStorm/projectFinal-Android/src/pages/modal/modal.html"*/'<ion-content color="primary">\n\n</ion-content>\n'/*ion-inline-end:"/home/leandro/WebStorm/projectFinal-Android/src/pages/modal/modal.html"*/,
+            selector: 'page-modal',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/modal/modal.html"*/'<ion-content color="primary">\n\n</ion-content>\n'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/modal/modal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ModalPage);
@@ -4511,7 +4599,7 @@ var LoadFileProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth0_cordova__ = __webpack_require__(755);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth0_cordova___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__auth0_cordova__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_auth0_js__ = __webpack_require__(433);
@@ -4615,66 +4703,6 @@ var AuthService = /** @class */ (function () {
 /***/ (function(module, exports) {
 
 /* (ignored) */
-
-/***/ }),
-
-/***/ 78:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SprintProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_config_config__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(621);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(623);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var SprintProvider = /** @class */ (function () {
-    function SprintProvider(http) {
-        this.http = http;
-        this.sprints = [];
-    }
-    SprintProvider.prototype.getAllSprints = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/");
-    };
-    SprintProvider.prototype.createSprint = function (sprint) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/", sprint);
-    };
-    SprintProvider.prototype.getSprintById = function (id) {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/" + id);
-    };
-    SprintProvider.prototype.finishSprint = function (sprint) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/finish", sprint);
-    };
-    SprintProvider.prototype.velocityChart = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/velocity");
-    };
-    SprintProvider.prototype.sprintReports = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + "/sprint/sprint-report");
-    };
-    SprintProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], SprintProvider);
-    return SprintProvider;
-}());
-
-//# sourceMappingURL=sprint.js.map
 
 /***/ }),
 

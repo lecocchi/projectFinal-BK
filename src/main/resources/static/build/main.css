@@ -28297,6 +28297,12 @@ page-daily-tab .send {
   padding-right: 0;
 }
 
+page-daily-tab .sprint {
+  color: #636363;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-daily-tab .scroll-content,
   page-daily-tab .fixed-content,
@@ -28518,6 +28524,11 @@ page-daily-item .items-ios, page-daily-item .items-md, page-daily-item .items-wp
 
 page-daily-item .item-md {
   padding-left: 0px !important;
+}
+
+page-daily-item .sprint {
+  color: #ada8a8;
+  font-size: 17px;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
@@ -29404,6 +29415,18 @@ page-sprint .more {
   padding-right: 0;
 }
 
+page-sprint .activo {
+  color: #45c145;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+page-sprint .inactivo {
+  color: #ea6060;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-sprint .scroll-content,
   page-sprint .fixed-content,
@@ -29513,6 +29536,18 @@ page-sprints .more {
 
 page-sprints .item-md [item-left], page-sprints .item-md [item-right], page-sprints .item-md [item-start], page-sprints .item-md [item-end] {
   margin: 9px 0px 9px 0;
+}
+
+page-sprints .activo {
+  color: green;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+page-sprints .inactivo {
+  color: red;
+  font-size: 16px;
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {

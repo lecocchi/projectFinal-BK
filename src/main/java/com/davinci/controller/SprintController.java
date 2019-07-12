@@ -88,4 +88,9 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getSprintReport());
     }
 
+    @GetMapping("active")
+    public ResponseEntity<?> getActiveSprint(){
+        return ResponseEntity.ok(sprintService.getActiveSprint());
+    }
+
 }

@@ -30,13 +30,16 @@ public class Daily {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "daily_id")
 	List<DailyItem> items;
+	@NotNull
+	private int sprint;
 
-	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items) {
+	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items, int sprint) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.avatar = avatar;
 		this.items = items;
 		this.createdAt = createdAt;
+		this.sprint = sprint;
 	}
 }

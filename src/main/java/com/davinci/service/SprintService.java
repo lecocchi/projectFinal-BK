@@ -2,6 +2,7 @@ package com.davinci.service;
 
 import com.davinci.dto.SprintReport;
 import com.davinci.dto.Velocity;
+import com.davinci.exceptions.ActiveSprintNotFoundException;
 import com.davinci.exceptions.ErrorException;
 import com.davinci.model.Issue;
 import com.davinci.model.Location;
@@ -122,6 +123,13 @@ public class SprintService {
                     sprintReports.add(new SprintReport(sprint.getName(), issues));
                 });
         return sprintReports;
+    }
+
+    public Sprint getActiveSprint(){
+        if (!sprintRepository.findByIsActiveIsTrue().isPresent())
+            throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
+
+        return sprintRepository.findByIsActiveIsTrue().get();
     }
 
 }
