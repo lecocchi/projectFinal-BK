@@ -5,7 +5,7 @@
 
 	<groupId>com.davinci</groupId>
 	<artifactId>ProjectFinal</artifactId>
-	<version>0.0.21</version>
+	<version>1.0.32</version>
 	<packaging>jar</packaging>
 
 	<name>ProjectFinal</name>
