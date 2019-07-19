@@ -28310,6 +28310,10 @@ page-backlog .item-ios {
   padding-left: 0 !important;
 }
 
+page-backlog .cursor:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-backlog .scroll-content,
   page-backlog .fixed-content,
@@ -28394,6 +28398,10 @@ page-daily-tab .sprint {
   color: #636363;
   font-size: 15px;
   font-weight: 700;
+}
+
+page-daily-tab .cursor:hover {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
@@ -28622,6 +28630,10 @@ page-daily-item .item-md {
 page-daily-item .sprint {
   color: #ada8a8;
   font-size: 17px;
+}
+
+page-daily-item .cursor:hover {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
@@ -29547,6 +29559,10 @@ page-sprint .inactivo {
   margin-left: 10px;
 }
 
+page-sprint .cursor:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-sprint .scroll-content,
   page-sprint .fixed-content,
@@ -29629,6 +29645,10 @@ page-sprint-report ion-list-header {
   font-weight: bold !important;
 }
 
+page-sprint-report .cursor:hover {
+  cursor: pointer;
+}
+
 page-sprints .sprint-name {
   color: #3b5998;
   font-size: 20px;
@@ -29675,6 +29695,10 @@ page-sprints .inactivo {
   color: red;
   font-size: 16px;
   margin-left: 10px;
+}
+
+page-sprints .cursor:hover {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
@@ -29874,6 +29898,10 @@ page-users .item-ios {
   }
 }
 
+page-users .cursor:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-velocity .scroll-content,
   page-velocity .fixed-content,
@@ -29921,6 +29949,10 @@ page-velocity td, page-velocity th {
 
 page-velocity tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+page-velocity .cursor:hover {
+  cursor: pointer;
 }
 
 page-version-description .btn-aceptar, page-version-description .btn-cancelar {
