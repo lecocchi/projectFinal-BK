@@ -28097,6 +28097,16 @@ ion-navbar.toolbar {
   left: 0;
 }
 
+.btn-alert-ok {
+  color: green !important;
+  font-weight: bold !important;
+}
+
+.btn-alert-cancel {
+  color: red !important;
+  font-weight: bold !important;
+}
+
 avatar .content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -28668,6 +28678,38 @@ page-daily-item .cursor:hover {
   }
 }
 
+page-dashboard-project .scroll-content {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-dashboard-project .button-md {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 300px;
+  height: 65px;
+  margin: 10px 0;
+}
+
+page-dashboard-project .cursor:hover {
+  cursor: pointer;
+}
+
 page-detalle {
   margin-top: 56px;
 }
@@ -28861,6 +28903,10 @@ page-home .config {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
+}
+
+page-home .cursor:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 599px) {

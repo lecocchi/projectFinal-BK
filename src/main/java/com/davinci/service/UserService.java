@@ -125,4 +125,8 @@ public class UserService {
 
         return projects;
     }
+
+    public List<Project> getAllProjects(){
+        return projectRepository.findAll();
+    }
 }

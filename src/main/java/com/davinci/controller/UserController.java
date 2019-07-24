@@ -85,4 +85,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getProjectsByUserId(id));
     }
 
+    @GetMapping("projects")
+    public ResponseEntity<?> getAllProjects(){
+        return ResponseEntity.ok(userService.getAllProjects());
+    }
+
 }
