@@ -4,11 +4,16 @@ import com.davinci.dto.ChangePassword;
 import com.davinci.exceptions.LoginErrorException;
 import com.davinci.exceptions.ThereIsUserException;
 import com.davinci.exceptions.UserNotFoundException;
+import com.davinci.model.Project;
 import com.davinci.model.User;
+import com.davinci.model.UserProject;
+import com.davinci.repository.ProjectRepository;
+import com.davinci.repository.UserProjectRepository;
 import com.davinci.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,10 +22,15 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+    private UserProjectRepository userProjectRepository;
+    private ProjectRepository projectRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserProjectRepository userProjectRepository,
+                       ProjectRepository projectRepository) {
         this.userRepository = userRepository;
+        this.userProjectRepository = userProjectRepository;
+        this.projectRepository = projectRepository;
     }
 
     public User getUserById(Integer id) {
@@ -97,5 +107,22 @@ public class UserService {
 
         return userOptional.get();
 
+    }
+
+    public UserProject addProjectByUser(UserProject userProject){
+        return userProjectRepository.save(userProject);
+    }
+
+    public List<Project> getProjectsByUserId(int id){
+
+        List<UserProject> userProjectList = userProjectRepository.findByIdUser(id);
+
+        List<Project> projects = new ArrayList<>();
+
+        for (UserProject project: userProjectList) {
+            projects.add(projectRepository.findOne(project.getId_project()));
+        }
+
+        return projects;
     }
 }

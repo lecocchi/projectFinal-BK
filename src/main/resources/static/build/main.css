@@ -29417,6 +29417,111 @@ page-priority-description .btn-aceptar {
   margin-top: 5rem;
 }
 
+page-project .btn-aceptar, page-project .btn-cancelar {
+  margin: 1rem 0;
+  height: 48px;
+  font-size: 1.6rem;
+}
+
+page-project .btn-aceptar {
+  margin-top: 3rem;
+}
+
+page-project ion-buttons {
+  margin-right: 18px !important;
+}
+
+page-project .cancel {
+  color: #b8696e;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+page-project .accept {
+  color: #4db69d;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+
+page-project .item-md,
+page-project .item-ios {
+  padding-left: 0;
+}
+
+page-project .members {
+  color: grey;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-project .scroll-content,
+  page-project .fixed-content,
+  page-project .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-project ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-project .scroll-content,
+  page-project .fixed-content,
+  page-project .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-project ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
+page-projects .item-md,
+page-projects .item-ios {
+  padding-left: 0;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-projects .scroll-content,
+  page-projects .fixed-content,
+  page-projects .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-projects ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-projects .scroll-content,
+  page-projects .fixed-content,
+  page-projects .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-projects ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-reports .scroll-content,
   page-reports .fixed-content,

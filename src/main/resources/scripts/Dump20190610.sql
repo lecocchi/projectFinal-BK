@@ -476,6 +476,33 @@ LOCK TABLES `version` WRITE;
 INSERT INTO `version` VALUES (1,'2019-05-13 16:10:57','Versión 1.0.0','1.0.0'),(2,'2019-05-13 16:27:27','Versión 1.0.1','1.0.1'),(3,'2019-05-13 16:48:33','Versión 1.0.2','1.0.2'),(4,'2019-05-13 16:51:11','Versión 1.0.3','1.0.3'),(5,'2019-05-14 09:03:33','Versión 1.0.4','1.0.4'),(6,'2019-05-14 09:15:56','Versión 1.0.5','1.0.5');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+
+/*********************************************************************************/
+
+
+create table IF not exists project
+(
+	id int auto_increment,
+	name varchar(255) not null,
+	description varchar(255) null,
+	constraint project_pk
+		primary key (id)
+);
+
+alter table sprint
+	add id_project int not null;
+
+alter table issue
+	add id_project int not null;
+
+alter table version
+	add id_project int not null;
+
+alter table daily
+	add id_project int not null;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
