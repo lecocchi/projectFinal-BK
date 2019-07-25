@@ -29980,6 +29980,45 @@ page-user-description .accept {
   font-size: 30px !important;
 }
 
+page-user-description ion-card-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #216856;
+  color: white;
+}
+
+page-user-description .card-header-md {
+  font-size: 1.6rem;
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+page-user-description .update {
+  color: white;
+  font-weight: bold;
+  font-size: 25px !important;
+}
+
+page-user-description .icono {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+page-user-description .cursor:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-user-description .scroll-content,
   page-user-description .fixed-content,

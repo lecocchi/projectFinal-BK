@@ -16,6 +16,13 @@ public class UserProject {
     @Column(name = "id_project")
     private int id_project;
 
+    public UserProject(){}
+
+    public UserProject(int id_user, int id_project) {
+        this.id_user = id_user;
+        this.id_project = id_project;
+    }
+
     public int getId() {
         return id;
     }

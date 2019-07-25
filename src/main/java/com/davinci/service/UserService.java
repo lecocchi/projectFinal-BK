@@ -1,6 +1,7 @@
 package com.davinci.service;
 
 import com.davinci.dto.ChangePassword;
+import com.davinci.dto.UserProjects;
 import com.davinci.exceptions.LoginErrorException;
 import com.davinci.exceptions.ThereIsUserException;
 import com.davinci.exceptions.UserNotFoundException;
@@ -12,6 +13,7 @@ import com.davinci.repository.UserProjectRepository;
 import com.davinci.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,8 +111,16 @@ public class UserService {
 
     }
 
-    public UserProject addProjectByUser(UserProject userProject){
-        return userProjectRepository.save(userProject);
+    @Transactional
+    public void addProjecstByUser(UserProjects userProjects){
+
+        userProjectRepository.findByIdUser(userProjects.getUser_id())
+                .forEach((up)-> userProjectRepository.delete(up));
+
+        userProjects.getProjects().forEach(
+                p -> userProjectRepository.save(new UserProject(userProjects.getUser_id(), p))
+        );
+
     }
 
     public List<Project> getProjectsByUserId(int id){
@@ -128,5 +138,17 @@ public class UserService {
 
     public List<Project> getAllProjects(){
         return projectRepository.findAll();
+    }
+
+    public List<User> getUsersByProject(int projectId){
+
+        List<User> users = new ArrayList<>();
+
+        userProjectRepository.findByIdProject(projectId)
+                .forEach((up)->{
+                    users.add(userRepository.findOne(up.getId_user()));
+                });
+
+        return users;
     }
 }

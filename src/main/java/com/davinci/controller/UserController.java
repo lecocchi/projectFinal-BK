@@ -1,10 +1,10 @@
 package com.davinci.controller;
 
 import com.davinci.dto.ChangePassword;
+import com.davinci.dto.UserProjects;
 import com.davinci.model.User;
 import com.davinci.model.UserLogin;
 import com.davinci.model.UserLoginGooglePlus;
-import com.davinci.model.UserProject;
 import com.davinci.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,9 +75,10 @@ public class UserController {
         return ResponseEntity.ok(userService.loginGooglePlus(userLoginGooglePlus.getEmail()));
     }
 
-    @PostMapping("add-project")
-    public ResponseEntity<?> addProject(@RequestBody UserProject userProject){
-        return ResponseEntity.ok(userService.addProjectByUser(userProject));
+    @PutMapping("add-projects")
+    public ResponseEntity<?> addProject(@RequestBody UserProjects userProjects){
+        userService.addProjecstByUser(userProjects);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("projects/{id}")
@@ -89,5 +90,12 @@ public class UserController {
     public ResponseEntity<?> getAllProjects(){
         return ResponseEntity.ok(userService.getAllProjects());
     }
+
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<?> getUsersByProject(@PathVariable("projectId") int projectId){
+        return ResponseEntity.ok(userService.getUsersByProject(projectId));
+    }
+
+
 
 }
