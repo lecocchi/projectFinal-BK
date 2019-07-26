@@ -78,14 +78,14 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.saveLocation(location));
     }
 
-    @GetMapping("velocity")
-    public ResponseEntity<?> getVelocityChart(){
-        return ResponseEntity.ok(sprintService.getVelocityChart());
+    @GetMapping("velocity/projects/{idProject}")
+    public ResponseEntity<?> getVelocityChart(@PathVariable("idProject") int idProject){
+        return ResponseEntity.ok(sprintService.getVelocityChart(idProject));
     }
 
-    @GetMapping("sprint-report")
-    public ResponseEntity<?> getSprintReport(){
-        return ResponseEntity.ok(sprintService.getSprintReport());
+    @GetMapping("sprint-report/projects/{idProject}")
+    public ResponseEntity<?> getSprintReport(@PathVariable("idProject") int idProject){
+        return ResponseEntity.ok(sprintService.getSprintReport(idProject));
     }
 
     @GetMapping("active/projects/{id}")

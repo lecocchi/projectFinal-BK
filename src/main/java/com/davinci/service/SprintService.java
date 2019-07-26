@@ -100,22 +100,22 @@ public class SprintService {
         return locationRepository.save(location);
     }
 
-    public List<Velocity> getVelocityChart(){
+    public List<Velocity> getVelocityChart(int idProject){
 
         velocityChart = new ArrayList<>();
 
-        sprintRepository.findAll().stream()
+        sprintRepository.findAllSprintByProject(idProject).stream()
                 .forEach(sprint -> {
                     velocityChart.add(new Velocity(sprint.getName(), sprintRepository.getStoryPointBySprint(sprint.getId())));
                 });
         return velocityChart;
     }
 
-    public List<SprintReport> getSprintReport(){
+    public List<SprintReport> getSprintReport(int idProject){
 
         sprintReports = new ArrayList<>();
 
-        sprintRepository.findAll().stream()
+        sprintRepository.findAllSprintByProject(idProject).stream()
                 .forEach(sprint -> {
                     issues = new ArrayList<>();
                     issueRepository.getIssueBySprintId(sprint.getId()).stream().forEach(issue -> issues.add(issue));
