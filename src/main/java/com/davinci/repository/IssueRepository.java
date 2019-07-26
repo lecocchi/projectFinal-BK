@@ -16,7 +16,7 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
     @Query(value = "SELECT * FROM issue  WHERE BACKLOG = false and ID_PROJECT = :idProject", nativeQuery = true)
     List<Issue> findByBacklogIsFalseAndProjectId(@Param("idProject") Integer idProject);
 
-    @Query(value = "SELECT * FROM issue  WHERE BACKLOG = true and ID_PROJECT = :idProject", nativeQuery = true)
+    @Query(value = "SELECT * FROM issue  WHERE BACKLOG = true and ID_PROJECT = :idProject and ENABLED = true", nativeQuery = true)
     List<Issue> findByBacklogIsTrueAndProjectId(@Param("idProject") Integer idProject);
 
     List<Issue> findAllByEnabledIsTrue();
