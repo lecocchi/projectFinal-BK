@@ -35,15 +35,15 @@ public class SprintController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @GetMapping
-    public ResponseEntity<List<Sprint>> getAll() {
-        return Optional.ofNullable(this.sprintService.getAllSprint())
+    @GetMapping("projects/{id}")
+    public ResponseEntity<List<Sprint>> getAll(@PathVariable("id") int id) {
+        return Optional.ofNullable(this.sprintService.getAllSprint(id))
                 .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody SprintDTO sprintDTO) {
+    public ResponseEntity<?> create(@RequestBody SprintDTO sprintDTO, int idProject) {
 
         Sprint dateFrom = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateFrom()));
         Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()));
@@ -51,7 +51,7 @@ public class SprintController {
         if (dateFrom != null || dateTo != null)
             throw new ErrorException("Error al intentar crear el Sprint.La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint");
 
-        return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO)), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO), idProject), HttpStatus.CREATED);
 
     }
 
@@ -88,9 +88,9 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getSprintReport());
     }
 
-    @GetMapping("active")
-    public ResponseEntity<?> getActiveSprint(){
-        return ResponseEntity.ok(sprintService.getActiveSprint());
+    @GetMapping("active/{id}")
+    public ResponseEntity<?> getActiveSprint(@PathVariable("id") int id){
+        return ResponseEntity.ok(sprintService.getActiveSprint(id));
     }
 
 }

@@ -13,9 +13,11 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
     List<Issue> findAllBySprint(Integer sprint);
 
-    List<Issue> findAllByBacklogIsFalse();
+    @Query(value = "SELECT * FROM issue  WHERE BACKLOG = false and ID_PROJECT = :idProject", nativeQuery = true)
+    List<Issue> findByBacklogIsFalseAndProjectId(@Param("idProject") Integer idProject);
 
-    List<Issue> findAllByBacklogIsTrueAndEnabledIsTrue();
+    @Query(value = "SELECT * FROM issue  WHERE BACKLOG = true and ID_PROJECT = :idProject", nativeQuery = true)
+    List<Issue> findByBacklogIsTrueAndProjectId(@Param("idProject") Integer idProject);
 
     List<Issue> findAllByEnabledIsTrue();
 
@@ -26,5 +28,4 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
     @Query(value = "SELECT * FROM issue WHERE ID_SPRINT =  ?1", nativeQuery = true)
     List<Issue> getIssueBySprintId(int id);
-
 }

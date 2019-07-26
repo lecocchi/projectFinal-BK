@@ -1,6 +1,7 @@
 package com.davinci.service;
 
 import com.davinci.dto.ChangePassword;
+import com.davinci.dto.IdsProject;
 import com.davinci.dto.UserProjects;
 import com.davinci.exceptions.LoginErrorException;
 import com.davinci.exceptions.ThereIsUserException;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -120,7 +122,6 @@ public class UserService {
         userProjects.getProjects().forEach(
                 p -> userProjectRepository.save(new UserProject(userProjects.getUser_id(), p))
         );
-
     }
 
     public List<Project> getProjectsByUserId(int id){
@@ -141,14 +142,14 @@ public class UserService {
     }
 
     public List<User> getUsersByProject(int projectId){
+        return userProjectRepository.findByIdProject(projectId).stream()
+                .map((up)-> userRepository.findOne(up.getId_user()))
+                .collect(Collectors.toList());
+    }
 
-        List<User> users = new ArrayList<>();
-
-        userProjectRepository.findByIdProject(projectId)
-                .forEach((up)->{
-                    users.add(userRepository.findOne(up.getId_user()));
-                });
-
-        return users;
+    public List<Project> getProjectsByListIds(IdsProject ids) {
+        return ids.getIds().stream()
+                .map((i)-> projectRepository.findOne(i))
+                .collect(Collectors.toList());
     }
 }

@@ -41,14 +41,14 @@ public class SprintService {
         return this.sprintRepository.findOne(id);
     }
 
-    public List<Sprint> getAllSprint() {
-        return this.sprintRepository.findAll();
+    public List<Sprint> getAllSprint(int idProject) {
+        return this.sprintRepository.findAllSprintByProject(idProject);
     }
 
-    public Sprint createSprint(Sprint sprint) {
+    public Sprint createSprint(Sprint sprint, int idProject) {
 
 
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(idProject);
 
         if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
             sprint.setEnabled(true);
@@ -125,11 +125,11 @@ public class SprintService {
         return sprintReports;
     }
 
-    public Sprint getActiveSprint(){
-        if (!sprintRepository.findByIsActiveIsTrue().isPresent())
+    public Sprint getActiveSprint(int id){
+        if (!sprintRepository.findByIsActiveIsTrueByProject(id).isPresent())
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
 
-        return sprintRepository.findByIsActiveIsTrue().get();
+        return sprintRepository.findByIsActiveIsTrueByProject(id).get();
     }
 
 }

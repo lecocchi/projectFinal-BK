@@ -37,9 +37,9 @@ public class IssueController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @GetMapping(value = "backlog")
-    public ResponseEntity<List<Issue>> getAllByBacklogIsTrue() {
-        return Optional.ofNullable(this.issueService.getAllIssueByBacklogIsTrue())
+    @GetMapping(value = "backlog/projects/{id}")
+    public ResponseEntity<List<Issue>> getAllByBacklogIsTrue(@PathVariable("id") int id) {
+        return Optional.ofNullable(this.issueService.getAllIssueByBacklogIsTrue(id))
                 .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
@@ -77,16 +77,16 @@ public class IssueController {
         return ResponseEntity.ok(this.issueService.deleteIssue(id));
     }
 
-    @GetMapping(value = "active-sprint")
-    public ResponseEntity<List<Issue>> getAllIssueActiveSprint(){
-        return Optional.ofNullable(this.issueService.getAllIssueActiveSprint())
+    @GetMapping(value = "active-sprint/{id}")
+    public ResponseEntity<List<Issue>> getAllIssueActiveSprint(@PathVariable("id") int id){
+        return Optional.ofNullable(this.issueService.getAllIssueActiveSprint(id))
                 .map( a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @PostMapping(value = "sprint/{issueId}")
-    public ResponseEntity<Issue> setIssueInActiveSprint(@PathVariable("issueId") Integer issueId){
-        return ResponseEntity.ok(issueService.setIssueInActiveSprint(issueId));
+    @PostMapping(value = "sprint/{issueId}/projects/{idProject}")
+    public ResponseEntity<Issue> setIssueInActiveSprintByProject(@PathVariable("issueId") String issueId, @PathVariable("idProject") int idProject){
+        return ResponseEntity.ok(issueService.setIssueInActiveSprintByProject(issueId, idProject));
     }
 
     @GetMapping(value = "/issues/{sprintId}")
@@ -99,8 +99,8 @@ public class IssueController {
         return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
     }
 
-    @GetMapping(value = "open/")
-    public ResponseEntity<?> getIssuesOpenBySprintId(){
-        return ResponseEntity.ok(issueService.getAllIssueOpenInActiveSprint());
+    @GetMapping(value = "open/{idProject}")
+    public ResponseEntity<?> getIssuesOpenBySprintId(@PathVariable("idProject") int idProject){
+        return ResponseEntity.ok(issueService.getAllIssueOpenInActiveSprint(idProject));
     }
 }

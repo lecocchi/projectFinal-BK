@@ -103,7 +103,11 @@ public class Issue implements Serializable {
     @Column(name = "ENABLED")
     private Boolean enabled;
 
-    public Issue(String label, String description, String avatar, String phase, String priority, Integer sprint, String state, String reporter, String assignee, String version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled) {
+    @NotNull
+    @Column(name = "id_project")
+    private int idProject;
+
+    public Issue(String label, String description, String avatar, String phase, String priority, Integer sprint, String state, String reporter, String assignee, String version, String title, Integer watcher, Date created, Date updated, Date resolved, Date plannedStart, Date plannedEnd, Integer estimated, Integer remaining, Boolean backlog, Boolean enabled, int idProject) {
         this.description = description;
         this.avatar = avatar;
         this.label = label;
@@ -125,6 +129,7 @@ public class Issue implements Serializable {
         this.remaining = remaining;
         this.backlog = backlog;
         this.enabled = enabled;
+        this.idProject = idProject;
     }
 
 }

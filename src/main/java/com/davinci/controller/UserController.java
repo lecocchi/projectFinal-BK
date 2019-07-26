@@ -1,6 +1,7 @@
 package com.davinci.controller;
 
 import com.davinci.dto.ChangePassword;
+import com.davinci.dto.IdsProject;
 import com.davinci.dto.UserProjects;
 import com.davinci.model.User;
 import com.davinci.model.UserLogin;
@@ -96,6 +97,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getUsersByProject(projectId));
     }
 
-
+    @PostMapping("/projects-by-ids")
+    public ResponseEntity<?> getProjectsById(@RequestBody IdsProject ids){
+        return ResponseEntity.ok(userService.getProjectsByListIds(ids));
+    }
 
 }

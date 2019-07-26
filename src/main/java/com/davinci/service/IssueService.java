@@ -34,8 +34,8 @@ public class IssueService {
         return this.issueRepository.findAllBySprint(sprint);
     }
 
-    public List<Issue> getAllIssueByBacklogIsTrue() {
-        return this.issueRepository.findAllByBacklogIsTrueAndEnabledIsTrue();
+    public List<Issue> getAllIssueByBacklogIsTrue(int id) {
+        return this.issueRepository.findByBacklogIsTrueAndProjectId(id);
     }
 
     public List<Issue> getAllIssueByEnabledIsTrue() {
@@ -46,7 +46,7 @@ public class IssueService {
         return this.issueRepository.findAll();
     }
 
-    public List<Issue> getAllIssueActiveSprint() { return this.issueRepository.findAllByBacklogIsFalse(); }
+    public List<Issue> getAllIssueActiveSprint(int idProject) { return this.issueRepository.findByBacklogIsFalseAndProjectId(idProject); }
 
     public Issue createIssue(Issue issue) {
         issue.setCreated(new Date());
@@ -54,7 +54,7 @@ public class IssueService {
         issue.setEnabled(true);
         if (!issue.getBacklog()){
 
-            Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+            Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(issue.getIdProject());
 
             if (!activeSprintOptional.isPresent())
                 throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
@@ -103,15 +103,15 @@ public class IssueService {
 
     }
 
-    public Issue setIssueInActiveSprint(Integer issueId){
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+    public Issue setIssueInActiveSprintByProject(String issueId, int idProject){
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(idProject);
 
         if (!activeSprintOptional.isPresent())
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
 
         Sprint activeSprint = activeSprintOptional.get();
 
-        Issue issue = issueRepository.findOne(issueId);
+        Issue issue = issueRepository.findOne(Integer.valueOf(issueId));
         issue.setSprint(activeSprint.getId());
         issue.setBacklog(false);
 
@@ -128,12 +128,12 @@ public class IssueService {
         return issueRepository.save(issue);
     }
 
-    public List<Issue> getAllIssueOpenInActiveSprint(){
-        return findAllIssueIsNotFinishByActiveSprint();
+    public List<Issue> getAllIssueOpenInActiveSprint(int idProject){
+        return findAllIssueIsNotFinishByActiveSprint(idProject);
     }
 
-    private List<Issue> findAllIssueIsNotFinishByActiveSprint(){
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrue();
+    private List<Issue> findAllIssueIsNotFinishByActiveSprint(int idProject){
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(idProject);
 
         if (!activeSprintOptional.isPresent())
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
