@@ -103,15 +103,13 @@ public class IssueService {
 
     }
 
-    public Issue setIssueInActiveSprintByProject(String issueId, int idProject){
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(idProject);
+    public Issue setIssueInActiveSprint(Issue issue){
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(issue.getIdProject());
 
         if (!activeSprintOptional.isPresent())
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
 
         Sprint activeSprint = activeSprintOptional.get();
-
-        Issue issue = issueRepository.findOne(Integer.valueOf(issueId));
         issue.setSprint(activeSprint.getId());
         issue.setBacklog(false);
 

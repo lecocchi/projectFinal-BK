@@ -84,9 +84,9 @@ public class IssueController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @PostMapping(value = "sprint/{issueId}/projects/{idProject}")
-    public ResponseEntity<Issue> setIssueInActiveSprintByProject(@PathVariable("issueId") String issueId, @PathVariable("idProject") int idProject){
-        return ResponseEntity.ok(issueService.setIssueInActiveSprintByProject(issueId, idProject));
+    @PostMapping(value = "sprint")
+    public ResponseEntity<Issue> setIssueInActiveSprintByProject(@RequestBody Issue issue){
+        return ResponseEntity.ok(issueService.setIssueInActiveSprint(issue));
     }
 
     @GetMapping(value = "/issues/{sprintId}")
@@ -94,7 +94,7 @@ public class IssueController {
         return ResponseEntity.ok(issueService.getIssuesBySprintId(sprintId));
     }
 
-    @PatchMapping(value = "sprint/issues/backlog/")
+    @PatchMapping(value = "sprint/issues/backlog")
     public ResponseEntity<Issue> addIssuesInBacklog(@RequestBody Issue issue){
         return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
     }
