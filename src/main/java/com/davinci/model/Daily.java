@@ -33,7 +33,11 @@ public class Daily {
 	@NotNull
 	private int sprint;
 
-	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items, int sprint) {
+	@NotNull
+	@Column(name = "id_project")
+	private int idProject;
+
+	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items, int sprint, int idProject) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -41,5 +45,6 @@ public class Daily {
 		this.items = items;
 		this.createdAt = createdAt;
 		this.sprint = sprint;
+		this.idProject = idProject;
 	}
 }

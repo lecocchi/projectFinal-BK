@@ -88,7 +88,7 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getSprintReport());
     }
 
-    @GetMapping("active/{id}")
+    @GetMapping("active/projects/{id}")
     public ResponseEntity<?> getActiveSprint(@PathVariable("id") int id){
         return ResponseEntity.ok(sprintService.getActiveSprint(id));
     }

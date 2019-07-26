@@ -26,7 +26,7 @@ public class DailyService {
     @Transactional
     public Daily createDaily(Daily daily) {
 
-        Daily dailyNow = repository.findByCreatedAt(LocalDate.now());
+        Daily dailyNow = repository.findByCreatedAt(LocalDate.now(), daily.getIdProject());
 
         if (dailyNow != null)
             repository.delete(dailyNow);
@@ -34,17 +34,14 @@ public class DailyService {
         return repository.save(daily);
     }
 
-    public List<DailyDTO> getAllDaily() {
-
-        return repository.findAll().stream()
+    public List<DailyDTO> getAllDaily(int idProject) {
+        return repository.findAllByProject(idProject).stream()
                 .map( item ->DailyMapper.from(item))
                 .collect(Collectors.toList());
-
-
     }
 
-    public Boolean isThereDailyToday() {
-        Daily dailyNow = repository.findByCreatedAt(LocalDate.now());
+    public Boolean isThereDailyToday(int idProject) {
+        Daily dailyNow = repository.findByCreatedAt(LocalDate.now(), idProject);
         return (dailyNow != null);
     }
 }

@@ -33,14 +33,14 @@ public class DailyController {
         return new ResponseEntity<Daily>(dailyService.createDaily(DailyMapper.to(dailyDTO)),HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<DailyDTO>> getAllDaily(){
-        return ResponseEntity.ok(dailyService.getAllDaily());
+    @GetMapping("projects/{id}")
+    public ResponseEntity<List<DailyDTO>> getAllDaily(@PathVariable("id") int idProject){
+        return ResponseEntity.ok(dailyService.getAllDaily(idProject));
     }
 
-    @GetMapping("today")
-    public ResponseEntity<Boolean> isThereDailyToday(){
-        return ResponseEntity.ok(dailyService.isThereDailyToday());
+    @GetMapping("today/projects/{idProject}")
+    public ResponseEntity<Boolean> isThereDailyToday(@PathVariable("idProject") int idProject){
+        return ResponseEntity.ok(dailyService.isThereDailyToday(idProject));
     }
 
     @PostMapping("{id}/mail/")
