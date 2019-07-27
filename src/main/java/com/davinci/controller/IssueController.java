@@ -99,7 +99,7 @@ public class IssueController {
         return ResponseEntity.ok(issueService.addIssueInBacklog(issue));
     }
 
-    @GetMapping(value = "open/{idProject}")
+    @GetMapping(value = "open/projects/{idProject}")
     public ResponseEntity<?> getIssuesOpenBySprintId(@PathVariable("idProject") int idProject){
         return ResponseEntity.ok(issueService.getAllIssueOpenInActiveSprint(idProject));
     }

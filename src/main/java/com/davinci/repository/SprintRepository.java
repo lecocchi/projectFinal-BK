@@ -16,8 +16,8 @@ public interface SprintRepository extends JpaRepository<Sprint, Integer> {
     @Query(value = "SELECT * FROM sprint WHERE id_project = :idProject", nativeQuery = true)
     List<Sprint> findAllSprintByProject(@Param("idProject") int idProject);
 
-    @Query(value = "SELECT * FROM sprint WHERE ?1 >= DATE_FROM and ?1 <= DATE_TO", nativeQuery = true)
-    Sprint findSprintByDate(Date dateToSearch);
+    @Query(value = "SELECT * FROM sprint WHERE ?1 >= DATE_FROM and ?1 <= DATE_TO and id_project= ?2", nativeQuery = true)
+    Sprint findSprintByDate(Date dateToSearch, int idProject);
 
     @Query(value = "SELECT * FROM sprint WHERE id_project = :idProject and is_active = true", nativeQuery = true)
     Optional<Sprint> findByIsActiveIsTrueByProject(@Param("idProject") int idProject);

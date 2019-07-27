@@ -30,4 +30,8 @@ public class SprintDTO {
     @JsonProperty(value = "date_to")
     private Long dateTo;
 
+    @NotNull
+    @JsonProperty(value = "id_project")
+    private int idProject;
+
 }

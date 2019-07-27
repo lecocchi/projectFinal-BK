@@ -3,6 +3,7 @@ package com.davinci.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Project {
@@ -18,11 +19,16 @@ public class Project {
     @Column(name = "description")
     private String description;
 
+    @NotNull
+    @Column(name = "current_sprint")
+    private int currentSprint;
+
     public Project(){}
 
-    public Project(String name, String description) {
+    public Project(String name, String description, int currentSprint) {
         this.name = name;
         this.description = description;
+        this.currentSprint = currentSprint;
     }
 
     public Integer getId() {
@@ -35,6 +41,14 @@ public class Project {
 
     public String getName() {
         return name;
+    }
+
+    public int getCurrentSprint() {
+        return currentSprint;
+    }
+
+    public void setCurrentSprint(int currentSprint) {
+        this.currentSprint = currentSprint;
     }
 
     public void setName(String name) {

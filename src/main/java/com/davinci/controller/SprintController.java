@@ -43,15 +43,15 @@ public class SprintController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody SprintDTO sprintDTO, int idProject) {
+    public ResponseEntity<?> create(@RequestBody SprintDTO sprintDTO) {
 
-        Sprint dateFrom = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateFrom()));
-        Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()));
+        Sprint dateFrom = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateFrom()), sprintDTO.getIdProject());
+        Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()), sprintDTO.getIdProject());
 
         if (dateFrom != null || dateTo != null)
             throw new ErrorException("Error al intentar crear el Sprint.La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint");
 
-        return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO), idProject), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO)), HttpStatus.CREATED);
 
     }
 

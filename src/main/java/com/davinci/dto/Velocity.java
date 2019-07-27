@@ -11,8 +11,12 @@ public class Velocity {
     @JsonProperty("story")
     private Integer storyPoint;
 
-    public Velocity(String sprint, Integer storyPoint) {
+    @JsonProperty("id_sprint")
+    private int idSprint;
+
+    public Velocity(String sprint, Integer storyPoint, int idSprint) {
         this.sprint = sprint;
         this.storyPoint = storyPoint;
+        this.idSprint = idSprint;
     }
 }

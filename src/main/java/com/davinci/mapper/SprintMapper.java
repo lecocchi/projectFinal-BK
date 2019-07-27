@@ -16,6 +16,7 @@ public class SprintMapper {
         sprint.setDateTo(new Date(sprintDTO.getDateTo()));
         sprint.setCreated(new Date());
         sprint.setEnabled(true);
+        sprint.setIdProject(sprintDTO.getIdProject());
 
         return sprint;
     }

@@ -6,9 +6,11 @@ import com.davinci.exceptions.ActiveSprintNotFoundException;
 import com.davinci.exceptions.ErrorException;
 import com.davinci.model.Issue;
 import com.davinci.model.Location;
+import com.davinci.model.Project;
 import com.davinci.model.Sprint;
 import com.davinci.repository.IssueRepository;
 import com.davinci.repository.LocationRepository;
+import com.davinci.repository.ProjectRepository;
 import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,14 +29,17 @@ public class SprintService {
     private List<Velocity> velocityChart;
     private List<SprintReport> sprintReports;
     private List<Issue> issues;
+    private ProjectRepository projectRepository;
 
     @Autowired
     public SprintService(SprintRepository sprintRepository,
                          IssueRepository issueRepository,
-                         LocationRepository locationRepository) {
+                         LocationRepository locationRepository,
+                         ProjectRepository projectRepository) {
         this.sprintRepository = sprintRepository;
         this.issueRepository = issueRepository;
         this.locationRepository = locationRepository;
+        this.projectRepository = projectRepository;
     }
 
     public Sprint getSprintById(Integer id) {
@@ -45,16 +50,18 @@ public class SprintService {
         return this.sprintRepository.findAllSprintByProject(idProject);
     }
 
-    public Sprint createSprint(Sprint sprint, int idProject) {
-
-
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(idProject);
+    public Sprint createSprint(Sprint sprint) {
+        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(sprint.getIdProject());
 
         if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
             sprint.setEnabled(true);
             sprint.setIsActive(true);
             Sprint newSprint = sprintRepository.save(sprint);
-            newSprint.setName("Sprint " + newSprint.getId());
+
+            Project project = this.projectRepository.findOne(sprint.getIdProject());
+            project.setCurrentSprint(project.getCurrentSprint() + 1);
+
+            newSprint.setName("Sprint " + project.getCurrentSprint());
             return sprintRepository.save(newSprint);
         }else{
             throw new ErrorException("No se puede crear un sprint porque ya existe un sprint activo. Por favor finalice el sprint activo.");
@@ -79,8 +86,8 @@ public class SprintService {
                 .orElseThrow(() -> new RuntimeException("No Exists Sprint"));
     }
 
-    public Sprint validateDateWhenCreateSprint(Date date){
-        return sprintRepository.findSprintByDate(date);
+    public Sprint validateDateWhenCreateSprint(Date date, int idProject){
+        return sprintRepository.findSprintByDate(date, idProject);
     }
 
     public Sprint finishSprint(Sprint sprint){
@@ -106,7 +113,7 @@ public class SprintService {
 
         sprintRepository.findAllSprintByProject(idProject).stream()
                 .forEach(sprint -> {
-                    velocityChart.add(new Velocity(sprint.getName(), sprintRepository.getStoryPointBySprint(sprint.getId())));
+                    velocityChart.add(new Velocity(sprint.getName(), sprintRepository.getStoryPointBySprint(sprint.getId()), sprint.getId()));
                 });
         return velocityChart;
     }

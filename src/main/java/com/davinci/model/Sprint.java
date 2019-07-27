@@ -59,8 +59,12 @@ public class Sprint implements Serializable {
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
 
+    @NotNull
+    @Column(name = "id_project")
+    private int idProject;
 
-    public Sprint(String name, String description, Date dateFrom, Date dateTo, Date created, Boolean enabled,Boolean isActive) {
+
+    public Sprint(String name, String description, Date dateFrom, Date dateTo, Date created, Boolean enabled,Boolean isActive, int idProject) {
         this.name = name;
         this.description  = description;
         this.dateFrom = dateFrom;
@@ -68,5 +72,6 @@ public class Sprint implements Serializable {
         this.created = created;
         this.enabled = enabled;
         this.isActive = isActive;
+        this.idProject = idProject;
     }
 }
