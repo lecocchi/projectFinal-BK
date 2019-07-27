@@ -24,8 +24,8 @@ public class VersionService {
         return this.versionRepository.findOne(id);
     }
 
-    public List<Version> getAllVersion() {
-        return this.versionRepository.findAll();
+    public List<Version> getAllVersion(int idProject) {
+        return this.versionRepository.findAllByProject(idProject);
     }
 
     public Version createVersion(Version version) {

@@ -38,11 +38,16 @@ public class Version implements Serializable {
     @Column(name = "CREATED_AT")
     private Date created;
 
+    @NotNull
+    @Column(name = "id_project")
+    private int idProject;
 
-    public Version(String name, String description, Date created){
+
+    public Version(String name, String description, Date created, int idProject){
         this.name = name;
         this.description = description;
         this.created = created;
+        this.idProject = idProject;
     }
 
 }

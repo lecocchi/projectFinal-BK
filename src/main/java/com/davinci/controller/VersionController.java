@@ -29,9 +29,9 @@ public class VersionController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @GetMapping
-    public ResponseEntity<List<Version>> getAll() {
-        return Optional.ofNullable(this.versionService.getAllVersion())
+    @GetMapping("projects/{idProject}")
+    public ResponseEntity<List<Version>> getAll(@PathVariable("idProject") int idProject) {
+        return Optional.ofNullable(this.versionService.getAllVersion(idProject))
                 .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }

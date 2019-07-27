@@ -28710,6 +28710,10 @@ page-dashboard-project .cursor:hover {
   cursor: pointer;
 }
 
+page-dashboard-project ion-navbar {
+  text-align: center;
+}
+
 page-detalle {
   margin-top: 56px;
 }
