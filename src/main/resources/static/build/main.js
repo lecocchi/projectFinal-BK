@@ -2136,10 +2136,7 @@ var LoginPage = /** @class */ (function () {
             loading.present();
             _this.userProvider.getProjectsByUserId(u.id)
                 .subscribe(function (p) {
-                if (p.length > 1)
-                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__dashboard_project_dashboard_project__["a" /* DashboardProjectPage */], { "p": p, "user": u });
-                else
-                    _this.navCtrl.push(_this.rootPage, { "rol": u.rol, "firstName": u.firstName, "lastName": u.lastName, "project": p });
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__dashboard_project_dashboard_project__["a" /* DashboardProjectPage */], { "p": p, "user": u });
                 loading.dismiss();
             });
         }, function (err) {
@@ -2152,9 +2149,7 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.loginGP = function () {
         var _this = this;
         if (this.platform.is('cordova')) {
-            this.utilProvider.presentPrompt("LOGIN ANDROID", "EMPEZANDO A LOGUEARSE EN ADNROID");
             this.gp.login({}).then(function (res) {
-                _this.utilProvider.presentPrompt("RESPUESTA LOGIN GOOGLE", res);
                 var userLoginGooglePlus = {
                     "email": res.email
                 };
@@ -4477,6 +4472,7 @@ var ProjectPage = /** @class */ (function () {
         loading.present();
         this.userProvider.getUserByProject(this.project.id)
             .subscribe(function (users) {
+            console.log(users);
             for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
                 var user = users_1[_i];
                 var personToShow = {
@@ -4494,6 +4490,8 @@ var ProjectPage = /** @class */ (function () {
                 _this.name = _this.project.name;
                 _this.description = _this.project.description;
             }
+            loading.dismiss();
+        }, function (err) {
             loading.dismiss();
         });
     };
@@ -4580,7 +4578,6 @@ var DashboardProjectPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.projects = [];
         this.rootPage = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
-        this.registerBackButton();
     }
     DashboardProjectPage.prototype.ionViewWillEnter = function () {
         this.projects = this.navParams.get("p");
@@ -4596,28 +4593,6 @@ var DashboardProjectPage = /** @class */ (function () {
             "name": project.name
         };
         this.navCtrl.push(this.rootPage, { "rol": this.user.rol, "firstName": this.user.firstName, "lastName": this.user.lastName, "project": projectToSend });
-    };
-    DashboardProjectPage.prototype.registerBackButton = function () {
-        var _this = this;
-        this.platform.registerBackButtonAction(function () {
-            if (_this.navCtrl.getActive().id == 'n4-1') {
-                _this.alertCtrl.create({
-                    title: 'Salir',
-                    subTitle: '¿Desea  salir de la app?',
-                    buttons: [{
-                            text: 'Si',
-                            handler: function (data) {
-                                _this.platform.exitApp();
-                            }
-                        }, {
-                            text: 'No'
-                        }]
-                }).present();
-            }
-            else {
-                _this.navCtrl.pop();
-            }
-        });
     };
     DashboardProjectPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
