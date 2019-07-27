@@ -30149,6 +30149,16 @@ page-velocity .cursor:hover {
   cursor: pointer;
 }
 
+page-velocity .icono {
+  color: #004faa;
+  margin-left: 25px;
+  font-size: 20px;
+}
+
+page-velocity .icono:hover {
+  color: #00aa63;
+}
+
 page-version-description .btn-aceptar, page-version-description .btn-cancelar {
   margin: 2rem 0;
   height: 48px;
