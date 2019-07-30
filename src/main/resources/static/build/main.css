@@ -29316,6 +29316,13 @@ page-login .btn-user {
   }
 }
 
+page-login .version {
+  margin-top: 15px;
+  color: grey;
+  font-style: italic;
+  font-weight: bold;
+}
+
 page-perfil ion-avatar, page-perfil ion-thumbnail {
   display: -webkit-box;
   display: -webkit-flex;

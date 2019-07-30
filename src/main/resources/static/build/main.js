@@ -1541,7 +1541,7 @@ var VelocityPage = /** @class */ (function () {
         });
     };
     VelocityPage.prototype.help = function () {
-        this.utilsProvider.presentPrompt("", "Los story points son una unidad de medida para expresar un estimado del esfuerzo total que será requerido para implementar completamente una porción de trabajo.");
+        this.utilsProvider.presentPrompt("", "Los story points son una unidad de medida de tiempo para expresar un estimado del esfuerzo total que será requerido para implementar completamente una porción de trabajo. La unidad de los story points son las horas, o sea, 1 story point = 1 hora");
     };
     VelocityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -2246,7 +2246,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/leandro/programming-tools/projectFinal-Android/src/pages/login/login.html"*/'\n<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title">Iniciar Sesión</h1>\n      <div class="login-body">\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button round color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n\n        <section class="login-email">\n          <div class="login-email-title">O con una cuenta de Email</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar Sesión</button>\n        </div>\n\n      </div>\n    </header>\n  </div>\n</ion-content>\n  '/*ion-inline-end:"/home/leandro/programming-tools/projectFinal-Android/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/home/leandro/programming-tools/projectFinal-Android/src/pages/login/login.html"*/'\n<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title"><div>ScrumApp</div> <div>Iniciar Sesión</div></h1>\n      <div class="login-body">\n\n        <!--\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button round color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n        -->\n\n        <section class="login-email">\n          <div class="login-email-title">Con una cuenta de Email</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar Sesión</button>\n        </div>\n        <div class="version">Versión 1.0.34</div> \n      </div>\n    </header>\n  </div>\n</ion-content>\n  '/*ion-inline-end:"/home/leandro/programming-tools/projectFinal-Android/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -4466,34 +4466,36 @@ var ProjectPage = /** @class */ (function () {
         var _this = this;
         this.project = this.navParams.get("project");
         this.isCreate = this.navParams.get("isCreate");
-        var loading = this.loadingCtrl.create({ spinner: 'ios',
-            content: 'Cargando...'
-        });
-        loading.present();
-        this.userProvider.getUserByProject(this.project.id)
-            .subscribe(function (users) {
-            console.log(users);
-            for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
-                var user = users_1[_i];
-                var personToShow = {
-                    "firstName": user.firstName,
-                    "lastName": user.lastName,
-                    "userName": user.userName,
-                    "avatar": user.avatar,
-                    "yesterday": "",
-                    "today": "",
-                    "checked": false
-                };
-                _this.members.push(personToShow);
-            }
-            if (!_this.isCreate) {
-                _this.name = _this.project.name;
-                _this.description = _this.project.description;
-            }
-            loading.dismiss();
-        }, function (err) {
-            loading.dismiss();
-        });
+        console.log(this.isCreate);
+        if (!this.isCreate) {
+            var loading_1 = this.loadingCtrl.create({ spinner: 'ios',
+                content: 'Cargando...'
+            });
+            loading_1.present();
+            this.userProvider.getUserByProject(this.project.id)
+                .subscribe(function (users) {
+                for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
+                    var user = users_1[_i];
+                    var personToShow = {
+                        "firstName": user.firstName,
+                        "lastName": user.lastName,
+                        "userName": user.userName,
+                        "avatar": user.avatar,
+                        "yesterday": "",
+                        "today": "",
+                        "checked": false
+                    };
+                    _this.members.push(personToShow);
+                }
+                if (!_this.isCreate) {
+                    _this.name = _this.project.name;
+                    _this.description = _this.project.description;
+                }
+                loading_1.dismiss();
+            }, function (err) {
+                loading_1.dismiss();
+            });
+        }
     };
     ProjectPage.prototype.cancel = function () {
         this.navCtrl.pop();
@@ -4531,7 +4533,7 @@ var ProjectPage = /** @class */ (function () {
     };
     ProjectPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-project',template:/*ion-inline-start:"/home/leandro/programming-tools/projectFinal-Android/src/pages/project/project.html"*/'<ion-header>\n    <ion-navbar color="primary">\n      <ion-title>Proyecto</ion-title>\n      <ion-buttons end>\n        <button ion-button icon-only (click)="createProject()">\n          <ion-icon name="checkmark" class="accept"></ion-icon>\n        </button>\n      </ion-buttons>\n\n      <ion-buttons end>\n        <button ion-button icon-only (click)="cancel()">\n          <ion-icon name="close" class="cancel"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n    <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="name"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n<h4 class="members">Integrantes</h4>\n  <ion-list>\n    <ion-item *ngFor="let member of members">\n      <ion-avatar item-start>\n        <avatar>{{member.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ member.firstName }} {{ member.lastName}}\n      </div>\n      <p class="user-name">{{ member.userName}}</p>\n    </ion-item>\n\n  </ion-list>\n\n  </ion-content>'/*ion-inline-end:"/home/leandro/programming-tools/projectFinal-Android/src/pages/project/project.html"*/,
+            selector: 'page-project',template:/*ion-inline-start:"/home/leandro/programming-tools/projectFinal-Android/src/pages/project/project.html"*/'<ion-header>\n    <ion-navbar color="primary">\n      <ion-title>Proyecto</ion-title>\n      <ion-buttons end>\n        <button ion-button icon-only (click)="createProject()">\n          <ion-icon name="checkmark" class="accept"></ion-icon>\n        </button>\n      </ion-buttons>\n\n      <ion-buttons end>\n        <button ion-button icon-only (click)="cancel()">\n          <ion-icon name="close" class="cancel"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n    <ion-item>\n    <ion-label floating>Nombre</ion-label>\n    <ion-input type="text" [(ngModel)]="name"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Descripción</ion-label>\n    <ion-input type="text" [(ngModel)]="description" ></ion-input>\n  </ion-item>\n\n<h4 class="members" *ngIf="!isCreate">Integrantes</h4>\n  <ion-list>\n    <ion-item *ngFor="let member of members">\n      <ion-avatar item-start>\n        <avatar>{{member.firstName.substring(0,1) | uppercase}}</avatar>\n      </ion-avatar>\n      <div class="issue-summary full-name">\n        {{ member.firstName }} {{ member.lastName}}\n      </div>\n      <p class="user-name">{{ member.userName}}</p>\n    </ion-item>\n\n  </ion-list>\n\n  </ion-content>'/*ion-inline-end:"/home/leandro/programming-tools/projectFinal-Android/src/pages/project/project.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
