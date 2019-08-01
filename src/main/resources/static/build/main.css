@@ -28847,8 +28847,24 @@ page-home .content {
   text-align: center;
 }
 
-page-home ion-navbar {
-  text-align: center;
+page-home .toolbar-content-md {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 page-home .avatar1 {
@@ -28941,6 +28957,14 @@ page-home .cursor:hover {
 
 img {
   width: 75px;
+}
+
+.close-session {
+  display: block !important;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 page-issue textarea {

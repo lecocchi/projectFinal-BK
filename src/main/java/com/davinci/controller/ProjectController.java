@@ -1,8 +1,10 @@
 package com.davinci.controller;
 
+import com.davinci.dto.ProjectUsers;
 import com.davinci.model.Project;
 import com.davinci.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +31,11 @@ public class ProjectController {
     @PatchMapping
     public ResponseEntity<Project> update(@RequestBody Project project){
         return ResponseEntity.ok(projectService.update(project));
+    }
+
+    @PatchMapping("/users")
+    public ResponseEntity<?> updateUsersInProject(@RequestBody ProjectUsers projectUsers){
+        projectService.addUsersInProject(projectUsers);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
