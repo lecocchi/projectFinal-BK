@@ -44,4 +44,10 @@ public class ControllerAdvice {
         LOGGER.error(ex.getMessage());
         return new ResponseEntity(new ErrorResponse(HttpStatus.CONFLICT.toString(), "Error", ex.getMessage()),HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(ThereIsASprintActiveException.class)
+    public ResponseEntity thereIsASprintActiveException(ThereIsASprintActiveException ex){
+        LOGGER.error(ex.getMessage());
+        return new ResponseEntity(new ErrorResponse(HttpStatus.CONFLICT.toString(), "Error", ex.getMessage()),HttpStatus.CONFLICT);
+    }
 }

@@ -38,4 +38,10 @@ public class ProjectController {
         projectService.addUsersInProject(projectUsers);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProject(@PathVariable("id") String id){
+        projectService.deleteProject(Integer.valueOf(id));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
