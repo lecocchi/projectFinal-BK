@@ -32,4 +32,7 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
     @Query(value = "SELECT * FROM issue WHERE ID_SPRINT =  ?1", nativeQuery = true)
     List<Issue> getIssueBySprintId(int id);
+
+    @Query(value = "SELECT * FROM issue WHERE id_project = :idProject and enabled = true", nativeQuery = true)
+    List<Issue> findAllIssuesByProject(@Param("idProject") int idProject);
 }

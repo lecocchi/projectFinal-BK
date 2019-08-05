@@ -4,6 +4,7 @@ package com.davinci.controller;
 import com.davinci.model.Issue;
 import com.davinci.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -102,5 +103,10 @@ public class IssueController {
     @GetMapping(value = "open/projects/{idProject}")
     public ResponseEntity<?> getIssuesOpenBySprintId(@PathVariable("idProject") int idProject){
         return ResponseEntity.ok(issueService.getAllIssueOpenInActiveSprint(idProject));
+    }
+
+    @GetMapping(value = "projects/{id}")
+    public ResponseEntity<?> getAllIssuesByProject(@PathVariable("id") String idProject){
+        return ResponseEntity.ok(issueService.getAllIssuesByProject(Integer.valueOf(idProject)));
     }
 }

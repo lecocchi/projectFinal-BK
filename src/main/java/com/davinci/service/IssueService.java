@@ -1,5 +1,6 @@
 package com.davinci.service;
 
+import com.davinci.dto.IssueDTO;
 import com.davinci.exceptions.ActiveSprintNotFoundException;
 import com.davinci.model.Issue;
 import com.davinci.model.Sprint;
@@ -8,6 +9,7 @@ import com.davinci.repository.SprintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -128,5 +130,49 @@ public class IssueService {
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
 
         return issueRepository.findAllIssuesNotFinishBySprintIdByProject(activeSprintOptional.get().getId(), idProject);
+    }
+
+    public List<IssueDTO> getAllIssuesByProject(int idProject) {
+
+        List<IssueDTO> issueDTOList = new ArrayList<>();
+
+        issueRepository.findAllIssuesByProject(idProject).stream()
+                .forEach( i->{
+
+                    String sprintName = "Backlog";
+
+                    if (i.getSprint() != null) {
+                        sprintName = sprintRepository.findOne(i.getSprint()).getName();
+                    }
+
+                    issueDTOList.add(new IssueDTO(
+                            i.getId(),
+                            i.getDescription(),
+                            i.getAvatar(),
+                            i.getLabel(),
+                            i.getPhase(),
+                            i.getPriority(),
+                            i.getSprint(),
+                            i.getState(),
+                            i.getReporter(),
+                            i.getAssignee(),
+                            i.getVersion(),
+                            i.getTitle(),
+                            i.getWatcher(),
+                            i.getCreated(),
+                            i.getUpdated(),
+                            i.getResolved(),
+                            i.getPlannedStart(),
+                            i.getPlannedEnd(),
+                            i.getEstimated(),
+                            i.getRemaining(),
+                            i.getBacklog(),
+                            i.getEnabled(),
+                            i.getIdProject(),
+                            sprintName
+                    ));
+            });
+
+        return issueDTOList;
     }
 }

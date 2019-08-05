@@ -29892,6 +29892,82 @@ page-rol-description .btn-aceptar {
   margin-top: 5rem;
 }
 
+page-search .item-md,
+page-search .item-ios {
+  padding-left: 0 !important;
+}
+
+page-search .issue-code {
+  color: #286090;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+page-search .issue-summary {
+  font-weight: 500;
+  color: #5a5959;
+}
+
+page-search .cursor:hover {
+  cursor: pointer;
+}
+
+page-search .created, page-search .progress, page-search .blocked, page-search .finished {
+  font-size: 15px;
+}
+
+page-search .backlog {
+  font-size: 16px;
+}
+
+page-search .created {
+  color: #8a8a29;
+}
+
+page-search .progress {
+  color: green;
+}
+
+page-search .blocked {
+  color: #e2960a;
+}
+
+page-search .finished {
+  color: red;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  page-search .scroll-content,
+  page-search .fixed-content,
+  page-search .tabs-md .tabbar {
+    left: 15%;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-search ion-navbar.toolbar {
+    padding-left: 15%;
+    padding-right: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  page-search .scroll-content,
+  page-search .fixed-content,
+  page-search .tabs-md .tabbar {
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 5px 5px 30px #d4d4d4;
+    box-shadow: 5px 5px 30px #d4d4d4;
+  }
+  page-search ion-navbar.toolbar {
+    padding-left: 25%;
+    padding-right: 25% !important;
+  }
+}
+
 page-sprint ion-buttons {
   margin-right: 18px !important;
 }
