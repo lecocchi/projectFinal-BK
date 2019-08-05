@@ -85,8 +85,8 @@ public class IssueController {
     }
 
     @PostMapping(value = "sprint")
-    public ResponseEntity<Issue> setIssueInActiveSprintByProject(@RequestBody Issue issue){
-        return ResponseEntity.ok(issueService.setIssueInActiveSprint(issue));
+    public ResponseEntity<Issue> setIssueInSprintByProject(@RequestBody Issue issue){
+        return ResponseEntity.ok(issueService.setIssueInSprint(issue));
     }
 
     @GetMapping(value = "/issues/{sprintId}")

@@ -52,15 +52,10 @@ public class IssueService {
         issue.setCreated(new Date());
         issue.setUpdated(new Date());
         issue.setEnabled(true);
-        if (!issue.getBacklog()){
 
-            Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(issue.getIdProject());
+        if (!issue.getBacklog())
+            issue.setSprint(issue.getSprint());
 
-            if (!activeSprintOptional.isPresent())
-                throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
-
-            issue.setSprint(activeSprintOptional.get().getId());
-        }
         return this.issueRepository.save(issue);
     }
 
@@ -71,8 +66,6 @@ public class IssueService {
         }
 
         return issueRepository.save(issueToDelete);
-//        Optional.ofNullable(this.issueRepository.findOne(id))
-//                .ifPresent(i -> this.issueRepository.delete(i));
     }
 
     public Issue updateIssue(Issue issue, Integer id) {
@@ -103,14 +96,12 @@ public class IssueService {
 
     }
 
-    public Issue setIssueInActiveSprint(Issue issue){
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(issue.getIdProject());
+    public Issue setIssueInSprint(Issue issue){
+        Sprint sprint = sprintRepository.findOne(issue.getSprint());
 
-        if (!activeSprintOptional.isPresent())
-            throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
+        if (sprint == null)
+            throw new ActiveSprintNotFoundException("No existe el Sprint");
 
-        Sprint activeSprint = activeSprintOptional.get();
-        issue.setSprint(activeSprint.getId());
         issue.setBacklog(false);
 
         return issueRepository.save(issue);

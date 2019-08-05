@@ -24,6 +24,9 @@ public interface SprintRepository extends JpaRepository<Sprint, Integer> {
 
     @Query(value = "SELECT SUM(iss.estimated) FROM issue iss WHERE id_sprint = ?1", nativeQuery = true)
     Integer getStoryPointBySprint(Integer id);
+
+    @Query(value = "SELECT * FROM sprint WHERE (is_active = true or is_create = true) and id_project = :idProject ", nativeQuery = true)
+    List<Sprint> findAllSprintByIsActiveIsTrueOrIsCreateIsTrueByIdProject(@Param("idProject") int idProject);
 }
 
 

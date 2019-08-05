@@ -1,9 +1,11 @@
 package com.davinci.service;
 
+import com.davinci.dto.SprintDTO;
 import com.davinci.dto.SprintReport;
 import com.davinci.dto.Velocity;
 import com.davinci.exceptions.ActiveSprintNotFoundException;
 import com.davinci.exceptions.ErrorException;
+import com.davinci.mapper.SprintMapper;
 import com.davinci.model.Issue;
 import com.davinci.model.Location;
 import com.davinci.model.Project;
@@ -51,21 +53,32 @@ public class SprintService {
     }
 
     public Sprint createSprint(Sprint sprint) {
-        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(sprint.getIdProject());
 
-        if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
-            sprint.setEnabled(true);
-            sprint.setIsActive(true);
-            Sprint newSprint = sprintRepository.save(sprint);
+        sprint.setEnabled(true);
+        Sprint newSprint = sprintRepository.save(sprint);
 
-            Project project = this.projectRepository.findOne(sprint.getIdProject());
-            project.setCurrentSprint(project.getCurrentSprint() + 1);
+        Project project = this.projectRepository.findOne(sprint.getIdProject());
+        project.setCurrentSprint(project.getCurrentSprint() + 1);
 
-            newSprint.setName("Sprint " + project.getCurrentSprint());
-            return sprintRepository.save(newSprint);
-        }else{
-            throw new ErrorException("No se puede crear un sprint porque ya existe un sprint activo. Por favor finalice el sprint activo.");
-        }
+        newSprint.setName("Sprint " + project.getCurrentSprint());
+        return sprintRepository.save(newSprint);
+
+
+//        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(sprint.getIdProject());
+//
+//        if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
+//            sprint.setEnabled(true);
+//            sprint.setIsActive(true);
+//            Sprint newSprint = sprintRepository.save(sprint);
+//
+//            Project project = this.projectRepository.findOne(sprint.getIdProject());
+//            project.setCurrentSprint(project.getCurrentSprint() + 1);
+//
+//            newSprint.setName("Sprint " + project.getCurrentSprint());
+//            return sprintRepository.save(newSprint);
+//        }else{
+//            throw new ErrorException("No se puede crear un sprint porque ya existe un sprint activo. Por favor finalice el sprint activo.");
+//        }
 
     }
 
@@ -139,4 +152,23 @@ public class SprintService {
         return sprintRepository.findByIsActiveIsTrueByProject(id).get();
     }
 
+    public Sprint activedSprint(Sprint sprint) {
+
+        Optional<Sprint> sprintToActivatedOptional = sprintRepository.findByIsActiveIsTrueByProject(sprint.getIdProject());
+
+        if (sprintToActivatedOptional.isPresent())
+            throw new ActiveSprintNotFoundException("No es posible activar el sprint porque solamente puede existir un solo sprint activo");
+
+
+        Sprint sprintToActivated = sprintRepository.findOne(sprint.getId());
+
+        sprintToActivated.setIsActive(true);
+        sprintToActivated.setIsCreate(false);
+        return sprintRepository.save(sprintToActivated);
+
+    }
+
+    public List<Sprint> getAllSprintActiveOrCreateByProject(int idProject) {
+        return sprintRepository.findAllSprintByIsActiveIsTrueOrIsCreateIsTrueByIdProject(idProject);
+    }
 }

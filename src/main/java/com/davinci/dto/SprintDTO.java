@@ -34,4 +34,10 @@ public class SprintDTO {
     @JsonProperty(value = "id_project")
     private int idProject;
 
+    @JsonProperty("is_active")
+    private boolean isActive;
+
+    @JsonProperty("is_create")
+    private boolean isCreate;
+
 }

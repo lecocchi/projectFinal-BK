@@ -93,4 +93,14 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getActiveSprint(id));
     }
 
+    @PostMapping("active")
+    public ResponseEntity<?> activedSprint(@RequestBody Sprint sprint){
+        return ResponseEntity.ok(sprintService.activedSprint(sprint));
+    }
+
+    @GetMapping("/availables/projects/{id}")
+    public ResponseEntity<?> getAllSprintAvailables(@PathVariable("id") int idProject){
+        return ResponseEntity.ok(sprintService.getAllSprintActiveOrCreateByProject(idProject));
+    }
+
 }
