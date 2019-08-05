@@ -11,7 +11,11 @@ import java.util.List;
 @Repository
 public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
-    List<Issue> findAllBySprint(Integer sprint);
+    @Query(value = "SELECT * FROM issue WHERE id_sprint = :idSprint and id_project = :idProject and state = 'CREADO'",nativeQuery = true)
+    List<Issue> findAllIssuesAndStatusCREATEDBySprintByProject(@Param("idSprint") int idSprint, @Param("idProject") int idProject);
+
+    @Query(value = "SELECT * FROM issue WHERE id_sprint = :idSprint and id_project = :idProject",nativeQuery = true)
+    List<Issue> findAllBySprintByProject(@Param("idSprint") int idSprint, @Param("idProject") int idProject);
 
     @Query(value = "SELECT * FROM issue  WHERE BACKLOG = false and ID_PROJECT = :idProject", nativeQuery = true)
     List<Issue> findByBacklogIsFalseAndProjectId(@Param("idProject") Integer idProject);
@@ -23,8 +27,8 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
 
     List<Issue> findBySprintAndEnabledIsTrue(Integer sprintId);
 
-    @Query(value = "SELECT * FROM issue  WHERE (STATE != 'Finalizado' or STATE is null) and ID_SPRINT = :sprintId", nativeQuery = true)
-    List<Issue> findAllIssuesNotFinishBySprintId(@Param("sprintId") Integer sprintId);
+    @Query(value = "SELECT * FROM issue  WHERE (STATE != 'FINALIZADO' or STATE is null) and ID_SPRINT = :sprintId and ID_PROJECT = :idProject", nativeQuery = true)
+    List<Issue> findAllIssuesNotFinishBySprintIdByProject(@Param("sprintId") Integer sprintId, @Param("idProject") int idProject);
 
     @Query(value = "SELECT * FROM issue WHERE ID_SPRINT =  ?1", nativeQuery = true)
     List<Issue> getIssueBySprintId(int id);

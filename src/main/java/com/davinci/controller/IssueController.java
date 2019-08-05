@@ -30,9 +30,9 @@ public class IssueController {
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @GetMapping(value = "sprint/{sprint}")
-    public ResponseEntity<List<Issue>> getAllBySprint(@PathVariable("sprint") Integer sprint) {
-        return Optional.ofNullable(this.issueService.getAllIssueBySprint(sprint))
+    @GetMapping(value = "sprint/{sprint}/projects/{id}")
+    public ResponseEntity<List<Issue>> getAllBySprint(@PathVariable("sprint") Integer sprint, @PathVariable("id") int idProject) {
+        return Optional.ofNullable(this.issueService.getAllIssueBySprintByProject(sprint, idProject))
                 .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }

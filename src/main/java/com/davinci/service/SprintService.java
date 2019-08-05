@@ -94,7 +94,7 @@ public class SprintService {
 
         sprint.setIsActive(false);
         Sprint sprintFinish = sprintRepository.save(sprint);
-        issueRepository.findAllBySprint(sprintFinish.getId()).stream().forEach((issue -> {
+        issueRepository.findAllIssuesAndStatusCREATEDBySprintByProject(sprintFinish.getId(), sprint.getIdProject()).stream().forEach((issue -> {
             issue.setBacklog(true);
             issue.setSprint(null);
             issueRepository.save(issue);

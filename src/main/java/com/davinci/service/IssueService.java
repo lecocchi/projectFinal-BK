@@ -30,8 +30,8 @@ public class IssueService {
         return this.issueRepository.findOne(id);
     }
 
-    public List<Issue> getAllIssueBySprint(Integer sprint) {
-        return this.issueRepository.findAllBySprint(sprint);
+    public List<Issue> getAllIssueBySprintByProject(Integer sprintId, int idProject) {
+        return this.issueRepository.findAllBySprintByProject(sprintId, idProject);
     }
 
     public List<Issue> getAllIssueByBacklogIsTrue(int id) {
@@ -136,6 +136,6 @@ public class IssueService {
         if (!activeSprintOptional.isPresent())
             throw new ActiveSprintNotFoundException("No existe ningún sprint activo");
 
-        return issueRepository.findAllIssuesNotFinishBySprintId(activeSprintOptional.get().getId());
+        return issueRepository.findAllIssuesNotFinishBySprintIdByProject(activeSprintOptional.get().getId(), idProject);
     }
 }

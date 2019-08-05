@@ -167,7 +167,7 @@ public class IssueControllerTests {
                         Boolean.TRUE,
                         Boolean.TRUE));
 
-        when(service.getAllIssueBySprint(any(Integer.class))).thenReturn(issues);
+        when(service.getAllIssueBySprintByProject(any(Integer.class))).thenReturn(issues);
 
         MvcResult result = mockMvc.perform(get("/issue/sprint/{sprint}", any(Integer.class)))
                 .andExpect(status().isOk())
@@ -183,7 +183,7 @@ public class IssueControllerTests {
                 .andExpect(jsonPath("$[1].remaining", is(ConstantsTests.Issue.REMAINING)))
                 .andReturn();
 
-        verify(service, times(1)).getAllIssueBySprint(any(Integer.class));
+        verify(service, times(1)).getAllIssueBySprintByProject(any(Integer.class));
         verifyNoMoreInteractions(service);
 
         TypeToken<List<Issue>> token = new TypeToken<List<Issue>>() {

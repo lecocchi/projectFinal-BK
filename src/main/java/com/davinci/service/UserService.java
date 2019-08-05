@@ -47,14 +47,16 @@ public class UserService {
 
     public User createUser(User user) {
 
-        userRepository.findByEmail(user.getEmail())
-                .ifPresent((u) -> {
-                    throw new ThereIsUserException("Ya existe un usuario con el email '" + user.getEmail() + "'");
-                });
-
         userRepository.findByUserName(user.getUserName())
                 .ifPresent((u) -> {
-                    throw new ThereIsUserException("Ya existe un usuario con el nombre de usuario '" + user.getUserName() + "'");
+
+                    for (int i = 1 ; i < 1000 ; i++){
+                        String suggestingUserName = user.getUserName() + i;
+                        if (!userRepository.findByUserName(suggestingUserName).isPresent()){
+                            throw new ThereIsUserException("Ya existe el nombre de usuario '" + user.getUserName() + "', disponible esta el nombre de usuario '" + suggestingUserName + "'");
+                        }
+                    }
+
                 });
 
         user.setCreated(new Date());

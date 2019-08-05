@@ -31,13 +31,13 @@ public class Daily {
 	@JoinColumn(name = "daily_id")
 	List<DailyItem> items;
 	@NotNull
-	private int sprint;
+	private String sprint;
 
 	@NotNull
 	@Column(name = "id_project")
 	private int idProject;
 
-	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items, int sprint, int idProject) {
+	public Daily(String firstName, String lastName, String userName, String avatar, LocalDate createdAt, List<DailyItem> items, String sprint, int idProject) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;

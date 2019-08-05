@@ -35,7 +35,7 @@ public class DailyDTO {
 	@JsonProperty("daily_items")
 	List<DailyItemDTO> dailyItems;
 	@JsonProperty("sprint")
-	private int sprint;
+	private String sprint;
 
 	@JsonProperty("id_project")
 	private int idProject;

@@ -28324,6 +28324,26 @@ page-backlog .cursor:hover {
   cursor: pointer;
 }
 
+page-backlog .created, page-backlog .progress, page-backlog .blocked, page-backlog .finished {
+  font-size: 13px;
+}
+
+page-backlog .created {
+  color: #8a8a29;
+}
+
+page-backlog .progress {
+  color: green;
+}
+
+page-backlog .blocked {
+  color: #e2960a;
+}
+
+page-backlog .finished {
+  color: red;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-backlog .scroll-content,
   page-backlog .fixed-content,
@@ -29938,6 +29958,26 @@ page-sprint .cursor:hover {
   cursor: pointer;
 }
 
+page-sprint .created, page-sprint .progress, page-sprint .blocked, page-sprint .finished {
+  font-size: 13px;
+}
+
+page-sprint .created {
+  color: #8a8a29;
+}
+
+page-sprint .progress {
+  color: green;
+}
+
+page-sprint .blocked {
+  color: #e2960a;
+}
+
+page-sprint .finished {
+  color: red;
+}
+
 @media screen and (min-width: 600px) and (max-width: 1000px) {
   page-sprint .scroll-content,
   page-sprint .fixed-content,
@@ -30241,6 +30281,11 @@ page-user-description .icono {
 
 page-user-description .cursor:hover {
   cursor: pointer;
+}
+
+page-user-description .required {
+  color: red;
+  font-size: 13px;
 }
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
