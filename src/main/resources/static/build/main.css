@@ -29954,6 +29954,12 @@ page-sprint .inactivo {
   margin-left: 10px;
 }
 
+page-sprint .create {
+  color: #8a8a29;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
 page-sprint .cursor:hover {
   cursor: pointer;
 }
@@ -30108,6 +30114,12 @@ page-sprints .activo {
 
 page-sprints .inactivo {
   color: red;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+page-sprints .created {
+  color: #8a8a29;
   font-size: 16px;
   margin-left: 10px;
 }
