@@ -2,6 +2,7 @@ package com.davinci.service;
 
 import com.davinci.dto.IssueDTO;
 import com.davinci.exceptions.ActiveSprintNotFoundException;
+import com.davinci.exceptions.InvalidIssueStateForSendIssueToSprintException;
 import com.davinci.model.Issue;
 import com.davinci.model.Sprint;
 import com.davinci.repository.IssueRepository;
@@ -104,6 +105,9 @@ public class IssueService {
         if (sprint == null)
             throw new ActiveSprintNotFoundException("No existe el Sprint");
 
+        if (!sprint.getIsActive() && !"CREADO".equalsIgnoreCase(issue.getState()))
+            throw new InvalidIssueStateForSendIssueToSprintException("Para enviar un issue a un sprint NO ACTIVO es necesario que el estado sea 'CREADO'");
+
         issue.setBacklog(false);
 
         return issueRepository.save(issue);
@@ -174,5 +178,9 @@ public class IssueService {
             });
 
         return issueDTOList;
+    }
+
+    public Sprint getStatusSprintByProject(String nameSprint, int idProject) {
+        return sprintRepository.getStatusSprintByProject(nameSprint, idProject);
     }
 }

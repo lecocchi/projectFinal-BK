@@ -54,36 +54,35 @@ public class SprintService {
 
     public Sprint createSprint(Sprint sprint) {
 
-        sprint.setEnabled(true);
-        Sprint newSprint = sprintRepository.save(sprint);
+        if (sprint.getName() != null){
 
-        Project project = this.projectRepository.findOne(sprint.getIdProject());
-        project.setCurrentSprint(project.getCurrentSprint() + 1);
+            Sprint sprint1 = sprintRepository.findByNameByProject(sprint.getName(), sprint.getIdProject());
 
-        newSprint.setName("Sprint " + project.getCurrentSprint());
-        return sprintRepository.save(newSprint);
+            sprint1.setDateFrom(sprint.getDateFrom());
+            sprint1.setDateTo(sprint.getDateTo());
+            return sprintRepository.save(sprint1);
+        }else{
+            sprint.setEnabled(true);
+            Sprint newSprint = sprintRepository.save(sprint);
 
+            Project project = this.projectRepository.findOne(sprint.getIdProject());
+            project.setCurrentSprint(project.getCurrentSprint() + 1);
 
-//        Optional<Sprint> activeSprintOptional = sprintRepository.findByIsActiveIsTrueByProject(sprint.getIdProject());
-//
-//        if (!activeSprintOptional.isPresent()){ // No existe un sprint activo, podemos crear uno
-//            sprint.setEnabled(true);
-//            sprint.setIsActive(true);
-//            Sprint newSprint = sprintRepository.save(sprint);
-//
-//            Project project = this.projectRepository.findOne(sprint.getIdProject());
-//            project.setCurrentSprint(project.getCurrentSprint() + 1);
-//
-//            newSprint.setName("Sprint " + project.getCurrentSprint());
-//            return sprintRepository.save(newSprint);
-//        }else{
-//            throw new ErrorException("No se puede crear un sprint porque ya existe un sprint activo. Por favor finalice el sprint activo.");
-//        }
-
+            newSprint.setName("Sprint " + project.getCurrentSprint());
+            return sprintRepository.save(newSprint);
+        }
     }
 
-    public void deleteSprint(Integer id) {
-        Optional.ofNullable(this.sprintRepository.findOne(id))
+    public void deleteSprint(int idSprint, int idProject) {
+
+        issueRepository.findAllBySprintByProject(idSprint, idProject)
+                .forEach(i->{
+                    i.setBacklog(true);
+                    i.setSprint(null);
+                    issueRepository.save(i);
+                });
+
+        Optional.ofNullable(this.sprintRepository.findOne(idSprint))
                 .ifPresent(s -> this.sprintRepository.delete(s));
     }
 

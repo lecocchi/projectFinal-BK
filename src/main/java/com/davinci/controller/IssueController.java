@@ -109,4 +109,9 @@ public class IssueController {
     public ResponseEntity<?> getAllIssuesByProject(@PathVariable("id") String idProject){
         return ResponseEntity.ok(issueService.getAllIssuesByProject(Integer.valueOf(idProject)));
     }
+
+    @GetMapping("sprints/{name}/status/projects/{id}")
+    public ResponseEntity<?> getStatusSprint(@PathVariable("name") String nameSprint, @PathVariable("id") int idProject){
+        return ResponseEntity.ok(issueService.getStatusSprintByProject(nameSprint, idProject));
+    }
 }

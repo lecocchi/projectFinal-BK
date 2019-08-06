@@ -48,7 +48,7 @@ public class SprintController {
         Sprint dateFrom = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateFrom()), sprintDTO.getIdProject());
         Sprint dateTo = sprintService.validateDateWhenCreateSprint(new Date(sprintDTO.getDateTo()), sprintDTO.getIdProject());
 
-        if (dateFrom != null || dateTo != null)
+        if ((dateFrom != null && !dateFrom.getName().equalsIgnoreCase(sprintDTO.getName())) || (dateTo != null && !dateTo.getName().equalsIgnoreCase(sprintDTO.getName())))
             throw new ErrorException("Error al intentar crear el Sprint.La fecha 'Desde' y/o 'Hasta' se encuentran dentro del rango de otro Sprint");
 
         return new ResponseEntity<>(this.sprintService.createSprint(SprintMapper.to(sprintDTO)), HttpStatus.CREATED);
@@ -62,9 +62,9 @@ public class SprintController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_MODIFIED));
     }
 
-    @DeleteMapping(value = "{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
-        this.sprintService.deleteSprint(id);
+    @DeleteMapping("/{id}/projects/{idProject}")
+    public ResponseEntity<Void> delete(@PathVariable("id") int idSprint, @PathVariable("idProject") int idProject) {
+        this.sprintService.deleteSprint(idSprint, idProject);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

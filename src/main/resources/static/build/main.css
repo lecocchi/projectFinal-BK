@@ -30218,6 +30218,9 @@ page-sprints .cursor:hover {
     padding-left: 15%;
     padding-right: 15% !important;
   }
+  page-sprints ion-fab[bottom] {
+    margin-right: 50px;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -30233,6 +30236,15 @@ page-sprints .cursor:hover {
   page-sprints ion-navbar.toolbar {
     padding-left: 25%;
     padding-right: 25% !important;
+  }
+  page-sprints ion-fab[bottom] {
+    margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  page-sprints ion-fab[bottom] {
+    margin-right: 30px;
   }
 }
 
