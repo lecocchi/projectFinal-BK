@@ -170,4 +170,11 @@ public class SprintService {
     public List<Sprint> getAllSprintActiveOrCreateByProject(int idProject) {
         return sprintRepository.findAllSprintByIsActiveIsTrueOrIsCreateIsTrueByIdProject(idProject);
     }
+
+    public Sprint getSprintByNameAndProject(String name, int idProject) {
+        return sprintRepository.findAllSprintByProject(idProject).stream()
+                .filter(s->
+                   s.getName().equalsIgnoreCase(name)
+                ).findAny().orElse(new Sprint());
+    }
 }

@@ -375,11 +375,16 @@ var SprintPage = /** @class */ (function () {
     };
     SprintPage.prototype.createSprint = function () {
         var _this = this;
+        var dateFrom = new Date(this.monthFrom + "/" + this.dayFrom + "/" + this.yearFrom).getTime();
+        var dateTo = new Date(this.monthTo + "/" + this.dayTo + "/" + this.yearTo).getTime();
         if (this.from == undefined || this.from == null) {
             this.utilsProvider.presentPrompt("Error", "Falta ingresar la fecha 'DESDE' del sprint");
         }
         else if (this.to == undefined || this.to == null) {
             this.utilsProvider.presentPrompt("Error", "Falta ingresar la fecha 'HASTA' del sprint");
+        }
+        else if (dateFrom > dateTo) {
+            this.utilsProvider.presentPrompt("Error", "La fecha 'Desde' debe ser menor a la fecha 'Hasta'");
         }
         else {
             var loading_2 = this.loadingCtrl.create({
@@ -392,8 +397,8 @@ var SprintPage = /** @class */ (function () {
                 var sprint = {
                     "name": _this.name,
                     "description": _this.description,
-                    "date_from": new Date(_this.monthFrom + "/" + _this.dayFrom + "/" + _this.yearFrom).getTime(),
-                    "date_to": new Date(_this.monthTo + "/" + _this.dayTo + "/" + _this.yearTo).getTime(),
+                    "date_from": dateFrom,
+                    "date_to": dateTo,
                     "id_project": idProject,
                     "is_active": false,
                     "is_create": true
@@ -2420,6 +2425,9 @@ var SprintProvider = /** @class */ (function () {
     SprintProvider.prototype.getSprintsActivedAndCreated = function (idProject) {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + '/sprint/availables/projects/' + idProject);
     };
+    SprintProvider.prototype.getSprintByNameAndProject = function (sprintName, idProject) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__components_config_config__["a" /* URL_BASE */] + '/sprint/' + sprintName + '/projects/' + idProject);
+    };
     SprintProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
@@ -2912,11 +2920,23 @@ var DailyPage = /** @class */ (function () {
             .then(function (idProject) {
             _this.dailyProvider.getAllDailiesByProject(idProject)
                 .subscribe(function (data) {
+                loading.dismiss();
                 _this.dailies = data.reverse();
                 _this.dailies.forEach(function (d) {
                     d.created_at.dayOfWeek = _this.utils.getDayInSpanish(d.created_at.dayOfWeek);
-                });
-                loading.dismiss();
+                    _this.sprintProvider.getSprintByNameAndProject(d.sprint, idProject)
+                        .subscribe(function (s) {
+                        _this.dateFrom = s.dateFrom;
+                        _this.dateTo = s.dateTo;
+                    }, function (err) {
+                        loading.dismiss();
+                        _this.utils.presentPrompt("Error", "Error al obtener las dailies");
+                    });
+                }),
+                    function (err) {
+                        loading.dismiss();
+                        _this.utils.presentPrompt("Error", "Error al obtener las dailies");
+                    };
             });
         });
     };
@@ -2976,7 +2996,7 @@ var DailyPage = /** @class */ (function () {
     };
     DailyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-daily-tab',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/'<ion-header>\n  <ion-navbar color=\'primary\'>\n    <ion-title>Dailies</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let daily of dailies" (click)="openDetail(daily)" class="cursor">\n      <ion-avatar item-start>\n        <avatar *ngIf="daily.created_at != undefined">{{ daily.created_at.dayOfWeek.substring(0,1) | uppercase }}\n        </avatar>\n      </ion-avatar>\n      <h2 class="date">{{daily.created_at | formatDate}}</h2>\n      <h3 class="sprint">{{ daily.sprint }}</h3>\n\n      <button icon-only (click)="sendMail(daily.id)" item-end class="send">\n        <ion-icon name="send" *ngIf="false"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewDaily()">\n    <button ion-fab>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/
+            selector: 'page-daily-tab',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/'<ion-header>\n  <ion-navbar color=\'primary\'>\n    <ion-title>Dailies</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let daily of dailies" (click)="openDetail(daily)" class="cursor">\n      <ion-avatar item-start>\n        <avatar *ngIf="daily.created_at != undefined">{{ daily.created_at.dayOfWeek.substring(0,1) | uppercase }}\n        </avatar>\n      </ion-avatar>\n      <h2 class="date">{{daily.created_at | formatDate}}</h2>\n      <h3 class="sprint">{{ daily.sprint }}\n        (<span class="sprint-range-from-label">{{ dateFrom | formatDateMillisecond}}</span> -\n        <span class="sprint-range-from-label">{{ dateTo | formatDateMillisecond}}</span>)\n      </h3>\n\n      <button icon-only (click)="sendMail(daily.id)" item-end class="send">\n        <ion-icon name="send" *ngIf="false"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <!-- this fab is placed at top right -->\n  <ion-fab bottom right (click)="createNewDaily()">\n    <button ion-fab>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/daily/daily.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__providers_daily_daily__["a" /* DailyProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__["a" /* UtilsProvider */],
