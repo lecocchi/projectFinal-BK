@@ -2535,7 +2535,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/'<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title">\n        <div>ScrumApp</div>\n        <div>Iniciar Sesión</div>\n      </h1>\n      <div class="login-body">\n\n        <!--\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button round color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n        -->\n\n        <section class="login-email">\n          <div class="login-email-title">Ingresar Usuario y Contraseña</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar\n            Sesión</button>\n        </div>\n        <div class="version">Versión 1.0.36</div>\n      </div>\n    </header>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/'<ion-content>\n\n  <div class="container">\n    <header class="login">\n      <h1 class="login-title">\n        <div>ScrumApp</div>\n        <div>Iniciar Sesión</div>\n      </h1>\n      <div class="login-body">\n\n        <!--\n        <section class="login-net">\n          <div class="login-net-title">Iniciar sesión con</div>\n          <div class="login-net-body">\n            <button ion-button round color="google" icon-left block class="btn-login-google" (click)="loginGP()">\n              <ion-icon name="logo-google"></ion-icon>\n              Google\n            </button>\n          </div>\n        </section>\n        -->\n\n        <section class="login-email">\n          <div class="login-email-title">Ingresar Usuario y Contraseña</div>\n          <div class="login-email-body">\n            <ion-list class="margin">\n\n              <ion-item>\n                <ion-label floating>Usuario</ion-label>\n                <ion-input type="text" [(ngModel)]="userName"></ion-input>\n              </ion-item>\n\n              <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input type="password" [(ngModel)]="password"></ion-input>\n              </ion-item>\n\n            </ion-list>\n          </div>\n        </section>\n\n        <div class="login-net-body">\n          <button ion-button class="btn-login-google btn-user" block (click)="loginForUserAndPass()">Iniciar\n            Sesión</button>\n        </div>\n        <div class="version">Versión 1.0.37</div>\n      </div>\n    </header>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -4796,7 +4796,7 @@ var AboutPage = /** @class */ (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Acerca de</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="about">\n    <div class="icon1">ScrumApp</div>\n    <div class="version">VERSIÓN 1.0.36</div>\n    <div class="contact">Contactos</div>\n    <ul>\n      <li class="lista">Esteban GIMENEZ <span class="email">(estebanngimenez@gmail.com)</span></li>\n      <li class="lista">Fernando CALVIÑO <span class="email">(fernando.calvinio@gmail.com)</span></li>\n      <li class="lista">Leandro COCCHI <span class="email">(leandro.cocchi@davinci.edu.ar)</span></li>\n    </ul>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/about/about.html"*/,
+            selector: 'page-about',template:/*ion-inline-start:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Acerca de</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="about">\n    <div class="icon1">ScrumApp</div>\n    <div class="version">VERSIÓN 1.0.37</div>\n    <div class="contact">Contactos</div>\n    <ul>\n      <li class="lista">Esteban GIMENEZ <span class="email">(estebanngimenez@gmail.com)</span></li>\n      <li class="lista">Fernando CALVIÑO <span class="email">(fernando.calvinio@gmail.com)</span></li>\n      <li class="lista">Leandro COCCHI <span class="email">(leandro.cocchi@davinci.edu.ar)</span></li>\n    </ul>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/mac/WebstormProjects/projectFinal-Android/src/pages/about/about.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -4859,7 +4859,8 @@ var ProjectPage = /** @class */ (function () {
         this.project = this.navParams.get("project");
         this.isCreate = this.navParams.get("isCreate");
         if (!this.isCreate) {
-            var loading_1 = this.loadingCtrl.create({ spinner: 'ios',
+            var loading_1 = this.loadingCtrl.create({
+                spinner: 'ios',
                 content: 'Cargando...'
             });
             loading_1.present();
@@ -4939,7 +4940,8 @@ var ProjectPage = /** @class */ (function () {
     };
     ProjectPage.prototype.addUsers = function () {
         var _this = this;
-        var loading = this.loadingCtrl.create({ spinner: 'ios',
+        var loading = this.loadingCtrl.create({
+            spinner: 'ios',
             content: 'Cargando...'
         });
         loading.present();
@@ -4954,9 +4956,17 @@ var ProjectPage = /** @class */ (function () {
                         type: 'checkbox',
                         label: p.firstName + " " + p.lastName,
                         value: p.id,
-                        checked: false
+                        checked: _this.members.some(function (pr) { return p.userName === pr.userName; })
                     });
                 });
+                // u.forEach(p => {
+                //   alert.addInput({
+                //     type: 'checkbox',
+                //     label: p.firstName + " " + p.lastName,
+                //     value: p.id,
+                //     checked: false
+                //   });
+                // });
                 alert_1.addButton({
                     text: 'Cancelar',
                     cssClass: 'btn-alert-cancel'
@@ -4966,6 +4976,22 @@ var ProjectPage = /** @class */ (function () {
                     cssClass: 'btn-alert-ok',
                     handler: function (data) {
                         _this.usersToAdd = data;
+                        _this.members = [];
+                        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+                            var d = data_1[_i];
+                            for (var _a = 0, u_1 = u; _a < u_1.length; _a++) {
+                                var user = u_1[_a];
+                                if (user.id === d) {
+                                    var personToShow = {
+                                        "firstName": user.firstName,
+                                        "lastName": user.lastName,
+                                        "userName": user.userName,
+                                        "checked": false
+                                    };
+                                    _this.members.push(personToShow);
+                                }
+                            }
+                        }
                     }
                 });
                 alert_1.present();
@@ -4981,7 +5007,7 @@ var ProjectPage = /** @class */ (function () {
                             type: 'checkbox',
                             label: p.firstName + " " + p.lastName,
                             value: p.id,
-                            checked: up.some(function (pr) { return p.id === pr.id; })
+                            checked: _this.members.some(function (pr) { return p.userName === pr.userName; })
                         });
                     });
                     alert.addButton({
@@ -4993,6 +5019,22 @@ var ProjectPage = /** @class */ (function () {
                         cssClass: 'btn-alert-ok',
                         handler: function (data) {
                             _this.usersToAdd = data;
+                            _this.members = [];
+                            for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
+                                var d = data_2[_i];
+                                for (var _a = 0, u_2 = u; _a < u_2.length; _a++) {
+                                    var user = u_2[_a];
+                                    if (user.id === d) {
+                                        var personToShow = {
+                                            "firstName": user.firstName,
+                                            "lastName": user.lastName,
+                                            "userName": user.userName,
+                                            "checked": false
+                                        };
+                                        _this.members.push(personToShow);
+                                    }
+                                }
+                            }
                         }
                     });
                     alert.present();
