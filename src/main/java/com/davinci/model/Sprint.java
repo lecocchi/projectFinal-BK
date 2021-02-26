@@ -15,10 +15,6 @@ import java.util.Date;
 
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Sprint implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -77,5 +73,105 @@ public class Sprint implements Serializable {
         this.isActive = isActive;
         this.idProject = idProject;
         this.isCreate = isCreate;
+    }
+
+    public Sprint() {
+    }
+
+    public Sprint(Integer id, String name, String description, Date dateFrom, Date dateTo, Date created, Boolean enabled, Boolean isActive, int idProject, Boolean isCreate) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.created = created;
+        this.enabled = enabled;
+        this.isActive = isActive;
+        this.idProject = idProject;
+        this.isCreate = isCreate;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        isActive = active;
+    }
+
+    public int getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
+    }
+
+    public Boolean getCreate() {
+        return isCreate;
+    }
+
+    public void setIsCreate(Boolean create) {
+        isCreate = create;
     }
 }

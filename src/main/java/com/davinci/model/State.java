@@ -13,10 +13,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class State implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,10 +34,48 @@ public class State implements Serializable {
     @Column(name = "CREATED_AT")
     private Date created;
 
+    public State() {
+    }
+
     public State(String name, String description, Date created) {
         this.name = name;
         this.created = created;
         this.description = description;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
 }

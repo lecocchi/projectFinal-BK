@@ -13,10 +13,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Version implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +38,8 @@ public class Version implements Serializable {
     @Column(name = "id_project")
     private int idProject;
 
+    public Version() {
+    }
 
     public Version(String name, String description, Date created, int idProject){
         this.name = name;
@@ -50,4 +48,47 @@ public class Version implements Serializable {
         this.idProject = idProject;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public int getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
+    }
 }

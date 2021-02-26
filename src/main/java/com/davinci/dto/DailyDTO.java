@@ -13,10 +13,7 @@ import javax.persistence.Convert;
 import java.time.LocalDate;
 import java.util.List;
 
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DailyDTO {
 
@@ -39,4 +36,91 @@ public class DailyDTO {
 
 	@JsonProperty("id_project")
 	private int idProject;
+
+	public DailyDTO(Long id, String firstName, String lastName, String userName, String avatar, DateDTO createdAt, List<DailyItemDTO> dailyItems, String sprint, int idProject) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.avatar = avatar;
+		this.createdAt = createdAt;
+		this.dailyItems = dailyItems;
+		this.sprint = sprint;
+		this.idProject = idProject;
+	}
+
+	public DailyDTO() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public DateDTO getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(DateDTO createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public List<DailyItemDTO> getDailyItems() {
+		return dailyItems;
+	}
+
+	public void setDailyItems(List<DailyItemDTO> dailyItems) {
+		this.dailyItems = dailyItems;
+	}
+
+	public String getSprint() {
+		return sprint;
+	}
+
+	public void setSprint(String sprint) {
+		this.sprint = sprint;
+	}
+
+	public int getIdProject() {
+		return idProject;
+	}
+
+	public void setIdProject(int idProject) {
+		this.idProject = idProject;
+	}
 }

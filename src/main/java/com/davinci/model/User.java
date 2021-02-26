@@ -12,9 +12,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class    User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +68,8 @@ public class    User implements Serializable {
     @Column(name = "IS_NETWORK")
     private Boolean isNetwork;
 
+    public User() {
+    }
 
     public User(String firstName, String lastName, Integer dni, String email, String userName, Integer rol, String password, String avatar, Date created, Date updated, Boolean enabled, Boolean isNetwork) {
         this.firstName = firstName;
@@ -85,5 +84,113 @@ public class    User implements Serializable {
         this.updated = updated;
         this.enabled = enabled;
         this.isNetwork = isNetwork;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getDni() {
+        return dni;
+    }
+
+    public void setDni(Integer dni) {
+        this.dni = dni;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getRol() {
+        return rol;
+    }
+
+    public void setRol(Integer rol) {
+        this.rol = rol;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getIsNetwork() {
+        return isNetwork;
+    }
+
+    public void setIsNetwork(Boolean network) {
+        isNetwork = network;
     }
 }

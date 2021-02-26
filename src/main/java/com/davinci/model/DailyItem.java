@@ -10,9 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class DailyItem {
 
     @Id
@@ -41,5 +38,92 @@ public class DailyItem {
         this.yesterday = yesterday;
         this.today = today;
         this.createdAt = createdAt;
+    }
+
+    public DailyItem() {
+    }
+
+    public DailyItem(Long id, String firstName, String lastName, String userName, String avatar, String yesterday, String today, LocalDate createdAt, Long dailyId) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.avatar = avatar;
+        this.yesterday = yesterday;
+        this.today = today;
+        this.createdAt = createdAt;
+        this.dailyId = dailyId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(String yesterday) {
+        this.yesterday = yesterday;
+    }
+
+    public String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Long getDailyId() {
+        return dailyId;
+    }
+
+    public void setDailyId(Long dailyId) {
+        this.dailyId = dailyId;
     }
 }
